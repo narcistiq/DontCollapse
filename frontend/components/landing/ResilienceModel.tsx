@@ -10,8 +10,8 @@ import type { GeometryCollection, Topology } from "topojson-specification";
 import usAtlas from "us-atlas/states-10m.json";
 import worldAtlas from "world-atlas/countries-110m.json";
 import { useEffect, useMemo, useRef } from "react";
-import { CanvasTexture, SRGBColorSpace, Vector3 } from "three";
-import type { Group, Mesh, MeshStandardMaterial, PointLight } from "three";
+import { AdditiveBlending, BackSide, CanvasTexture, SRGBColorSpace, Vector3 } from "three";
+import type { Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PointLight } from "three";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,9 +42,9 @@ function latLonToVector(lat: number, lon: number, radius = GLOBE_RADIUS + 0.02) 
   );
 }
 
-function buildEarthTextures() {
-  const width = 2048;
-  const height = 1024;
+function buildEarthTextures(detail: "base" | "high" = "base") {
+  const width = detail === "high" ? 4096 : 2048;
+  const height = width / 2;
 
   const colorCanvas = document.createElement("canvas");
   colorCanvas.width = width;
@@ -65,9 +65,9 @@ function buildEarthTextures() {
   const nightPath = geoPath(projection, nightCtx);
 
   const ocean = colorCtx.createLinearGradient(0, 0, width, height);
-  ocean.addColorStop(0, "#061224");
-  ocean.addColorStop(0.45, "#0b2444");
-  ocean.addColorStop(1, "#04101d");
+  ocean.addColorStop(0, "#0a2352");
+  ocean.addColorStop(0.45, "#0f3f86");
+  ocean.addColorStop(1, "#071a3f");
   colorCtx.fillStyle = ocean;
   colorCtx.fillRect(0, 0, width, height);
 
@@ -100,59 +100,30 @@ function buildEarthTextures() {
   colorCtx.stroke();
   colorCtx.restore();
 
-  colorCtx.save();
-  colorCtx.fillStyle = "rgba(59, 130, 246, 0.95)";
-  colorCtx.strokeStyle = "rgba(220, 234, 255, 0.95)";
-  colorCtx.lineWidth = 1.6;
-  path(florida as never);
-  colorCtx.fill();
-  colorCtx.stroke();
-  colorCtx.restore();
+  if (detail === "high") {
+    colorCtx.save();
+    colorCtx.fillStyle = "rgba(34, 224, 112, 1)";
+    colorCtx.strokeStyle = "rgba(210, 255, 229, 1)";
+    colorCtx.lineWidth = 2;
+    path(florida as never);
+    colorCtx.fill();
+    colorCtx.stroke();
+    colorCtx.restore();
+  }
 
   nightCtx.fillStyle = "#030712";
   nightCtx.fillRect(0, 0, width, height);
 
-  const globalCities = [
-    [40.71, -74.0],
-    [34.05, -118.24],
-    [51.5, -0.12],
-    [48.85, 2.35],
-    [35.68, 139.69],
-    [1.35, 103.82],
-    [-33.86, 151.2],
-    [19.43, -99.13],
-    [28.61, 77.2],
-    [30.04, 31.24],
-    [-23.55, -46.63],
-    [55.75, 37.61],
-    [59.33, 18.06],
-    [25.76, -80.19],
-    [27.95, -82.46],
-    [28.54, -81.38],
-    [29.65, -82.32]
-  ];
-
-  nightCtx.save();
-  for (const [lat, lon] of globalCities) {
-    const point = projection([lon, lat]);
-    if (!point) {
-      continue;
-    }
-
-    const [x, y] = point;
-    nightCtx.beginPath();
-    nightCtx.fillStyle = "rgba(255, 226, 158, 0.8)";
-    nightCtx.arc(x, y, 2.1, 0, Math.PI * 2);
+  if (detail === "high") {
+    nightCtx.save();
+    nightCtx.fillStyle = "rgba(54, 255, 139, 0.98)";
+    nightCtx.strokeStyle = "rgba(188, 255, 214, 1)";
+    nightCtx.lineWidth = 3.2;
+    nightPath(florida as never);
     nightCtx.fill();
+    nightCtx.stroke();
+    nightCtx.restore();
   }
-  nightCtx.restore();
-
-  nightCtx.save();
-  nightCtx.strokeStyle = "rgba(255, 176, 110, 0.55)";
-  nightCtx.lineWidth = 2.4;
-  nightPath(florida as never);
-  nightCtx.stroke();
-  nightCtx.restore();
 
   const colorTexture = new CanvasTexture(colorCanvas);
   colorTexture.colorSpace = SRGBColorSpace;
@@ -169,10 +140,12 @@ export function ResilienceModel() {
   const floridaGlowRef = useRef<PointLight>(null);
   const keyLightRef = useRef<PointLight>(null);
   const globeMaterialRef = useRef<MeshStandardMaterial>(null);
+  const detailMaterialRef = useRef<MeshStandardMaterial>(null);
   const infraGroupRef = useRef<Group>(null);
   const infraMarkerRefs = useRef<Array<Group | null>>([]);
 
-  const earthTextures = useMemo(() => buildEarthTextures(), []);
+  const earthTextures = useMemo(() => buildEarthTextures("base"), []);
+  const earthDetailTextures = useMemo(() => buildEarthTextures("high"), []);
 
   const animationState = useRef<AnimState>({
     rotationX: 0.12,
@@ -189,10 +162,10 @@ export function ResilienceModel() {
   });
 
   const infrastructureZones = [
-    { lat: 27.95, lon: -82.46, color: "#f43f5e", w: 0.018, h: 0.012, d: 0.014, label: "roads" },
-    { lat: 28.04, lon: -82.61, color: "#f59e0b", w: 0.016, h: 0.01, d: 0.013, label: "intersections" },
-    { lat: 27.9, lon: -82.38, color: "#eab308", w: 0.017, h: 0.011, d: 0.013, label: "drainage" },
-    { lat: 27.82, lon: -82.52, color: "#10b981", w: 0.016, h: 0.01, d: 0.013, label: "access" }
+    { lat: 27.95, lon: -82.46, color: "#22c55e", w: 0.018, h: 0.012, d: 0.014, label: "roads" },
+    { lat: 28.04, lon: -82.61, color: "#22c55e", w: 0.016, h: 0.01, d: 0.013, label: "intersections" },
+    { lat: 27.9, lon: -82.38, color: "#22c55e", w: 0.017, h: 0.011, d: 0.013, label: "drainage" },
+    { lat: 27.82, lon: -82.52, color: "#22c55e", w: 0.016, h: 0.01, d: 0.013, label: "access" }
   ];
 
   const { floridaRotationX, floridaRotationY } = useMemo(() => {
@@ -202,14 +175,6 @@ export function ResilienceModel() {
       floridaRotationX: Math.atan2(floridaFocus.y, Math.sqrt(floridaFocus.x ** 2 + floridaFocus.z ** 2))
     };
   }, []);
-
-  const buildings = [
-    { lat: 27.96, lon: -82.45, height: 0.14 },
-    { lat: 27.97, lon: -82.43, height: 0.09 },
-    { lat: 27.94, lon: -82.44, height: 0.12 },
-    { lat: 27.93, lon: -82.41, height: 0.1 },
-    { lat: 27.95, lon: -82.39, height: 0.15 }
-  ];
 
   useEffect(() => {
     const timeline = gsap.timeline({
@@ -289,23 +254,6 @@ export function ResilienceModel() {
           ease: "none"
         },
         ">"
-      )
-      .to(
-        animationState.current,
-        {
-          scale: 0.88,
-          positionX: 0,
-          positionY: -1.72,
-          positionZ: 0,
-          rotationX: 0,
-          rotationY: floridaRotationY + Math.PI * 0.7,
-          popupProgress: 0,
-          glowIntensity: 1.1,
-          spinSpeed: 0.12,
-          duration: 0.7,
-          ease: "power2.out"
-        },
-        ">"
       );
 
     return () => {
@@ -336,12 +284,18 @@ export function ResilienceModel() {
       globeMaterialRef.current.opacity += (animationState.current.globeOpacity - globeMaterialRef.current.opacity) * 3 * delta;
     }
 
+    if (detailMaterialRef.current) {
+      const detailOpacity = animationState.current.globeOpacity * animationState.current.infraReveal * 0.95;
+      detailMaterialRef.current.opacity += (detailOpacity - detailMaterialRef.current.opacity) * 5 * delta;
+    }
+
     if (keyLightRef.current) {
       keyLightRef.current.intensity += (animationState.current.glowIntensity - keyLightRef.current.intensity) * 3 * delta;
     }
 
     if (floridaGlowRef.current) {
-      const target = 0.85 + animationState.current.infraReveal * 3.1;
+      const pulse = 1 + Math.sin(performance.now() / 170) * 0.14 * animationState.current.infraReveal;
+      const target = (0.7 + animationState.current.infraReveal * 6.2) * pulse;
       floridaGlowRef.current.intensity += (target - floridaGlowRef.current.intensity) * 4 * delta;
     }
 
@@ -369,29 +323,31 @@ export function ResilienceModel() {
     }
 
     if (atmosphereRef.current) {
-      const material = atmosphereRef.current.material as MeshStandardMaterial;
-      material.opacity += (0.28 * animationState.current.globeOpacity - material.opacity) * 3 * delta;
+      const material = atmosphereRef.current.material as MeshBasicMaterial;
+      material.opacity += (0.14 * animationState.current.globeOpacity - material.opacity) * 3 * delta;
     }
   });
 
   return (
     <>
       <ambientLight intensity={0.25} />
-      <directionalLight position={[4.4, 4.6, 2.2]} intensity={2.05} color="#96c2ff" />
-      <directionalLight position={[-4.2, 1.8, -3]} intensity={0.85} color="#7dd3fc" />
+      <directionalLight position={[4.8, 5.2, 2.6]} intensity={2.35} color="#cfe5ff" />
+      <directionalLight position={[-4.4, 2.1, -2.7]} intensity={1.05} color="#8ed6ff" />
+      <pointLight position={[0.35, 1, 2.5]} intensity={1.55} color="#ffffff" />
+      <pointLight position={[-1.4, -0.6, 2.1]} intensity={0.75} color="#9ed0ff" />
       <pointLight ref={keyLightRef} position={[0, -2, 2]} intensity={0.8} color="#60a5fa" />
-      <pointLight ref={floridaGlowRef} position={[-0.24, 0.35, 1.74]} intensity={0.9} color="#38bdf8" />
+      <pointLight ref={floridaGlowRef} position={[-0.24, 0.35, 1.74]} intensity={1.1} color="#43ff96" />
 
       <Float speed={0.9} rotationIntensity={0.14} floatIntensity={0.25}>
         <group ref={groupRef}>
           <mesh ref={globeRef} castShadow receiveShadow>
-            <sphereGeometry args={[GLOBE_RADIUS, 128, 128]} />
+            <sphereGeometry args={[GLOBE_RADIUS, 160, 160]} />
             <meshStandardMaterial
               ref={globeMaterialRef}
               map={earthTextures.colorTexture ?? undefined}
               emissiveMap={earthTextures.nightTexture ?? undefined}
-              emissive="#7896bf"
-              emissiveIntensity={0.65}
+              emissive="#7aaee3"
+              emissiveIntensity={0.82}
               roughness={0.92}
               metalness={0.03}
               transparent
@@ -399,22 +355,35 @@ export function ResilienceModel() {
             />
           </mesh>
 
+          <mesh>
+            <sphereGeometry args={[GLOBE_RADIUS + 0.003, 196, 196]} />
+            <meshStandardMaterial
+              ref={detailMaterialRef}
+              map={earthDetailTextures.colorTexture ?? undefined}
+              emissiveMap={earthDetailTextures.nightTexture ?? undefined}
+              emissive="#6df2a1"
+              emissiveIntensity={1.05}
+              roughness={0.9}
+              metalness={0.02}
+              transparent
+              opacity={0}
+              depthWrite={false}
+            />
+          </mesh>
+
           <mesh ref={atmosphereRef}>
             <sphereGeometry args={[GLOBE_RADIUS + 0.04, 96, 96]} />
-            <meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.2} transparent opacity={0.05} />
+            <meshBasicMaterial
+              color="#f5fbff"
+              transparent
+              opacity={0.02}
+              blending={AdditiveBlending}
+              side={BackSide}
+              depthWrite={false}
+            />
           </mesh>
 
           <group ref={infraGroupRef} scale={[0.001, 0.001, 0.001]}>
-            {buildings.map((b, idx) => {
-              const p = latLonToVector(b.lat, b.lon, GLOBE_RADIUS + 0.055);
-              return (
-                <mesh key={`building-${idx}`} position={p}>
-                  <boxGeometry args={[0.008, b.height * 0.45, 0.008]} />
-                  <meshStandardMaterial color="#e2e8f0" emissive="#93c5fd" emissiveIntensity={0.7} />
-                </mesh>
-              );
-            })}
-
             {infrastructureZones.map((zone, idx) => {
               const p = latLonToVector(zone.lat, zone.lon, GLOBE_RADIUS + 0.05);
               return (

@@ -19,8 +19,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${mono.variable} bg-slate-950 text-slate-200`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={`${inter.variable} ${mono.variable} bg-slate-950 text-slate-200`}>
+        {children}
+      </body>
     </html>
   );
 }
