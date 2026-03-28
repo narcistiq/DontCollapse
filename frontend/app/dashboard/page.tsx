@@ -66,8 +66,35 @@ export default function DashboardPage() {
   const [isLoadingIntelligence, setIsLoadingIntelligence] = useState(false);
   const [showTrace, setShowTrace] = useState(true);
   const [mapReady, setMapReady] = useState(false);
+  const [liveScenarioData, setLiveScenarioData] = useState<Record<string, ScenarioState>>(mockScenarioData);
 
-  const scenarioState = useMemo(() => mockScenarioData[activeScenario], [activeScenario]);
+  const scenarioState = useMemo(() => liveScenarioData[activeScenario] || mockScenarioData[activeScenario], [activeScenario, liveScenarioData]);
+
+  useEffect(() => {
+    async function fetchAiAnalysis() {
+      if (liveScenarioData[activeScenario] && liveScenarioData[activeScenario] !== mockScenarioData[activeScenario]) {
+        // already fetched
+        return;
+      }
+      setIsLoadingIntelligence(true);
+      try {
+        const res = await fetch("http://localhost:8000/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ scenario: activeScenario })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setLiveScenarioData(prev => ({ ...prev, [activeScenario]: data }));
+        }
+      } catch (e) {
+        console.error("Failed to fetch AI scenario analysis", e);
+      } finally {
+        setIsLoadingIntelligence(false);
+      }
+    }
+    fetchAiAnalysis();
+  }, [activeScenario]);
 
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current || !mapToken) {
