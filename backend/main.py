@@ -22,7 +22,7 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai.types import Content, Part
 
-from pipeline import resilience_pipeline
+from backend.pipeline import resilience_pipeline
 
 
 # ── App setup ─────────────────────────────────────────────────────────────────
