@@ -28,3 +28,6 @@ Thumbs.db
 
 # Stitch downloads
 stitch/downloads/
+
+# Local VS Code MCP secrets
+.vscode/mcp.json
