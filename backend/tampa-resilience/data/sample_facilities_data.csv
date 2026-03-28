@@ -1,0 +1,6 @@
+Facility_ID,Zone_ID,Facility_Type,Accessibility_Score,Elevation_ft
+F001,Z001,Hospital,95,8.5
+F002,Z002,School,70,4.2
+F003,Z003,Shelter,85,5.0
+F004,Z004,Hospital,90,7.5
+F005,Z005,School,60,3.1
