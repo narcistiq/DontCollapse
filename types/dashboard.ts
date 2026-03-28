@@ -7,12 +7,30 @@ export type ActionTicket = {
   urgency: "critical" | "warning" | "stable";
 };
 
+export type RankedArea = {
+  name: string;
+  score: number;
+  reason: string;
+};
+
+export type InfrastructureScore = {
+  id: "roads" | "intersections" | "drainage" | "power" | "access-routes";
+  label: string;
+  score: number;
+};
+
 export type ScenarioState = {
   summary: string;
   score: number;
   affected: string;
   actions: ActionTicket[];
   logs: string[];
+  rankedAreas: RankedArea[];
+  infrastructureScores: InfrastructureScore[];
+  actionPayload: {
+    action: string;
+    coordinates: [number, number][];
+  };
 };
 
 export type FeatureCollection = GeoJSON.FeatureCollection<

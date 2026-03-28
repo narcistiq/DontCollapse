@@ -13,7 +13,7 @@ const mono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tampa Bay Resilience Ecosystem",
+  title: "DontCollapse",
   description: "Modern EOC resilience dashboard with scenario simulation and trace logs"
 };
 

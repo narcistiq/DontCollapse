@@ -42,7 +42,38 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
       "[simulator.parallel] Scenario heavy_rainfall score aggregate: 0.84",
       "[dispatcher.loop] Verified recommendation consistency against route blockages",
       "[dispatcher.output] Action payload queued: deploy_pumps(zone=south_tampa)"
-    ]
+    ],
+    rankedAreas: [
+      {
+        name: "South Tampa Flood Basin",
+        score: 84,
+        reason: "Low elevation and poor alternate corridors"
+      },
+      {
+        name: "East Tampa Drainage Cluster",
+        score: 73,
+        reason: "Drainage overload under peak rainfall"
+      },
+      {
+        name: "Pinellas Shelter Access Corridor",
+        score: 58,
+        reason: "Flooded intersections reduce shelter reachability"
+      }
+    ],
+    infrastructureScores: [
+      { id: "roads", label: "Roads", score: 82 },
+      { id: "intersections", label: "Intersections", score: 79 },
+      { id: "drainage", label: "Drainage Zones", score: 86 },
+      { id: "power", label: "Power Service Areas", score: 57 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 81 }
+    ],
+    actionPayload: {
+      action: "deploy_pumps",
+      coordinates: [
+        [-82.523, 27.902],
+        [-82.511, 27.891]
+      ]
+    }
   },
   "storm surge": {
     summary:
@@ -69,7 +100,38 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
       "[simulator.parallel] Surge impact intersects 2 critical routes",
       "[dispatcher.loop] Initial route recommendation conflicted with flood mask",
       "[dispatcher.loop] Corrected plan generated with inland fallback corridor"
-    ]
+    ],
+    rankedAreas: [
+      {
+        name: "Pinellas Shelter Access Corridor",
+        score: 78,
+        reason: "Coastal surge overlaps evacuation routes"
+      },
+      {
+        name: "South Tampa Flood Basin",
+        score: 74,
+        reason: "Near-bay inundation spillback risk"
+      },
+      {
+        name: "Westshore Utility Zone",
+        score: 62,
+        reason: "Power and roadway convergence in low-lying area"
+      }
+    ],
+    infrastructureScores: [
+      { id: "roads", label: "Roads", score: 76 },
+      { id: "intersections", label: "Intersections", score: 72 },
+      { id: "drainage", label: "Drainage Zones", score: 69 },
+      { id: "power", label: "Power Service Areas", score: 71 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 77 }
+    ],
+    actionPayload: {
+      action: "reinforce_corridor",
+      coordinates: [
+        [-82.747, 27.902],
+        [-82.733, 27.893]
+      ]
+    }
   },
   "sea-level-rise increase": {
     summary:
@@ -96,7 +158,38 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
       "[simulator.parallel] Chronic stress index increased in 3 urban basins",
       "[dispatcher.loop] Prioritized infrastructure modernization over short-term reroutes",
       "[dispatcher.output] Action payload queued: drainage_upgrade(cluster=east_tampa)"
-    ]
+    ],
+    rankedAreas: [
+      {
+        name: "East Tampa Drainage Cluster",
+        score: 62,
+        reason: "Chronic tidal backflow pressure"
+      },
+      {
+        name: "South Tampa Flood Basin",
+        score: 59,
+        reason: "Recurrent minor inundation expansion"
+      },
+      {
+        name: "Central Access Belt",
+        score: 52,
+        reason: "Declining route reliability over long horizon"
+      }
+    ],
+    infrastructureScores: [
+      { id: "roads", label: "Roads", score: 61 },
+      { id: "intersections", label: "Intersections", score: 58 },
+      { id: "drainage", label: "Drainage Zones", score: 74 },
+      { id: "power", label: "Power Service Areas", score: 55 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 60 }
+    ],
+    actionPayload: {
+      action: "drainage_upgrade",
+      coordinates: [
+        [-82.426, 27.963],
+        [-82.412, 27.953]
+      ]
+    }
   },
   "repeated flooding days": {
     summary:
@@ -123,6 +216,37 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
       "[simulator.parallel] Reliability degradation detected on 4 feeder roads",
       "[dispatcher.loop] Confirmed shelter access remains above minimum threshold",
       "[dispatcher.output] Action payload queued: evacuation_planning(zone=central)"
-    ]
+    ],
+    rankedAreas: [
+      {
+        name: "General Hospital Access Ring",
+        score: 49,
+        reason: "Multi-day disruption compounds travel-time volatility"
+      },
+      {
+        name: "South Tampa Flood Basin",
+        score: 47,
+        reason: "Repeat closures impact daily service continuity"
+      },
+      {
+        name: "Pinellas Shelter Access Corridor",
+        score: 43,
+        reason: "Intermittent accessibility losses"
+      }
+    ],
+    infrastructureScores: [
+      { id: "roads", label: "Roads", score: 51 },
+      { id: "intersections", label: "Intersections", score: 54 },
+      { id: "drainage", label: "Drainage Zones", score: 48 },
+      { id: "power", label: "Power Service Areas", score: 41 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 53 }
+    ],
+    actionPayload: {
+      action: "evacuation_planning",
+      coordinates: [
+        [-82.501, 27.958],
+        [-82.487, 27.948]
+      ]
+    }
   }
 };
