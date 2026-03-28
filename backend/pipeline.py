@@ -10,8 +10,8 @@ endpoint returns to the frontend.
 """
  
 from google.adk.agents import SequentialAgent
-from agents.scorer_agent import scorer_agent
-from agents.narrative_agent import narrative_agent
+from backend.agents.scorer_agent import scorer_agent
+from backend.agents.narrative_agent import narrative_agent
  
  
 resilience_pipeline = SequentialAgent(
