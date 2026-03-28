@@ -11,7 +11,7 @@ from google.adk.tools import FunctionTool
 
 # ── Load static data once at import time ──────────────────────────────────────
 
-DATA_PATH = Path(__file__).parent.parent / "tampa_data.json"
+DATA_PATH = Path(__file__).parent.parent / "data" / "tampa_data.json"
 
 with open(DATA_PATH) as f:
     TAMPA_DATA = json.load(f)
