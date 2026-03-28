@@ -31,3 +31,8 @@ stitch/downloads/
 
 # Local VS Code MCP secrets
 .vscode/mcp.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
