@@ -56,3 +56,10 @@ cp .env.example .env.local
 # set NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN in .env.local
 npm run dev
 ```
+
+Quality checks:
+
+```bash
+npm run lint
+npm run build
+```
