@@ -49,6 +49,6 @@ drafter_llm = LlmAgent(
 dispatcher_agent = LoopAgent(
     name="DispatcherLoop",
     description="The Dispatcher. Uses a Loop workflow to double-check its work and self-correct.",
-    sub_agent=drafter_llm,
+    sub_agents=[drafter_llm],
     max_iterations=2
 )
