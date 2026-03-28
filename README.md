@@ -38,3 +38,21 @@ chmod +x scripts/fetch-stitch.sh
 ```
 
 Downloads are written to `stitch/downloads/<SCREEN_ID>/`.
+
+## Frontend Dashboard (Next.js)
+
+This repo now includes a single-page frontend implementation for the Tampa Bay Resilience Ecosystem dashboard using:
+
+- Next.js (App Router)
+- Tailwind CSS
+- Mapbox GL JS
+- lucide-react
+
+Run locally:
+
+```bash
+npm install
+cp .env.example .env.local
+# set NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN in .env.local
+npm run dev
+```
