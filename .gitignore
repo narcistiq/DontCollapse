@@ -25,3 +25,6 @@ coverage/
 .DS_Store
 Thumbs.db
 .idea/
+
+# Stitch downloads
+stitch/downloads/
