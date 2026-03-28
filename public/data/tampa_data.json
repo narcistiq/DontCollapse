@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Tampa Flood Basin",
+        "fragility": 88,
+        "kind": "zone"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-82.543, 27.915],
+            [-82.505, 27.915],
+            [-82.505, 27.883],
+            [-82.543, 27.883],
+            [-82.543, 27.915]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Tampa Drainage Cluster",
+        "fragility": 64,
+        "kind": "zone"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-82.445, 27.982],
+            [-82.406, 27.982],
+            [-82.406, 27.945],
+            [-82.445, 27.945],
+            [-82.445, 27.982]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinellas Shelter Access Corridor",
+        "fragility": 41,
+        "kind": "zone"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-82.77, 27.922],
+            [-82.725, 27.922],
+            [-82.725, 27.885],
+            [-82.77, 27.885],
+            [-82.77, 27.922]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "General Hospital",
+        "fragility": 73,
+        "kind": "hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.458, 27.947]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central Shelter",
+        "fragility": 58,
+        "kind": "shelter"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.507, 27.963]
+      }
+    }
+  ]
+}

@@ -1,4 +1,33 @@
+# Environment and secrets
 .env
-__pycache__/
-*.pyc
-.venv/
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+.next/
+dist/
+build/
+coverage/
+
+# Tooling caches
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+.idea/
+
+# Stitch downloads
+stitch/downloads/
+
+# Local VS Code MCP secrets
+.vscode/mcp.json
