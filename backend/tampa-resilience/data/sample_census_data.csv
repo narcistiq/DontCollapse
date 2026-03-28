@@ -1,0 +1,6 @@
+Zone_ID,Zone_Name,Population,Median_Income,Pct_Elderly,Pct_Children,Pct_Poverty
+Z001,Downtown Tampa,15000,65000,12,14,18
+Z002,Ybor City,8500,45000,8,12,32
+Z003,South Tampa,12000,75000,18,8,8
+Z004,North Tampa,20000,55000,10,16,22
+Z005,East Tampa,18000,42000,9,15,35

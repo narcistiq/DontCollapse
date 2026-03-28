@@ -1,0 +1,6 @@
+Zone_ID,Flood_Zone,Elevation_ft,Flood_Exposure_Score,Repeat_Flood_Events_10y
+Z001,AE,4.2,85,3
+Z002,X,7.1,25,0
+Z003,AE,2.1,92,8
+Z004,A,5.5,65,1
+Z005,AE,1.8,95,12

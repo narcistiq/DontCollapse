@@ -1,0 +1,8 @@
+Zone_ID,Road_ID,Road_Type,Elevation_ft,Flood_Risk_Level
+Z001,R101,Highway,6.0,High
+Z001,R102,Primary,3.5,Medium
+Z002,R103,Primary,8.2,Low
+Z003,R104,Secondary,2.1,High
+Z004,R105,Highway,7.0,Low
+Z005,R106,Secondary,1.5,Critical
+Z005,R107,Secondary,2.0,High
