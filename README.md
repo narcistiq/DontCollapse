@@ -63,3 +63,42 @@ Quality checks:
 npm run lint
 npm run build
 ```
+
+## Google Cloud Deployment (dontcollapse.tech)
+
+This repo includes scripts to enable required Google Cloud APIs and deploy to Cloud Run.
+
+Files:
+
+- `scripts/setup-gcp.sh` enables required APIs and prepares Artifact Registry.
+- `scripts/deploy-gcp.sh` builds and deploys the app to Cloud Run.
+- `Dockerfile` builds a production Next.js standalone container.
+
+Run once (API and registry setup):
+
+```bash
+chmod +x scripts/setup-gcp.sh scripts/deploy-gcp.sh
+./scripts/setup-gcp.sh <PROJECT_ID> us-central1 dontcollapse.tech dontcollapse-web dontcollapse
+```
+
+Deploy:
+
+```bash
+export NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=<your_mapbox_token>
+./scripts/deploy-gcp.sh <PROJECT_ID> us-central1 dontcollapse-web dontcollapse
+```
+
+Map custom domain:
+
+```bash
+gcloud beta run domain-mappings create \
+	--service dontcollapse-web \
+	--domain dontcollapse.tech \
+	--region us-central1
+
+gcloud beta run domain-mappings describe \
+	--domain dontcollapse.tech \
+	--region us-central1
+```
+
+Add the returned DNS records at your domain registrar for `dontcollapse.tech`.
