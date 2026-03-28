@@ -78,18 +78,7 @@ def score_zones(scenario_key: str) -> dict:
             "id": zone["id"],
             "name": zone["name"],
             "fragility_score": fragility_score,
-            "factors": {
-                "elevation_ft": zone["elevation_ft"],
-                "elevation_score": round(elev_score, 2),
-                "drainage_quality": zone["drainage_quality"],
-                "drainage_score": round(drain_score, 2),
-                "alternate_routes": zone["alternate_routes"],
-                "route_score": round(route_score, 2),
-                "distance_to_shelter_mi": zone["distance_to_shelter_mi"],
-                "shelter_score": round(shelter_score, 2),
-                "flood_history_events": zone["flood_history_events"],
-                "history_score": round(history_score, 2),
-            },
+            "factors": { ... },
             "infrastructure": zone["infrastructure"],
         })
 
@@ -99,7 +88,7 @@ def score_zones(scenario_key: str) -> dict:
     return {
         "scenario_key": scenario_key,
         "scenario_label": scenario["label"],
-        "scored_zones": scored,
+        "scored_zones": scored[:3],  # ← only change: add [:3]
     }
 
 

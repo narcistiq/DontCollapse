@@ -9,7 +9,8 @@ Endpoint:
     Body: { "scenario": "heavy_rain" | "storm_surge" | "sea_level_rise" | "repeated_flooding" }
     Returns: full narrative JSON for all scored zones
 """
-
+from dotenv import load_dotenv
+load_dotenv()
 import json
 import uuid
 
@@ -26,7 +27,7 @@ from pipeline import resilience_pipeline
 
 # ── App setup ─────────────────────────────────────────────────────────────────
 
-app = FastAPI(title="Tampa Bay Resilience API")
+app = FastAPI(title="Don't Collpase API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -47,7 +48,7 @@ class AnalyzeRequest(BaseModel):
 # ── Runner + session service (created once at startup) ────────────────────────
 
 session_service = InMemorySessionService()
-APP_NAME = "tampa_resilience"
+APP_NAME = "dont_collapse"
 
 runner = Runner(
     agent=resilience_pipeline,
@@ -60,57 +61,55 @@ runner = Runner(
 
 @app.post("/analyze")
 async def analyze(request: AnalyzeRequest):
-    if request.scenario not in VALID_SCENARIOS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid scenario. Choose from: {VALID_SCENARIOS}",
+    try:
+        if request.scenario not in VALID_SCENARIOS:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid scenario. Choose from: {VALID_SCENARIOS}",
+            )
+
+        session_id = str(uuid.uuid4())
+        user_id = "engineer"
+
+        # Use the runner's own session service, not a separate one
+        await runner.session_service.create_session(
+            app_name=APP_NAME,
+            user_id=user_id,
+            session_id=session_id,
         )
 
-    # Each request gets its own session so state doesn't bleed between calls
-    session_id = str(uuid.uuid4())
-    user_id = "engineer"
+        user_message = Content(
+            role="user",
+            parts=[Part(text=f"Run the resilience analysis for scenario: {request.scenario}")]
+        )
 
-    session_service.create_session(
-        app_name=APP_NAME,
-        user_id=user_id,
-        session_id=session_id,
-    )
+        async for event in runner.run_async(
+            user_id=user_id,
+            session_id=session_id,
+            new_message=user_message,
+        ):
+            pass
 
-    # The user message tells the pipeline which scenario to run
-    user_message = Content(
-        role="user",
-        parts=[Part(text=f"Run the resilience analysis for scenario: {request.scenario}")]
-    )
+        session = await runner.session_service.get_session(
+            app_name=APP_NAME,
+            user_id=user_id,
+            session_id=session_id,
+        )
 
-    # Stream through all agent events and collect the final state
-    final_state = {}
-    async for event in runner.run_async(
-        user_id=user_id,
-        session_id=session_id,
-        new_message=user_message,
-    ):
-        # Capture session state after each agent completes
-        if event.is_final_response():
-            session = session_service.get_session(
-                app_name=APP_NAME,
-                user_id=user_id,
-                session_id=session_id,
-            )
-            final_state = session.state
+        raw_narratives = session.state.get("narratives", "")
+        clean = raw_narratives.strip().removeprefix("```json").removesuffix("```").strip()
 
-    # The NarrativeAgent stores its output under 'narratives'
-    raw_narratives = final_state.get("narratives", "")
+        try:
+            result = json.loads(clean)
+        except (json.JSONDecodeError, TypeError):
+            result = {"raw": raw_narratives}
 
-    # Strip markdown fences if Gemini wrapped the JSON
-    clean = raw_narratives.strip().removeprefix("```json").removesuffix("```").strip()
+        return result
 
-    try:
-        result = json.loads(clean)
-    except (json.JSONDecodeError, TypeError):
-        # Return the raw string if parsing fails so the frontend can debug
-        result = {"raw": raw_narratives}
-
-    return result
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # ── Health check ──────────────────────────────────────────────────────────────
