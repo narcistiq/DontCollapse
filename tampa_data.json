@@ -1,0 +1,48 @@
+{
+  "locations": [
+    {
+      "name": "Downtown Tampa",
+      "coordinates": [27.9506, -82.4572],
+      "flood_risk": "high",
+      "shelters": ["Shelter A", "Shelter B"]
+    },
+    {
+      "name": "Ybor City",
+      "coordinates": [27.9627, -82.4451],
+      "flood_risk": "medium",
+      "shelters": ["Shelter C"]
+    },
+    {
+      "name": "Hyde Park",
+      "coordinates": [27.9439, -82.4740],
+      "flood_risk": "low",
+      "shelters": ["Shelter D"]
+    }
+  ],
+  "shelters": [
+    {
+      "name": "Shelter A",
+      "coordinates": [27.9510, -82.4580],
+      "capacity": 500,
+      "flood_status": "safe"
+    },
+    {
+      "name": "Shelter B",
+      "coordinates": [27.9520, -82.4590],
+      "capacity": 300,
+      "flood_status": "safe"
+    },
+    {
+      "name": "Shelter C",
+      "coordinates": [27.9630, -82.4460],
+      "capacity": 200,
+      "flood_status": "safe"
+    },
+    {
+      "name": "Shelter D",
+      "coordinates": [27.9440, -82.4750],
+      "capacity": 400,
+      "flood_status": "safe"
+    }
+  ]
+}
