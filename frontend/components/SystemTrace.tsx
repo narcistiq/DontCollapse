@@ -40,17 +40,17 @@ export function SystemTrace({ logs, isLoading }: SystemTraceProps) {
   }, [visibleLogs]);
 
   return (
-    <section className="absolute bottom-4 right-4 z-30 w-80 overflow-hidden rounded-lg border border-slate-800 bg-black/80 shadow-2xl backdrop-blur-md">
-      <div className="flex items-center justify-between border-b border-slate-800/80 bg-slate-950/80 px-2 py-1.5">
+    <div className="flex flex-col h-full w-full bg-slate-950/40">
+      <div className="flex items-center justify-between border-b border-slate-800/80 bg-slate-950/80 px-2 py-1.5 shrink-0">
         <div className="flex items-center gap-2">
           {isLoading && <Loader2 className="w-3 h-3 animate-spin text-slate-400" />}
-          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-300">Agent Swarm</span>
+          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-300">Live Execution</span>
         </div>
         <span className="text-[9px] font-mono text-slate-500">live-trace</span>
       </div>
 
       <div
-        className="h-32 overflow-y-auto p-2 font-mono text-[10px] space-y-1.5"
+        className="h-32 overflow-y-auto p-2 font-mono text-[10px] space-y-1.5 custom-scrollbar"
         role="log"
         aria-live="polite"
         aria-relevant="additions"
@@ -73,6 +73,6 @@ export function SystemTrace({ logs, isLoading }: SystemTraceProps) {
           </>
         )}
       </div>
-    </section>
+    </div>
   );
 }

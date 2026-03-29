@@ -46,6 +46,8 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
     ],
     infrastructureScores: [
       { id: "roads", label: "Roads", score: 30 },
+      { id: "intersections", label: "Intersections", score: 25 },
+      { id: "drainage", label: "Drainage Zones", score: 40 },
       { id: "power", label: "Power Service Areas", score: 15 },
       { id: "access-routes", label: "Hospital/Shelter Routes", score: 20 }
     ],
@@ -82,6 +84,7 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
     infrastructureScores: [
       { id: "power", label: "Power Service Areas", score: 100 },
       { id: "roads", label: "Roads", score: 95 },
+      { id: "intersections", label: "Intersections", score: 98 },
       { id: "access-routes", label: "Hospital/Shelter Routes", score: 98 },
       { id: "drainage", label: "Drainage Zones", score: 100 }
     ],

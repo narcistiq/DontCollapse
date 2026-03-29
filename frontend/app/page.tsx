@@ -90,12 +90,23 @@ export default function HomePage() {
         </Canvas>
       </div>
 
-      <div
+      <div 
         ref={bgLayerRef}
-        className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(128deg,rgba(11,22,48,0.995)_0%,rgba(22,54,116,0.99)_52%,rgba(34,82,146,0.985)_100%),radial-gradient(130%_100%_at_14%_20%,rgba(145,222,255,0.9),transparent_57%),radial-gradient(105%_85%_at_84%_74%,rgba(139,255,241,0.72),transparent_61%)] opacity-80 mix-blend-screen transition-[background] duration-500"
+        className="pointer-events-none fixed inset-0 z-0 bg-slate-950 transition-[background] duration-700"
       />
-
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(40%_34%_at_18%_24%,rgba(255,255,255,0.16),transparent_70%),radial-gradient(33%_30%_at_76%_20%,rgba(255,255,255,0.12),transparent_72%),radial-gradient(50%_45%_at_22%_82%,rgba(2,6,23,0.5),transparent_72%),radial-gradient(44%_40%_at_80%_74%,rgba(3,8,28,0.42),transparent_70%)] opacity-80 mix-blend-soft-light" />
+      
+      {/* Animated Subtle Heatmap Gradients mimicking map colors */}
+      <div 
+        id="heat-layer"
+        className="pointer-events-none fixed inset-0 z-0 opacity-20 mix-blend-color-dodge transition-all duration-1000 bg-[radial-gradient(40%_40%_at_30%_30%,rgba(34,197,94,0.3),transparent_80%),radial-gradient(50%_50%_at_80%_60%,rgba(249,115,22,0.3),transparent_70%),radial-gradient(40%_40%_at_60%_20%,rgba(220,38,38,0.3),transparent_80%)]" 
+      />
+      
+      {/* Moving dots/grid to simulate a scrolling map abstractly */}
+      {/* Taller div so it can scroll upwards infinitely */}
+      <div className="pointer-events-none fixed left-0 top-0 w-full h-[200vh] z-0 opacity-[0.06] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat animate-[slide_120s_linear_infinite]" />
+      
+      {/* Dark overlay to ensure text readability */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-slate-950/75 mix-blend-multiply" />
 
       <div className="fixed left-0 right-0 top-4 z-20 flex justify-center px-6">
         <div className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/75 p-1.5 backdrop-blur-md">
@@ -131,8 +142,7 @@ export default function HomePage() {
             SURVIVE.
           </h1>
           <p className="mt-6 max-w-xl text-base text-slate-400 md:text-lg">
-            The Autonomous Resilience Ecosystem for Tampa Bay. Score fragility, understand cascading flood risk, and
-            prioritize action before infrastructure fails.
+            The Autonomous Resilience Ecosystem for Florida's infrastructure. We synthesize weather APIs, bulk DataFrame simulations, and multi-LLM workflows to mathematically predict structural fragility across 2,780+ mapped sub-zones before critical limits cascade.
           </p>
 
           <div className="mt-6 grid max-w-2xl grid-cols-3 gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-3 backdrop-blur-sm">
@@ -159,8 +169,7 @@ export default function HomePage() {
           <p className="mb-2 text-xs uppercase tracking-[0.2em] text-rose-300">The Threat</p>
           <h2 className="mb-3 text-3xl font-semibold tracking-tight text-slate-100">Fragility Is Accelerating</h2>
           <p className="text-sm text-slate-400">
-            Water stress is destroying infrastructure. DontCollapse quantifies roads, drainage, and critical access
-            vulnerabilities to identify where response must happen first.
+            Extreme weather and systemic stress test the limits of our public structures. DontCollapse maps hyper-local fragility percentiles across key vectors—from roads to essential facilities—pinpointing exactly where infrastructure will collapse first.
           </p>
 
           <div className="mt-5 rounded-lg border border-slate-800 bg-slate-950/65 p-3">
@@ -186,52 +195,78 @@ export default function HomePage() {
       <section id="solution" className="relative z-10 flex min-h-screen items-center justify-end px-6 md:px-14">
         <div className="max-w-md rounded-xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur-sm">
           <p className="mb-2 text-xs uppercase tracking-[0.2em] text-emerald-300">The Multi-Agent Solution</p>
-          <h2 className="mb-3 text-3xl font-semibold tracking-tight text-slate-100">Three Agents. One Reality.</h2>
+          <h2 className="mb-3 text-3xl font-semibold tracking-tight text-slate-100">Tri-Node Intelligence.</h2>
           <p className="text-sm text-slate-400">
-            Sentinel ingest, parallel simulation, and loop-based dispatch collaborate in one shared context to produce
-            mitigation actions in real time.
+            A specialized network of asynchronous AI agents continuously processes telemetry, evaluates deterministic risk models, and drives operational readiness.
           </p>
 
-          <div className="mt-5 grid grid-cols-3 gap-2.5">
+          <div className="mt-5 flex flex-col gap-3">
             {[
-              { name: "Sentinel", accent: "from-cyan-400 to-sky-500", delay: "0ms" },
-              { name: "Simulator", accent: "from-violet-400 to-fuchsia-500", delay: "180ms" },
-              { name: "Dispatcher", accent: "from-emerald-400 to-teal-500", delay: "360ms" }
+              { 
+                name: "Sentinel", 
+                role: "Early Warning", 
+                desc: "Ingests live environmental APIs (e.g. Open-Meteo) and leverages Groq LLMs to continuously observe and generate context-aware status reports.",
+                accent: "from-cyan-400 to-sky-500", delay: "0ms" 
+              },
+              { 
+                name: "Simulator", 
+                role: "Risk & Prediction", 
+                desc: "Runs high-speed, deterministic bulk Pandas processing to dynamically map cascading fragility across 2,783 geographic sub-zones based on active scenarios.",
+                accent: "from-violet-400 to-fuchsia-500", delay: "180ms" 
+              },
+              { 
+                name: "Dispatcher", 
+                role: "Operations & A2A", 
+                desc: "Consolidates findings and formulates mitigation logistics. Simulates Agent-to-Agent (A2A) handshakes to trigger supply allocations down the chain.",
+                accent: "from-emerald-400 to-teal-500", delay: "360ms" 
+              }
             ].map((agent) => (
-              <div key={agent.name} className="rounded-md border border-slate-700 bg-slate-950/70 p-2.5">
-                <div className="relative mx-auto flex h-14 w-14 items-center justify-center">
+              <div key={agent.name} className="flex items-center gap-4 rounded-md border border-slate-700 bg-slate-950/70 p-3 pt-3.5 pb-3.5">
+                <div className="relative flex-shrink-0 flex h-12 w-12 items-center justify-center">
                   <div
-                    className="absolute h-14 w-14 rounded-full border border-cyan-200/40 animate-spin"
+                    className="absolute h-12 w-12 rounded-full border border-cyan-200/40 animate-spin"
                     style={{ animationDuration: "4.8s", animationDelay: agent.delay }}
                   />
                   <div
-                    className="absolute h-9 w-9 rounded-full border border-white/35 animate-spin"
+                    className="absolute h-8 w-8 rounded-full border border-white/35 animate-spin"
                     style={{ animationDuration: "3.3s", animationDirection: "reverse", animationDelay: agent.delay }}
                   />
-                  <div className={`h-4 w-4 rounded-full bg-gradient-to-br ${agent.accent} animate-pulse`} />
+                  <div className={`h-3 w-3 rounded-full bg-gradient-to-br ${agent.accent} animate-pulse`} />
                   <span
-                    className="absolute h-2 w-2 rounded-full bg-white/90 animate-ping"
+                    className="absolute h-1.5 w-1.5 rounded-full bg-white/90 animate-ping"
                     style={{ animationDuration: "1.8s", animationDelay: agent.delay }}
                   />
                 </div>
-                <p className="mt-2 text-center text-[10px] uppercase tracking-[0.16em] text-slate-300">{agent.name}</p>
+                <div className="flex flex-col text-left">
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-slate-200">{agent.name}</p>
+                    <span className="text-[9px] uppercase tracking-widest text-slate-500">{agent.role}</span>
+                  </div>
+                  <p className="text-[11.5px] leading-snug text-slate-400">{agent.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="final" className="relative z-10 flex min-h-[72vh] items-end justify-center px-6 pb-14 md:px-14">
-        <div className="w-full max-w-2xl translate-y-24 text-center md:translate-y-28">
+      <section id="final" className="relative z-10 block min-h-[70vh]">
+        {/* Spacer for final section scroll */}
+      </section>
+
+      <div className={`fixed inset-0 z-10 flex flex-col items-center justify-center px-6 transition-all duration-1000 ${
+        activeSection === "final" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
+      }`}>
+        <div className="w-full max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Operational Layer</p>
-          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-slate-100 md:text-5xl">Ready to Enter the Live Map</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-slate-400 md:text-base">
+          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-slate-100 md:text-5xl delay-100 transition-all">Ready to Enter the Live Map</h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm text-slate-400 md:text-base delay-200 transition-all">
             Transition from narrative intelligence to scenario-level action planning in the dashboard.
           </p>
         </div>
-      </section>
+      </div>
 
-      <div className="fixed bottom-5 left-0 right-0 z-20 flex justify-center px-6">
+      <div className="fixed bottom-8 left-0 right-0 z-20 flex justify-center px-6">
         <Link
           href="/dashboard"
           className="inline-flex items-center gap-2 rounded-full border border-blue-400/60 bg-slate-900/85 px-6 py-3 text-sm font-medium text-blue-100 shadow-[0_0_35px_rgba(59,130,246,0.35)] backdrop-blur-md transition hover:bg-blue-500/25"

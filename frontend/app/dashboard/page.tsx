@@ -6,6 +6,7 @@ import mapboxgl, { GeoJSONSource, Map as MapboxMap } from "mapbox-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
+import { DraggablePanel } from "../../components/DraggablePanel";
 import { SystemTrace } from "../../components/SystemTrace";
 import { AnimatedNumber } from "../../components/AnimatedNumber";
 import { mockScenarioData, scenarioIcons, scenarios } from "../../data/scenarios";
@@ -95,12 +96,18 @@ export default function DashboardPage() {
 
   const [activeScenario, setActiveScenario] = useState<ScenarioKey>("live conditions");
   const [isLoadingIntelligence, setIsLoadingIntelligence] = useState(false);
-  const [showTrace, setShowTrace] = useState(true);
+  
   const [mapReady, setMapReady] = useState(false);
   const [apiData, setApiData] = useState<any>(null);
   const [showFragilityInfo, setShowFragilityInfo] = useState(false);
-  const [isPanelOpen, setIsPanelOpen] = useState(true);
-  const [isFragilityMinimized, setIsFragilityMinimized] = useState(false);
+  const [hoverInfo, setHoverInfo] = useState<{
+    x: number;
+    y: number;
+    zoneLabel: string;
+    score: number | null;
+  } | null>(null);
+  const [panels, setPanels] = useState({ scenarios: true, intelligence: true, fragility: true, trace: false }) as any;
+  
   const [filterScore, setFilterScore] = useState(0);
 
   const scenarioState = useMemo(() => mockScenarioData[activeScenario], [activeScenario]);
@@ -120,8 +127,8 @@ export default function DashboardPage() {
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/dark-v11",
       center: [-82.46, 27.95],
-      zoom: 11,
-      minZoom: 10,
+      zoom: 8,
+      minZoom: 8,
       maxZoom: 16,
       maxBounds: [
         [-82.65, 27.80], // Tight Southwest bounds for Tampa proper
@@ -288,6 +295,60 @@ export default function DashboardPage() {
     };
   }, [apiData, mapReady]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady) return;
+
+    const getZoneLabel = (props: Record<string, any>, fallbackId: string) => {
+      return (
+        props.zoneName ||
+        props.name ||
+        props.zip ||
+        props.zipCode ||
+        props.ZIP ||
+        fallbackId ||
+        "Unknown zone"
+      );
+    };
+
+    const handleHover = (event: any) => {
+      const feature = event.features?.[0];
+      if (!feature) {
+        return;
+      }
+
+      const props = (feature.properties || {}) as Record<string, any>;
+      const zoneId = String(props.zoneId || props.name || props.zoneName || "");
+      const zoneLabel = String(getZoneLabel(props, zoneId));
+      const score = currentZoneScoresRef.current.get(zoneId);
+
+      setHoverInfo({
+        x: event.point.x,
+        y: event.point.y,
+        zoneLabel,
+        score: typeof score === "number" ? Math.round(score) : null
+      });
+      map.getCanvas().style.cursor = "pointer";
+    };
+
+    const clearHover = () => {
+      setHoverInfo(null);
+      map.getCanvas().style.cursor = "";
+    };
+
+    map.on("mousemove", ZONE_LAYER_ID, handleHover);
+    map.on("mouseleave", ZONE_LAYER_ID, clearHover);
+    map.on("mousemove", FACILITY_LAYER_ID, handleHover);
+    map.on("mouseleave", FACILITY_LAYER_ID, clearHover);
+
+    return () => {
+      map.off("mousemove", ZONE_LAYER_ID, handleHover);
+      map.off("mouseleave", ZONE_LAYER_ID, clearHover);
+      map.off("mousemove", FACILITY_LAYER_ID, handleHover);
+      map.off("mouseleave", FACILITY_LAYER_ID, clearHover);
+    };
+  }, [mapReady, activeScenario]);
+
   // Update map opacity when filter slider changes
   useEffect(() => {
     if (mapRef.current && mapReady) {
@@ -358,6 +419,18 @@ export default function DashboardPage() {
       />
       <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" style={{ width: '100vw', height: '100vh' }} aria-label="Mapbox canvas" />
 
+      {hoverInfo && (
+        <div
+          className="pointer-events-none absolute z-50 w-56 rounded-md border border-cyan-500/30 bg-slate-950/90 px-3 py-2 text-xs text-slate-200 shadow-xl backdrop-blur-sm"
+          style={{ left: hoverInfo.x + 12, top: hoverInfo.y + 12 }}
+        >
+          <p className="font-semibold text-cyan-300">{hoverInfo.zoneLabel}</p>
+          <p className="mt-1 text-slate-300">
+            Fragility Score: {hoverInfo.score ?? "N/A"}
+          </p>
+        </div>
+      )}
+
       {!mapToken && (
         <div className="absolute right-6 top-20 z-40 rounded border border-amber-500/40 bg-amber-950/70 px-3 py-2 text-xs text-amber-300 backdrop-blur-sm">
           Mapbox token missing. Set NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN in .env.local.
@@ -372,37 +445,37 @@ export default function DashboardPage() {
 
       <div className="pointer-events-none absolute inset-0 z-10 shadow-vignette" />
 
-      <header className="absolute left-0 right-0 top-0 z-30 border-b border-slate-800 bg-slate-900/80 backdrop-blur-sm">
-        <div className="mx-auto flex h-14 items-center justify-between px-6">
-          <div className="flex items-center gap-3">
-            <ShieldAlert className="h-5 w-5 text-blue-400" />
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-slate-300">DontCollapse</p>
-              <p className="text-[11px] text-slate-400">Tampa Bay Resilience Ecosystem Console</p>
-            </div>
-          </div>
-
+      <header className="absolute top-4 left-4 right-4 z-40 flex items-center justify-between rounded-xl bg-slate-900/60 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <h1 className="text-xl font-bold tracking-tight text-white/90 uppercase hover:text-cyan-400 transition-colors cursor-pointer">
+              DontCollapse
+            </h1>
+          </Link>
+          <div className="h-6 w-px bg-slate-700"></div>
+          
           <div className="flex items-center gap-2">
-            
-
-            {isDev && (
+            {[
+              { id: "scenarios", label: "Scenarios" },
+              { id: "intelligence", label: "Intelligence" },
+              { id: "fragility", label: "System Fragility" },
+              { id: "trace", label: "Execution Trace" }
+            ].map((tab) => (
               <button
-                type="button"
-                onClick={() => setShowTrace((prev) => !prev)}
-                className="rounded border border-slate-700 bg-slate-800 px-2.5 py-1 text-[11px] font-mono text-slate-300 transition-colors hover:bg-slate-700"
+                key={tab.id}
+                onClick={() => setPanels((p: any) => ({ ...p, [tab.id]: !p[tab.id] }))}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium uppercase tracking-wider transition-colors ${panels[tab.id as keyof typeof panels] ? 'bg-cyan-900/40 text-cyan-400 border border-cyan-800/50' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 border border-transparent'}`}
               >
-                Trace: {showTrace ? "ON" : "OFF"}
+                {tab.label}
               </button>
-            )}
-
-            
+            ))}
           </div>
         </div>
       </header>
 
-      <section className="absolute left-4 top-20 z-30 max-h-[calc(100vh-6rem)] w-[380px] space-y-4 overflow-y-auto pb-4 pr-1">
-        <div className="rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
-          <p className="mb-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">Scenarios</p>
+      <DraggablePanel id="scenarios" title="Scenarios" visible={panels.scenarios} defaultPosition={{x: 16, y: 80}} onClose={() => setPanels((p: any) => ({...p, scenarios: false}))} width="w-[380px]">
+<div className="space-y-4 max-h-[calc(100vh-6rem)] overflow-y-auto pb-4 pr-1"><div className="p-4">
+          
           <div className="grid grid-cols-1 gap-1.5">
             {scenarios.map((scenario) => {
               const isActive = scenario === activeScenario;
@@ -437,15 +510,12 @@ export default function DashboardPage() {
               );
             })}
           </div>
-        </div>
-
-        <div className="rounded-xl bg-slate-900/40 backdrop-blur-md shadow-lg border border-slate-800/50 overflow-hidden transition-all duration-300">
-          <button onClick={() => setIsPanelOpen(!isPanelOpen)} className="w-full p-4 flex items-center justify-between hover:bg-slate-800/30 transition-colors">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Intelligence Panel</p>
-            <span className="text-slate-500 text-xs">{isPanelOpen ? '▼' : '▲'}</span>
-          </button>
+        </div></div></DraggablePanel>
+      <DraggablePanel id="intelligence" title="Intelligence Panel" visible={panels.intelligence} defaultPosition={{x: 16, y: 450}} onClose={() => setPanels((p: any) => ({...p, intelligence: false}))} width="w-[420px]">
+  <div className="h-full">
           
-          <div className={`px-4 pb-4 transition-all duration-500 ease-in-out ${isPanelOpen ? 'opacity-100 max-h-[800px]' : 'opacity-0 max-h-0 pb-0 overflow-hidden'}`}>
+          
+          <div className="px-4 pb-4">
 
           {isLoadingIntelligence ? (
             <div className="space-y-3">
@@ -496,79 +566,74 @@ export default function DashboardPage() {
           )}
         </div>
         </div>
-      </section>
-      <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50 transition-all duration-300">
-        <div className="flex justify-between items-center mb-4">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">System Fragility</p>
-          <button onClick={() => setIsFragilityMinimized(!isFragilityMinimized)} className="text-slate-400 hover:text-white text-[10px] uppercase font-mono">
-            {isFragilityMinimized ? "[+] Expand" : "[-] Minimize"}
-          </button>
-        </div>
-        
-        {!isFragilityMinimized && (
-          <>
-            <div className="space-y-4 mb-5 border-b border-slate-700/50 pb-5">
-              <div>
-                <p className="text-[11px] text-slate-300 mb-2 flex justify-between">
-                  <span>Highlight Minimum Risk Level</span>
-                  <span className="font-mono text-amber-500">{filterScore === 0 ? 'Off' : `${filterScore}+`}</span>
-                </p>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="80" 
-                  step="10" 
-                  value={filterScore} 
-                  onChange={(e) => setFilterScore(parseInt(e.target.value))}
-                  className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer" 
-                />
-                <div className="flex justify-between text-[9px] text-slate-500 mt-2 font-mono">
-                  <span>ALL</span>
-                  <span>EXTREME</span>
-                </div>
+</DraggablePanel>
+      <DraggablePanel id="fragility" title="System Fragility" visible={panels.fragility} defaultPosition={{x: 1180, y: 120}} onClose={() => setPanels((p: any) => ({...p, fragility: false}))} width="w-80">
+        <div className="px-4 py-3 space-y-4">
+          <div className="space-y-4 border-b border-slate-700/50 pb-4">
+            <div>
+              <p className="text-[11px] text-slate-300 mb-2 flex justify-between">
+                <span>Highlight Minimum Risk Level</span>
+                <span className="font-mono text-amber-500">{filterScore === 0 ? 'Off' : `${filterScore}+`}</span>
+              </p>
+              <input 
+                type="range" 
+                min="0" 
+                max="80" 
+                step="10" 
+                value={filterScore} 
+                onChange={(e) => setFilterScore(parseInt(e.target.value))}
+                className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer" 
+              />
+              <div className="flex justify-between text-[9px] text-slate-500 mt-2 font-mono">
+                <span>ALL</span>
+                <span>EXTREME</span>
               </div>
             </div>
-        <div className="space-y-2 text-sm pb-4">
-          {scenarioState.infrastructureScores.map((infra) => (
-            <StatusLine
-              key={infra.id}
-              icon={
-                infra.id === "roads" ? (
-                  <MapPinned className="h-4 w-4" />
-                ) : infra.id === "access-routes" ? (
-                  <Hospital className="h-4 w-4" />
-                ) : (
-                  <Droplets className="h-4 w-4" />
-                )
-              }
-              label={infra.label}
-              score={infra.score}
-              tone={infra.score >= 80 ? "critical" : infra.score >= 50 ? "warning" : "stable"}
-            />
-          ))}
-        </div>
-        
-        <button 
-          onClick={() => setShowFragilityInfo(!showFragilityInfo)} 
-          className="relative mt-3 pt-2 border-t border-slate-800/50 text-[10px] font-mono text-white/50 hover:text-white transition-colors cursor-pointer w-full text-right"
-        >
-          {showFragilityInfo ? "[hide info]" : "[?] info"}
-        </button>
-        </>)}
-      </aside>
+          </div>
 
-      {showFragilityInfo && (
-        <div className="absolute right-[330px] top-20 z-40 w-64 rounded-xl border border-blue-500/30 bg-slate-900/95 p-4 text-xs text-slate-300 shadow-2xl backdrop-blur-md space-y-2">
-          <p className="font-semibold text-slate-200 mb-1 border-b border-slate-700/50 pb-1">Understanding Fragility</p>
-          <p><strong className="text-white">Roads:</strong> Predicted % of thoroughfares fully inundated.</p>
-          <p><strong className="text-white">Intersections:</strong> Blockage risk at critical junctions.</p>
-          <p><strong className="text-white">Drainage:</strong> Likelihood of storm systems exceeding max capacity.</p>
-          <p><strong className="text-white">Power:</strong> Substation and grid equipment vulnerability.</p>
-          <p><strong className="text-white">Shelter Routes:</strong> Degree of disruption to emergency hubs.</p>
-        </div>
-      )}
+          <div className="space-y-2 text-sm">
+            {scenarioState.infrastructureScores.map((infra) => (
+              <StatusLine
+                key={infra.id}
+                icon={
+                  infra.id === "roads" ? (
+                    <MapPinned className="h-4 w-4" />
+                  ) : infra.id === "access-routes" ? (
+                    <Hospital className="h-4 w-4" />
+                  ) : (
+                    <Droplets className="h-4 w-4" />
+                  )
+                }
+                label={infra.label}
+                score={infra.score}
+                tone={infra.score >= 80 ? "critical" : infra.score >= 50 ? "warning" : "stable"}
+              />
+            ))}
+          </div>
 
-      {showTrace && <SystemTrace key={activeScenario} logs={scenarioState.logs} isLoading={isLoadingIntelligence} />}
+          {showFragilityInfo && (
+            <div className="border-t border-slate-700/50 pt-3 space-y-2 bg-slate-900/40 rounded p-3">
+              <p className="font-semibold text-slate-200 text-[11px]">Understanding Fragility</p>
+              <div className="space-y-2 text-[10px] text-slate-300">
+                <p><strong className="text-white">Roads:</strong> Predicted % of thoroughfares fully inundated.</p>
+                <p><strong className="text-white">Intersections:</strong> Blockage risk at critical junctions.</p>
+                <p><strong className="text-white">Drainage:</strong> Likelihood of storm systems exceeding max capacity.</p>
+                <p><strong className="text-white">Power:</strong> Substation and grid equipment vulnerability.</p>
+                <p><strong className="text-white">Shelter Routes:</strong> Degree of disruption to emergency hubs.</p>
+              </div>
+            </div>
+          )}
+
+          <button 
+            onClick={() => setShowFragilityInfo(!showFragilityInfo)} 
+            className="relative mt-1 pt-2 border-t border-slate-700/50 text-[10px] font-mono text-white/50 hover:text-white transition-colors cursor-pointer w-full text-right"
+          >
+            {showFragilityInfo ? "[hide info]" : "[show info]"}
+          </button>
+        </div>
+      </DraggablePanel>
+
+      <DraggablePanel id="trace" title="Execution Trace" visible={panels.trace} defaultPosition={{x: 1000, y: 550}} onClose={() => setPanels((p: any) => ({...p, trace: false}))} width="w-[400px]"><SystemTrace key={activeScenario} logs={scenarioState.logs} isLoading={isLoadingIntelligence} /></DraggablePanel>
     </main>
   );
 }

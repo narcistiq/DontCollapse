@@ -50,3 +50,12 @@ body {
   top: 45vh !important;
   right: 1rem !important;
 }
+
+@keyframes slide {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@theme {
+  --animate-slide: slide 20s linear infinite;
+}

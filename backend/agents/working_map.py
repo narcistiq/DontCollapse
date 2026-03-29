@@ -5,16 +5,18 @@ import os
 def run():
     print("Pulling all major Tampa zones bounds...")
     query = """
-    [out:json][timeout:90];
+    [out:json][timeout:180];
     area["name"="Tampa"]->.searchArea;
     (
       way["landuse"](area.searchArea);
       way["building"](area.searchArea);
       way["leisure"](area.searchArea);
+      way["natural"](area.searchArea);
+      way["amenity"](area.searchArea);
     );
     out geom;
     """
-    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, timeout=100)
+    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, timeout=200)
     data = response.json()
     
     features = []
@@ -29,21 +31,22 @@ def run():
                 max_lat = max(pt[1] for pt in coords[0])
                 area = (max_lon - min_lon) * (max_lat - min_lat)
                 
-                # EVEN TIGHTER BOUNDS TO GET 1000+ BLOCKS
-                if area > 0.000001: 
+                # EVEN TIGHTER BOUNDS TO GET MORE BLOCKS
+                if area > 0.0000005: 
                     tags = element.get("tags", {})
                     name = tags.get("name", tags.get("landuse", tags.get("building", tags.get("leisure", "Tampa Zone"))).title())
                     features.append({"name": name, "area": area, "coords": coords})
     
     features.sort(key=lambda x: x["area"], reverse=True)
-    top_features = features[:1500]
+    # INCREASE FROM 1500 to 4500 to get spread out smaller areas
+    top_features = features[:4500]
     
     geojson_features = []
     for i, f in enumerate(top_features):
         name_val = f["name"] if f["name"] not in ["Residential", "Commercial", "Retail", "Industrial"] else f"{f['name']} Zone {i+1}"
         geojson_features.append({
             "type": "Feature",
-            "properties": {"zoneId": f"Z{(i+1):03d}", "name": name_val, "kind": "zone"},
+            "properties": {"zoneId": f"Z{(i+1):04d}", "name": name_val, "kind": "zone"},
             "geometry": {"type": "Polygon", "coordinates": f["coords"]}
         })
         

@@ -1,8 +1,19 @@
 import os
+import re
 import pandas as pd
 import json
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "tampa-resilience", "output", "master_fragility_with_explanations.csv")
+
+def clean_zone_name(name):
+    name = str(name)
+    name = re.sub(r'(?i)\s*part\s*\d+', '', name)
+    if name.startswith('Zone_Z_'):
+        parts = name.split('_')
+        if len(parts) >= 4:
+            return f"ZIP {parts[2]} Sector {parts[3]}"
+        return name.replace('Zone_Z_', 'ZIP ')
+    return name
 
 # Simple static scenarios map just for frontend reliability
 SCENARIOS = {
@@ -34,7 +45,7 @@ def get_all_scored_zones(scenario_key: str):
         
         zones.append({
             "zoneId": str(row["Zone_ID"]),
-            "zoneName": row["Zone_Name"],
+            "zoneName": clean_zone_name(row["Zone_Name"]),
             "raw_score": raw_score,
             "score": min(100, max(0, int(raw_score))),
             "reasoning": f"Driven by Flood ({row.get('Flood_Exposure',0)}) and Social Vuln ({row.get('Social_Vulnerability',0)})"
