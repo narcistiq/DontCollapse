@@ -1,0 +1,1 @@
+args: ['build', '--build-arg', 'NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.eyJ1...', '-t', 'gcr.io/$PROJECT_ID/dontcollapse', '.']
