@@ -1,0 +1,6 @@
+Zone_ID,Zone_Name,Fragility_Score,Risk_Category,Fragility_Rank,Population,Elevation_ft
+Z001,Downtown Tampa,60.6,HIGH,3,15000,4.2
+Z002,Ybor City,25.2,LOW,5,8500,7.1
+Z003,South Tampa,66.3,HIGH,2,12000,2.1
+Z004,North Tampa,45.4,MODERATE,4,20000,5.5
+Z005,East Tampa,91.8,CRITICAL,1,18000,1.8

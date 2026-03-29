@@ -1,15 +1,18 @@
-from google.adk.agents import SequentialAgent
-from backend.agents.sentinel_agent import sentinel_agent
-from backend.agents.simulator_agent import simulator_agent
-from backend.agents.dispatcher_agent import dispatcher_agent
+from backend.agents.sentinel_agent import run_sentinel
+from backend.agents.simulator_agent import run_simulator
+from backend.agents.dispatcher_agent import run_dispatcher
 
-# Assemble the final pipeline showing Sequential chaining of: LlmAgent -> ParallelAgent -> LoopAgent
-resilience_pipeline = SequentialAgent(
-    name="ResiliencePipeline",
-    description="The top-level orchestrator routing through Sentinel, Simulator, and Dispatcher.",
-    sub_agents=[
-        sentinel_agent,
-        simulator_agent,
-        dispatcher_agent
-    ]
-)
+def run_resilience_pipeline(scenario: str) -> dict:
+    """Manually orchestrates Sentinel -> Simulator -> Dispatcher using Groq API."""
+    
+    print("[Pipeline] Running Sentinel (Live Data + Groq)...")
+    sentinel_result = run_sentinel()
+    
+    print("[Pipeline] Running Simulator (Pandas Deterministic Models)...")
+    simulator_result = run_simulator(scenario)
+    
+    print("[Pipeline] Running Dispatcher (A2A Handshakes + Groq Narratives)...")
+    dispatcher_result = run_dispatcher(scenario, sentinel_result, simulator_result)
+    
+    print("[Pipeline] Complete. Returning payload to frontend.")
+    return dispatcher_result

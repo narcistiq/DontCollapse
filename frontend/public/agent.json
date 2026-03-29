@@ -1,0 +1,9 @@
+{
+  "name": "Disaster Coordinator Agent",
+  "version": "1.0.0",
+  "description": "An autonomous ADK LoopAgent that evaluates live weather, scores city fragility via data modeling, and coordinates logistics a2a.",
+  "endpoints": {
+    "analyze": "/analyze"
+  },
+  "capabilities": ["LoopAgent", "A2A Interoperability", "Live API Grounding"]
+}
