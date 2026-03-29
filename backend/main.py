@@ -1,119 +1,61 @@
 """
-main.py — FastAPI server exposing the resilience pipeline via a single endpoint.
-
-Usage:
-    uvicorn main:app --reload
-
-Endpoint:
-    POST /analyze
-    Body: { "scenario": "heavy_rain" | "storm_surge" | "sea_level_rise" | "repeated_flooding" }
-    Returns: full narrative JSON for all scored zones
+main.py — FastAPI server exposing the resilience pipeline via single endpoint.
 """
 from dotenv import load_dotenv
 load_dotenv()
-import json
-import uuid
 
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import traceback
 
-from google.adk.runners import Runner
-from google.adk.sessions import InMemorySessionService
-from google.genai.types import Content, Part
-
-from pipeline import resilience_pipeline
-
+from backend.pipeline import run_resilience_pipeline
 
 # ── App setup ─────────────────────────────────────────────────────────────────
-
-app = FastAPI(title="Don't Collpase API")
+app = FastAPI(title="Don't Collpase API (Groq Edition)")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # tighten this in production
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-VALID_SCENARIOS = ["heavy_rain", "storm_surge", "sea_level_rise", "repeated_flooding"]
-
-
-# ── Request model ─────────────────────────────────────────────────────────────
+VALID_SCENARIOS = ["live conditions", "category 5 hurricane", "heavy rainfall", "storm surge", "sea-level-rise increase", "repeated flooding days", "severe heatwave", "baseline"]
 
 class AnalyzeRequest(BaseModel):
     scenario: str
 
-
-# ── Runner + session service (created once at startup) ────────────────────────
-
-session_service = InMemorySessionService()
-APP_NAME = "dont_collapse"
-
-runner = Runner(
-    agent=resilience_pipeline,
-    app_name=APP_NAME,
-    session_service=session_service,
-)
-
-
-# ── Endpoint ──────────────────────────────────────────────────────────────────
-
 @app.post("/analyze")
-async def analyze(request: AnalyzeRequest):
+def analyze(request: AnalyzeRequest):
     try:
-        if request.scenario not in VALID_SCENARIOS:
-            raise HTTPException(
-                status_code=400,
-                detail=f"Invalid scenario. Choose from: {VALID_SCENARIOS}",
-            )
+        scenario = request.scenario.lower().replace("-", " ")
+        if scenario not in VALID_SCENARIOS:
+             # Just fallback to baseline if unknown
+             scenario = "baseline"
 
-        session_id = str(uuid.uuid4())
-        user_id = "engineer"
-
-        # Use the runner's own session service, not a separate one
-        await runner.session_service.create_session(
-            app_name=APP_NAME,
-            user_id=user_id,
-            session_id=session_id,
-        )
-
-        user_message = Content(
-            role="user",
-            parts=[Part(text=f"Run the resilience analysis for scenario: {request.scenario}")]
-        )
-
-        async for event in runner.run_async(
-            user_id=user_id,
-            session_id=session_id,
-            new_message=user_message,
-        ):
-            pass
-
-        session = await runner.session_service.get_session(
-            app_name=APP_NAME,
-            user_id=user_id,
-            session_id=session_id,
-        )
-
-        raw_narratives = session.state.get("narratives", "")
-        clean = raw_narratives.strip().removeprefix("```json").removesuffix("```").strip()
-
-        try:
-            result = json.loads(clean)
-        except (json.JSONDecodeError, TypeError):
-            result = {"raw": raw_narratives}
-
+        result = run_resilience_pipeline(scenario)
         return result
-
     except Exception as e:
-        import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
+class LogisticsRequest(BaseModel):
+    zone_id: str
+    severity: int
 
-# ── Health check ──────────────────────────────────────────────────────────────
+@app.post("/logistics/handshake")
+async def logistics_handshake(request: LogisticsRequest):
+    """
+    Mock endpoint to represent another 'Specialist Agent' (Logistics Agent).
+    Demonstrates A2A architecture in ADK.
+    """
+    if request.severity > 80:
+        return {"status": "success", "allocation_status": f"URGENT: Deploying 50 buses and 10 high-water rescue vehicles to Zone {request.zone_id}."}
+    else:
+        return {"status": "success", "allocation_status": f"Monitoring Zone {request.zone_id}. Standing by with standard emergency ops."}
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "valid_scenarios": VALID_SCENARIOS}
+    return {"status": "ok", "backend": "groq"}

@@ -1,0 +1,18 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  secretEnv: ['NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN']
+  args: [
+    'build',
+    '-f', 'frontend/Dockerfile',
+    '--build-arg', 'NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=$$NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN',
+    '-t', 'gcr.io/$PROJECT_ID/dontcollapse',
+    './frontend'
+  ]
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/$PROJECT_ID/secrets/MAPBOX_TOKEN/versions/latest
+    env: 'NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN'
+
+images:
+  - 'gcr.io/$PROJECT_ID/dontcollapse'

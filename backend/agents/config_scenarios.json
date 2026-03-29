@@ -1,0 +1,34 @@
+{
+    "heavy_rainfall": {
+        "label": "Heavy Rainfall",
+        "Elevation_Risk": 0.25,
+        "Flood_Exposure": 0.35,
+        "Road_Access_Risk": 0.20,
+        "Shelter_Access_Risk": 0.10,
+        "Social_Vulnerability": 0.10
+    },
+    "storm_surge": {
+        "label": "Storm Surge",
+        "Elevation_Risk": 0.40,
+        "Flood_Exposure": 0.15,
+        "Road_Access_Risk": 0.25,
+        "Shelter_Access_Risk": 0.15,
+        "Social_Vulnerability": 0.05
+    },
+    "sea_level_rise": {
+        "label": "Sea Level Rise",
+        "Elevation_Risk": 0.35,
+        "Flood_Exposure": 0.20,
+        "Road_Access_Risk": 0.20,
+        "Shelter_Access_Risk": 0.15,
+        "Social_Vulnerability": 0.10
+    },
+    "repeated_flooding_days": {
+        "label": "Repeated Flooding Days",
+        "Elevation_Risk": 0.20,
+        "Flood_Exposure": 0.30,
+        "Road_Access_Risk": 0.20,
+        "Shelter_Access_Risk": 0.10,
+        "Social_Vulnerability": 0.20
+    }
+}

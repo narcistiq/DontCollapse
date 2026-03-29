@@ -1,0 +1,6 @@
+Zone_ID,Zone_Name,Population,Median_Income,Pct_Elderly,Pct_Children,Pct_Poverty,Flood_Zone,Elevation_ft,Flood_Exposure_Score,Repeat_Flood_Events_10y,Num_Facilities,Avg_Facility_Accessibility,Min_Facility_Elevation,Flood_Exposure_Norm,Elevation_Risk,Road_Access_Weakness,Population_Vulnerability,Facility_Access_Risk
+Z001,Downtown Tampa,15000,65000,12,14,18,AE,4.2,85,3,1,95.0,8.5,100.0,54.71698113207547,0.0,38.961038961038966,27.5
+Z002,Ybor City,8500,45000,8,12,32,X,7.1,25,0,1,70.0,4.2,0.0,0.0,71.42857142857143,77.92207792207793,40.0
+Z003,South Tampa,12000,75000,18,8,8,AE,2.1,92,8,1,85.0,5.0,100.0,100.0,28.57142857142857,0.0,32.5
+Z004,North Tampa,20000,55000,10,16,22,A,5.5,65,1,1,90.0,7.5,62.14285714285714,30.188679245283012,14.285714285714292,54.54545454545454,30.0
+Z005,East Tampa,18000,42000,9,15,35,AE,1.8,95,12,1,60.0,3.1,100.0,100.0,100.0,100.0,45.0

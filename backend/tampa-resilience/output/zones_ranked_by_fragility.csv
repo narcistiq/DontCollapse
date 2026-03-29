@@ -1,0 +1,6 @@
+Fragility_Rank,Zone_Name,Fragility_Score,Risk_Category
+1,East Tampa,91.8,CRITICAL
+2,South Tampa,66.3,HIGH
+3,Downtown Tampa,60.6,HIGH
+4,North Tampa,45.4,MODERATE
+5,Ybor City,25.2,LOW

@@ -1,0 +1,15 @@
+{
+    "weights": {
+        "Flood_Exposure_Norm": 0.35,
+        "Elevation_Risk": 0.25,
+        "Population_Vulnerability": 0.20,
+        "Facility_Access_Risk": 0.15,
+        "Road_Access_Weakness": 0.05
+    },
+    "risk_thresholds": {
+        "critical": 75,
+        "high": 60,
+        "moderate": 40,
+        "low": 25
+    }
+}

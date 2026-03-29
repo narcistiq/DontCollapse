@@ -36,4 +36,4 @@ stitch/downloads/
 __pycache__/
 *.pyc
 .venv/
-.adk
+.adkbackend/venv/

@@ -45,3 +45,17 @@ body {
 .font-mono {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.mapboxgl-ctrl-top-right {
+  top: 45vh !important;
+  right: 1rem !important;
+}
+
+@keyframes slide {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@theme {
+  --animate-slide: slide 20s linear infinite;
+}

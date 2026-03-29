@@ -1,26 +1,18 @@
-"""
-pipeline.py — Orchestrates the two-agent workflow using ADK's SequentialAgent.
- 
-Flow:
-  1. ScorerAgent   → scores all zones, writes to session state['scores']
-  2. NarrativeAgent → reads scores, writes AI narratives to session state['narratives']
- 
-The final output in session state['narratives'] is what the FastAPI
-endpoint returns to the frontend.
-"""
- 
-from google.adk.agents import SequentialAgent
-from agents.scorer_agent import scorer_agent
-from agents.narrative_agent import narrative_agent
- 
- 
-resilience_pipeline = SequentialAgent(
-    name="ResiliencePipeline",
-    description=(
-        "End-to-end Tampa Bay infrastructure resilience pipeline. "
-        "Scores zones for fragility under a flood scenario, then generates "
-        "plain-English explanations and infrastructure recommendations."
-    ),
-    sub_agents=[scorer_agent, narrative_agent],
-)
- 
+from backend.agents.sentinel_agent import run_sentinel
+from backend.agents.simulator_agent import run_simulator
+from backend.agents.dispatcher_agent import run_dispatcher
+
+def run_resilience_pipeline(scenario: str) -> dict:
+    """Manually orchestrates Sentinel -> Simulator -> Dispatcher using Groq API."""
+    
+    print("[Pipeline] Running Sentinel (Live Data + Groq)...")
+    sentinel_result = run_sentinel()
+    
+    print("[Pipeline] Running Simulator (Pandas Deterministic Models)...")
+    simulator_result = run_simulator(scenario)
+    
+    print("[Pipeline] Running Dispatcher (A2A Handshakes + Groq Narratives)...")
+    dispatcher_result = run_dispatcher(scenario, sentinel_result, simulator_result)
+    
+    print("[Pipeline] Complete. Returning payload to frontend.")
+    return dispatcher_result
