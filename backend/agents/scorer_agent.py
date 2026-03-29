@@ -1,12 +1,19 @@
 """
-ScorerAgent — computes fragility scores for each Tampa Bay zone
-based on the selected flood scenario and static infrastructure data.
+scorer_agent.py — Deterministic fragility scorer.
+
+Uses a custom BaseAgent instead of LlmAgent so NO Gemini call is made.
+The score_zones function does all the work in pure Python; the result
+is written directly to session state['scores'].
 """
 
 import json
 from pathlib import Path
-from google.adk.agents import LlmAgent
-from google.adk.tools import FunctionTool
+from typing import AsyncGenerator
+
+from google.adk.agents import BaseAgent
+from google.adk.agents.invocation_context import InvocationContext
+from google.adk.events import Event
+from google.genai.types import Content, Part
 
 
 # ── Load static data once at import time ──────────────────────────────────────
@@ -28,9 +35,7 @@ def score_zones(scenario_key: str) -> dict:
                       'sea_level_rise' | 'repeated_flooding'
 
     Returns:
-        A dict with 'scenario_label' and a ranked list of 'scored_zones',
-        each containing id, name, fragility_score (0–100), and
-        the individual factor values used in the calculation.
+        A dict with 'scenario_label' and a ranked list of 'scored_zones'.
     """
     if scenario_key not in TAMPA_DATA["scenarios"]:
         return {
@@ -43,27 +48,19 @@ def score_zones(scenario_key: str) -> dict:
     scored = []
 
     for zone in TAMPA_DATA["zones"]:
+        # Each factor normalised to 0–1; higher = more fragile.
 
-        # Each factor is normalised to 0–1, then inverted so that
-        # a higher value = more fragile (worse).
-
-        # Elevation: how far below the flood threshold is this zone?
         elev_gap = max(0, threshold - zone["elevation_ft"])
-        elev_score = min(elev_gap / threshold, 1.0)          # 0 = safe, 1 = very low
+        elev_score = min(elev_gap / threshold, 1.0)
 
-        # Drainage quality: rated 1 (poor) – 5 (excellent)
-        drain_score = 1.0 - ((zone["drainage_quality"] - 1) / 4)  # invert
+        drain_score = 1.0 - ((zone["drainage_quality"] - 1) / 4)
 
-        # Alternate routes: 1 (trapped) – 5+ (many options)
         route_score = 1.0 - min((zone["alternate_routes"] - 1) / 4, 1.0)
 
-        # Distance to nearest shelter (further = more vulnerable)
         shelter_score = min(zone["distance_to_shelter_mi"] / 6.0, 1.0)
 
-        # Flood history (more events = more fragile)
         history_score = min(zone["flood_history_events"] / 8.0, 1.0)
 
-        # Weighted composite
         raw = (
             scenario["elevation_weight"] * elev_score
             + scenario["drainage_weight"] * drain_score
@@ -78,41 +75,54 @@ def score_zones(scenario_key: str) -> dict:
             "id": zone["id"],
             "name": zone["name"],
             "fragility_score": fragility_score,
-            "factors": { ... },
+            "factors": {
+                "elevation_ft": zone["elevation_ft"],
+                "drainage_quality": zone["drainage_quality"],
+                "alternate_routes": zone["alternate_routes"],
+                "distance_to_shelter_mi": zone["distance_to_shelter_mi"],
+                "flood_history_events": zone["flood_history_events"],
+            },
             "infrastructure": zone["infrastructure"],
         })
 
-    # Rank highest fragility first
     scored.sort(key=lambda z: z["fragility_score"], reverse=True)
 
     return {
         "scenario_key": scenario_key,
         "scenario_label": scenario["label"],
-        "scored_zones": scored[:3],  # ← only change: add [:3]
+        "scored_zones": scored[:3],
     }
 
 
-# ── Wrap as an ADK FunctionTool ───────────────────────────────────────────────
+# ── Custom agent — no LLM call, writes directly to session state ──────────────
 
-score_zones_tool = FunctionTool(func=score_zones)
+class ScorerAgent(BaseAgent):
+    """
+    Runs score_zones() in pure Python and stores the result in
+    session state['scores']. Costs zero Gemini API calls.
+    """
+
+    async def _run_async_impl(
+        self, ctx: InvocationContext
+    ) -> AsyncGenerator[Event, None]:
+
+        scenario_key = ctx.session.state.get("scenario_key", "heavy_rain")
+        result = score_zones(scenario_key)
+        scores_json = json.dumps(result)
+
+        # Persist for NarrativeAgent to read
+        ctx.session.state["scores"] = scores_json
+
+        yield Event(
+            author=self.name,
+            content=Content(parts=[Part(text=scores_json)]),
+        )
 
 
-# ── Agent definition ──────────────────────────────────────────────────────────
-
-scorer_agent = LlmAgent(
+scorer_agent = ScorerAgent(
     name="ScorerAgent",
-    model="gemini-2.0-flash",
     description=(
-        "Scores Tampa Bay infrastructure zones for fragility under a given "
-        "flood scenario. Returns a ranked list of zones with detailed factor "
-        "breakdowns. Always call the score_zones tool and return its full output."
+        "Deterministically scores Tampa Bay zones for fragility under a flood "
+        "scenario. Writes ranked zones to session state['scores']. No LLM used."
     ),
-    instruction=(
-        "You are a infrastructure fragility scoring engine. "
-        "When given a scenario key, call the score_zones tool immediately "
-        "and return the complete JSON result without modification. "
-        "Do not add commentary — the NarrativeAgent will handle that."
-    ),
-    tools=[score_zones_tool],
-    output_key="scores",   # stores result in session state under 'scores'
 )

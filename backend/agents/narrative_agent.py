@@ -5,13 +5,15 @@ recommendations for each zone.
 """
 
 from google.adk.agents import LlmAgent
+from google.adk.models.lite_llm import LiteLlm
+import os
 
 
 # ── Agent definition ──────────────────────────────────────────────────────────
 
 narrative_agent = LlmAgent(
     name="NarrativeAgent",
-    model="gemini-2.0-flash",
+    model=LiteLlm(model="groq/llama-3.3-70b-versatile"),
     description="Generates fragility summaries and recommendations from scored zones.",
     instruction="""
 You are a resilience analyst advising Tampa Bay engineers.
