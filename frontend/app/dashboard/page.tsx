@@ -16,10 +16,10 @@ const ZONE_LAYER_ID = "zone-fill";
 const FACILITY_LAYER_ID = "facility-point";
 
 const severityClass = (score: number) => {
-  if (score >= 80) {
+  if (score >= 60) {
     return "text-rose-400 bg-rose-950/50 border-rose-500/50";
   }
-  if (score >= 50) {
+  if (score >= 40) {
     return "text-amber-400 bg-amber-950/50 border-amber-500/50";
   }
   return "text-emerald-400 bg-emerald-950/50 border-emerald-500/50";
@@ -77,6 +77,9 @@ export default function DashboardPage() {
   const [showFragilityInfo, setShowFragilityInfo] = useState(false);
 
   const scenarioState = useMemo(() => mockScenarioData[activeScenario], [activeScenario]);
+  const overallScore = apiData?.rankedAreas?.length 
+    ? Math.round(apiData.rankedAreas.reduce((sum: number, r: any) => sum + r.score, 0) / apiData.rankedAreas.length)
+    : scenarioState.score;
 
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current || !mapToken) {
@@ -89,18 +92,18 @@ export default function DashboardPage() {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/dark-v11",
-      center: [-82.55, 27.95],
-      zoom: 9.2,
-      minZoom: 8.5,
+      center: [-82.46, 27.95],
+      zoom: 11,
+      minZoom: 10,
       maxZoom: 16,
       maxBounds: [
-        [-83.0, 27.65], // Tighter Southwest coordinates
-        [-82.2, 28.25]  // Tighter Northeast coordinates
+        [-82.65, 27.80], // Tight Southwest bounds for Tampa proper
+        [-82.35, 28.15]  // Tight Northeast bounds for Tampa proper
       ],
-      dragRotate: false,
-      pitchWithRotate: false,
+      dragRotate: true,
+      pitchWithRotate: true,
       keyboard: false,
-      pitch: 38,
+      pitch: 45,
       bearing: -16,
       antialias: true
     });
@@ -143,15 +146,15 @@ export default function DashboardPage() {
           id: ZONE_LAYER_ID,
           type: "fill",
           source: MAP_SOURCE_ID,
-          filter: ["==", ["geometry-type"], "Polygon"],
+          filter: ["in", ["geometry-type"], ["literal", ["Polygon", "MultiPolygon"]]],
           paint: {
             "fill-color": [
               "case",
-              [">=", ["get", "fragility"], 80],
-              "rgba(251, 113, 133, 0.35)",
-              [">=", ["get", "fragility"], 50],
-              "rgba(251, 191, 36, 0.30)",
-              "rgba(52, 211, 153, 0.28)"
+              [">=", ["get", "fragility"], 60],
+              "rgba(251, 113, 133, 0.45)",  // Red for high fragility
+              [">=", ["get", "fragility"], 40],
+              "rgba(251, 191, 36, 0.40)",   // Amber for medium
+              "rgba(52, 211, 153, 0.35)"    // Emerald for low
             ],
             "fill-outline-color": "rgba(148, 163, 184, 0.45)"
           }
@@ -168,9 +171,9 @@ export default function DashboardPage() {
             "circle-stroke-color": "rgba(15, 23, 42, 1)",
             "circle-color": [
               "case",
-              [">=", ["get", "fragility"], 80],
+              [">=", ["get", "fragility"], 60],
               "#fb7185",
-              [">=", ["get", "fragility"], 50],
+              [">=", ["get", "fragility"], 40],
               "#fbbf24",
               "#34d399"
             ]
@@ -195,7 +198,7 @@ export default function DashboardPage() {
   }, [mapToken]);
 
   useEffect(() => {
-    activeScoreRef.current = scenarioState.score;
+    activeScoreRef.current = overallScore;
 
     const map = mapRef.current;
     const baseData = baseDataRef.current;
@@ -352,8 +355,8 @@ export default function DashboardPage() {
               <div className="mb-4 rounded-lg border border-slate-800 bg-slate-950/60 p-3">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-wide text-slate-400">Area Focus</span>
-                  <span className={`rounded border px-2 py-0.5 text-xs font-semibold flex items-center gap-1 ${severityClass(scenarioState.score)}`}>
-                    Score <AnimatedNumber value={scenarioState.score} />
+                  <span className={`rounded border px-2 py-0.5 text-xs font-semibold flex items-center gap-1 ${severityClass(overallScore)}`}>
+                    Score <AnimatedNumber value={overallScore} />
                   </span>
                 </div>
                 <p className="text-sm text-slate-200">{apiData ? apiData.rankedAreas.slice(0,3).map((z: any) => z.zoneName).join(', ') : scenarioState.affected}</p>

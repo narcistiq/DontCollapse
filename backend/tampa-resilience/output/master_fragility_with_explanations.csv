@@ -1,6 +1,151 @@
-Zone_ID,Zone_Name,Population,Area_sq_miles,Flood_Exposure,Elevation_Risk,Road_Access_Risk,Shelter_Access_Risk,Social_Vulnerability,Power_Infrastructure_Risk,Fragility_Score,Risk_Category,Fragility_Rank,Explanation,Recommended_Action
-Z001,Downtown Tampa,15000,2.1,85,58.0,56.66666666666667,47.66666666666667,34.81012658227848,70.8,63.3,HIGH,3,"high flood exposure, power infrastructure at risk","improve drainage systems, upgrade power grid resilience"
-Z002,Ybor City,8500,1.8,25,29.0,25.26315789473684,48.41176470588236,72.78481012658227,64.0,38.0,LOW,5,high social vulnerability,increase emergency support services
-Z003,South Tampa,12000,3.2,92,79.0,74.61538461538461,52.41666666666666,0.0,28.5,65.3,HIGH,2,"high flood exposure, low elevation, poor road access","improve drainage systems, elevate infrastructure, reinforce evacuation routes"
-Z004,North Tampa,20000,4.5,65,45.0,21.94029850746269,51.0,43.82911392405063,30.0,46.8,MODERATE,4,,no immediate action needed
-Z005,East Tampa,18000,2.9,95,82.0,93.65853658536584,66.22222222222223,100.0,27.0,81.6,CRITICAL,1,"high flood exposure, low elevation, poor road access, high social vulnerability","improve drainage systems, elevate infrastructure, reinforce evacuation routes, increase emergency support services"
+Zone_ID,Zone_Name,Elevation_Risk,Flood_Exposure,Road_Access_Risk,Shelter_Access_Risk,Social_Vulnerability,Composite_Fragility_Score
+Z001,Residential Zone 1,96,96,10,10,90,50
+Z002,Industrial Zone 2,9,9,96,96,100,50
+Z003,Residential Zone 3,47,47,51,51,99,50
+Z004,Residential Zone 4,98,98,7,7,96,50
+Z005,Retail Zone 5,6,6,100,100,96,50
+Z006,Retail Zone 6,42,42,48,48,90,50
+Z007,Residential Zone 7,99,99,9,9,97,50
+Z008,Commercial Zone 8,1,1,100,100,91,50
+Z009,Residential Zone 9,57,57,41,41,90,50
+Z010,Industrial Zone 10,97,97,10,10,100,50
+Z011,Residential Zone 11,7,7,96,96,99,50
+Z012,Residential Zone 12,40,40,59,59,99,50
+Z013,Residential Zone 13,100,100,0,0,100,50
+Z014,Residential Zone 14,2,2,98,98,100,50
+Z015,Industrial Zone 15,57,57,53,53,95,50
+Z016,Residential Zone 16,97,97,5,5,99,50
+Z017,Residential Zone 17,5,5,97,97,94,50
+Z018,Industrial Zone 18,48,48,60,60,93,50
+Z019,Residential Zone 19,96,96,7,7,90,50
+Z020,Residential Zone 20,5,5,100,100,98,50
+Z021,Industrial Zone 21,52,52,60,60,90,50
+Z022,Standart Concrete Products,99,99,5,5,91,50
+Z023,Industrial Zone 23,3,3,99,99,96,50
+Z024,Port of Tampa Container Terminal,59,59,46,46,99,50
+Z025,Residential Zone 25,100,100,6,6,93,50
+Z026,Residential Zone 26,10,10,95,95,96,50
+Z027,Amberly Place,45,45,56,56,95,50
+Z028,Residential Zone 28,98,98,8,8,97,50
+Z029,Residential Zone 29,7,7,97,97,100,50
+Z030,Residential Zone 30,41,41,49,49,97,50
+Z031,Industrial Zone 31,100,100,9,9,100,50
+Z032,Commercial Zone 32,0,0,99,99,93,50
+Z033,Residential Zone 33,49,49,52,52,90,50
+Z034,Residential Zone 34,100,100,8,8,92,50
+Z035,Residential Zone 35,7,7,99,99,96,50
+Z036,Residential Zone 36,41,41,60,60,94,50
+Z037,Residential Zone 37,95,95,3,3,93,50
+Z038,Residential Zone 38,7,7,98,98,93,50
+Z039,Residential Zone 39,56,56,49,49,99,50
+Z040,Residential Zone 40,100,100,8,8,93,50
+Z041,Residential Zone 41,5,5,97,97,90,50
+Z042,Industrial Zone 42,41,41,60,60,91,50
+Z043,Residential Zone 43,99,99,10,10,99,50
+Z044,Residential Zone 44,4,4,95,95,98,50
+Z045,Sundrift,49,49,57,57,95,50
+Z046,Industrial Zone 46,99,99,8,8,99,50
+Z047,Residential Zone 47,4,4,98,98,94,50
+Z048,Residential Zone 48,54,54,57,57,100,50
+Z049,Residential Zone 49,96,96,10,10,98,50
+Z050,Industrial Zone 50,3,3,100,100,99,50
+Z051,Industrial Zone 51,51,51,53,53,99,50
+Z052,Residential Zone 52,98,98,4,4,97,50
+Z053,Residential Zone 53,7,7,99,99,91,50
+Z054,Residential Zone 54,54,54,60,60,94,50
+Z055,Residential Zone 55,99,99,4,4,92,50
+Z056,Residential Zone 56,5,5,100,100,90,50
+Z057,Commercial Zone 57,59,59,43,43,91,50
+Z058,Residential Zone 58,97,97,3,3,90,50
+Z059,Industrial Zone 59,8,8,96,96,97,50
+Z060,Residential Zone 60,44,44,47,47,98,50
+Z061,Commercial Zone 61,100,100,7,7,95,50
+Z062,Residential Zone 62,0,0,96,96,99,50
+Z063,Briarbrook,45,45,52,52,97,50
+Z064,Residential Zone 64,97,97,5,5,92,50
+Z065,Residential Zone 65,0,0,99,99,90,50
+Z066,Residential Zone 66,57,57,52,52,98,50
+Z067,Industrial Zone 67,99,99,4,4,94,50
+Z068,Tampa Shipyard,2,2,96,96,98,50
+Z069,Residential Zone 69,43,43,50,50,94,50
+Z070,Residential Zone 70,99,99,0,0,93,50
+Z071,Residential Zone 71,8,8,97,97,100,50
+Z072,Industrial Zone 72,52,52,47,47,93,50
+Z073,Residential Zone 73,97,97,3,3,97,50
+Z074,Residential Zone 74,4,4,96,96,93,50
+Z075,Residential Zone 75,56,56,49,49,96,50
+Z076,Industrial Zone 76,100,100,2,2,97,50
+Z077,Residential Zone 77,2,2,96,96,98,50
+Z078,Residential Zone 78,54,54,59,59,93,50
+Z079,Residential Zone 79,99,99,3,3,98,50
+Z080,Post Rocky Point,10,10,98,98,97,50
+Z081,Residential Zone 81,57,57,42,42,91,50
+Z082,Industrial Zone 82,95,95,2,2,90,50
+Z083,Commercial Zone 83,4,4,97,97,95,50
+Z084,Residential Zone 84,54,54,52,52,98,50
+Z085,Commercial Zone 85,98,98,4,4,92,50
+Z086,Retail Zone 86,2,2,96,96,91,50
+Z087,Commercial Zone 87,44,44,53,53,97,50
+Z088,Residential Zone 88,95,95,9,9,100,50
+Z089,Residential Zone 89,5,5,100,100,96,50
+Z090,Westshore Plaza Mall,51,51,44,44,93,50
+Z091,Residential Zone 91,99,99,10,10,99,50
+Z092,Old Spanish,5,5,97,97,94,50
+Z093,Mossy Pine,42,42,47,47,97,50
+Z094,Residential Zone 94,99,99,6,6,92,50
+Z095,Residential Zone 95,7,7,97,97,91,50
+Z096,Residential Zone 96,44,44,41,41,97,50
+Z097,Industrial Zone 97,95,95,1,1,91,50
+Z098,Industrial Zone 98,3,3,95,95,92,50
+Z099,Residential Zone 99,59,59,60,60,95,50
+Z100,Residential Zone 100,100,100,10,10,90,50
+Z101,Residential Zone 101,9,9,99,99,98,50
+Z102,Industrial Zone 102,56,56,48,48,100,50
+Z103,Argos Cement,98,98,1,1,99,50
+Z104,Residential Zone 104,7,7,99,99,100,50
+Z105,Residential Zone 105,53,53,50,50,98,50
+Z106,Commercial Zone 106,97,97,5,5,93,50
+Z107,Buckeye - Tampa South Terminal,2,2,99,99,98,50
+Z108,Residential Zone 108,56,56,43,43,96,50
+Z109,Residential Zone 109,98,98,5,5,94,50
+Z110,Residential Zone 110,4,4,95,95,98,50
+Z111,Residential Zone 111,45,45,60,60,90,50
+Z112,Industrial Zone 112,99,99,2,2,95,50
+Z113,Retail Zone 113,6,6,96,96,94,50
+Z114,Retail Zone 114,49,49,53,53,96,50
+Z115,Residential Zone 115,95,95,4,4,91,50
+Z116,Industrial Zone 116,3,3,100,100,99,50
+Z117,Industrial Zone 117,57,57,47,47,96,50
+Z118,Residential Zone 118,95,95,5,5,97,50
+Z119,Residential Zone 119,6,6,98,98,91,50
+Z120,Industrial Zone 120,49,49,48,48,95,50
+Z121,Commercial Zone 121,99,99,2,2,95,50
+Z122,Residential Zone 122,3,3,100,100,93,50
+Z123,Industrial Zone 123,50,50,60,60,95,50
+Z124,Residential Zone 124,97,97,5,5,90,50
+Z125,Residential Zone 125,9,9,100,100,92,50
+Z126,Residential Zone 126,51,51,60,60,95,50
+Z127,Residential Zone 127,100,100,9,9,96,50
+Z128,Industrial Zone 128,7,7,97,97,93,50
+Z129,Residential Zone 129,44,44,55,55,96,50
+Z130,Residential Zone 130,97,97,4,4,98,50
+Z131,Industrial Zone 131,7,7,99,99,90,50
+Z132,Commercial Zone 132,43,43,58,58,94,50
+Z133,Residential Zone 133,96,96,7,7,96,50
+Z134,Residential Zone 134,2,2,99,99,98,50
+Z135,Commercial Zone 135,52,52,51,51,93,50
+Z136,Residential Zone 136,95,95,2,2,92,50
+Z137,Residential Zone 137,6,6,98,98,94,50
+Z138,Residential Zone 138,43,43,44,44,94,50
+Z139,Commercial Zone 139,100,100,6,6,96,50
+Z140,Commercial Zone 140,3,3,100,100,95,50
+Z141,Commercial Zone 141,48,48,59,59,95,50
+Z142,Residential Zone 142,96,96,3,3,92,50
+Z143,Residential Zone 143,7,7,100,100,93,50
+Z144,Residential Zone 144,52,52,60,60,99,50
+Z145,Residential Zone 145,95,95,4,4,100,50
+Z146,The Marquis of Tampa,4,4,95,95,98,50
+Z147,Retail Zone 147,44,44,41,41,99,50
+Z148,National Gypsum,99,99,0,0,98,50
+Z149,Residential Zone 149,6,6,96,96,97,50
+Z150,Industrial Zone 150,42,42,54,54,96,50
