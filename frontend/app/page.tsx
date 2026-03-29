@@ -147,8 +147,8 @@ export default function HomePage() {
 
           <div className="mt-6 grid max-w-2xl grid-cols-3 gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-3 backdrop-blur-sm">
             <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-              <p className="text-2xl font-semibold text-white">4</p>
-              <p className="text-xs uppercase tracking-wide text-slate-400">Flood Scenarios</p>
+              <p className="text-2xl font-semibold text-white">6</p>
+              <p className="text-xs uppercase tracking-wide text-slate-400">Scenarios</p>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
               <p className="text-2xl font-semibold text-white">3</p>
