@@ -16,10 +16,13 @@ const ZONE_LAYER_ID = "zone-fill";
 const FACILITY_LAYER_ID = "facility-point";
 
 const severityClass = (score: number) => {
-  if (score >= 60) {
+  if (score >= 80) {
     return "text-rose-400 bg-rose-950/50 border-rose-500/50";
   }
-  if (score >= 40) {
+  if (score >= 55) {
+    return "text-orange-400 bg-orange-950/50 border-orange-500/50";
+  }
+  if (score >= 30) {
     return "text-amber-400 bg-amber-950/50 border-amber-500/50";
   }
   return "text-emerald-400 bg-emerald-950/50 border-emerald-500/50";
@@ -149,14 +152,16 @@ export default function DashboardPage() {
           filter: ["in", ["geometry-type"], ["literal", ["Polygon", "MultiPolygon"]]],
           paint: {
             "fill-color": [
-              "case",
-              [">=", ["get", "fragility"], 60],
-              "rgba(251, 113, 133, 0.45)",  // Red for high fragility
-              [">=", ["get", "fragility"], 40],
-              "rgba(251, 191, 36, 0.40)",   // Amber for medium
-              "rgba(52, 211, 153, 0.35)"    // Emerald for low
+              "interpolate",
+              ["linear"],
+              ["coalesce", ["get", "fragility"], 0],
+              0, "rgba(52, 211, 153, 0.45)",      // Green
+              30, "rgba(250, 204, 21, 0.55)",     // Yellow
+              55, "rgba(249, 115, 22, 0.65)",     // Orange
+              80, "rgba(244, 63, 94, 0.75)",      // Red
+              100, "rgba(159, 18, 57, 0.85)"      // Dark Red
             ],
-            "fill-outline-color": "rgba(148, 163, 184, 0.45)"
+            "fill-outline-color": "rgba(255, 255, 255, 0.15)"
           }
         });
 
@@ -170,12 +175,14 @@ export default function DashboardPage() {
             "circle-stroke-width": 1,
             "circle-stroke-color": "rgba(15, 23, 42, 1)",
             "circle-color": [
-              "case",
-              [">=", ["get", "fragility"], 60],
-              "#fb7185",
-              [">=", ["get", "fragility"], 40],
-              "#fbbf24",
-              "#34d399"
+              "interpolate",
+              ["linear"],
+              ["coalesce", ["get", "fragility"], 0],
+              0, "#34d399",     // Green
+              30, "#facc15",    // Yellow
+              55, "#f97316",    // Orange
+              80, "#f43f5e",    // Red
+              100, "#9f1239"    // Dark red
             ]
           }
         });
