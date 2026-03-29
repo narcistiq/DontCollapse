@@ -100,6 +100,8 @@ export default function DashboardPage() {
   const [apiData, setApiData] = useState<any>(null);
   const [showFragilityInfo, setShowFragilityInfo] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
+  const [isFragilityMinimized, setIsFragilityMinimized] = useState(false);
+  const [filterScore, setFilterScore] = useState(0);
 
   const scenarioState = useMemo(() => mockScenarioData[activeScenario], [activeScenario]);
   const overallScore = apiData?.rankedAreas?.length 
@@ -286,6 +288,42 @@ export default function DashboardPage() {
     };
   }, [apiData, mapReady]);
 
+  // Update map opacity when filter slider changes
+  useEffect(() => {
+    if (mapRef.current && mapReady) {
+      if (filterScore > 0) {
+        mapRef.current.setPaintProperty(ZONE_LAYER_ID, 'fill-opacity', [
+          "case",
+          [">=", ["coalesce", ["feature-state", "fragility"], 0], filterScore],
+          1.0,
+          0.04
+        ]);
+        try { mapRef.current.setPaintProperty(FACILITY_LAYER_ID, 'circle-opacity', ["case", [">=", ["coalesce", ["feature-state", "fragility"], 0], filterScore], 1.0, 0.04]); } catch(e){}
+      } else {
+        mapRef.current.setPaintProperty(ZONE_LAYER_ID, 'fill-opacity', 1.0);
+        try { mapRef.current.setPaintProperty(FACILITY_LAYER_ID, 'circle-opacity', 1.0); } catch(e){}
+      }
+    }
+  }, [filterScore, mapReady, activeScenario]);
+
+  // Update map opacity when filter slider changes
+  useEffect(() => {
+    if (mapRef.current && mapReady) {
+      if (filterScore > 0) {
+        mapRef.current.setPaintProperty(ZONE_LAYER_ID, 'fill-opacity', [
+          "case",
+          [">=", ["coalesce", ["feature-state", "fragility"], 0], filterScore],
+          1.0,
+          0.04
+        ]);
+        try { mapRef.current.setPaintProperty(FACILITY_LAYER_ID, 'circle-opacity', ["case", [">=", ["coalesce", ["feature-state", "fragility"], 0], filterScore], 1.0, 0.04]); } catch(e){}
+      } else {
+        mapRef.current.setPaintProperty(ZONE_LAYER_ID, 'fill-opacity', 1.0);
+        try { mapRef.current.setPaintProperty(FACILITY_LAYER_ID, 'circle-opacity', 1.0); } catch(e){}
+      }
+    }
+  }, [filterScore, mapReady, activeScenario]);
+
   useEffect(() => {
     setIsLoadingIntelligence(true);
     let disposed = false;
@@ -459,8 +497,37 @@ export default function DashboardPage() {
         </div>
         </div>
       </section>
-      <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">System Fragility</p>
+      <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50 transition-all duration-300">
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">System Fragility</p>
+          <button onClick={() => setIsFragilityMinimized(!isFragilityMinimized)} className="text-slate-400 hover:text-white text-[10px] uppercase font-mono">
+            {isFragilityMinimized ? "[+] Expand" : "[-] Minimize"}
+          </button>
+        </div>
+        
+        {!isFragilityMinimized && (
+          <>
+            <div className="space-y-4 mb-5 border-b border-slate-700/50 pb-5">
+              <div>
+                <p className="text-[11px] text-slate-300 mb-2 flex justify-between">
+                  <span>Highlight Minimum Risk Level</span>
+                  <span className="font-mono text-amber-500">{filterScore === 0 ? 'Off' : `${filterScore}+`}</span>
+                </p>
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="80" 
+                  step="10" 
+                  value={filterScore} 
+                  onChange={(e) => setFilterScore(parseInt(e.target.value))}
+                  className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer" 
+                />
+                <div className="flex justify-between text-[9px] text-slate-500 mt-2 font-mono">
+                  <span>ALL</span>
+                  <span>EXTREME</span>
+                </div>
+              </div>
+            </div>
         <div className="space-y-2 text-sm pb-4">
           {scenarioState.infrastructureScores.map((infra) => (
             <StatusLine
@@ -483,10 +550,11 @@ export default function DashboardPage() {
         
         <button 
           onClick={() => setShowFragilityInfo(!showFragilityInfo)} 
-          className="absolute bottom-2 right-3 text-[10px] font-mono text-white/50 hover:text-white transition-colors cursor-pointer"
+          className="relative mt-3 pt-2 border-t border-slate-800/50 text-[10px] font-mono text-white/50 hover:text-white transition-colors cursor-pointer w-full text-right"
         >
           {showFragilityInfo ? "[hide info]" : "[?] info"}
         </button>
+        </>)}
       </aside>
 
       {showFragilityInfo && (
