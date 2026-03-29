@@ -63,6 +63,25 @@ function applyScenarioScore(geojson: FeatureCollection, rankedAreas: any[]): Fea
   };
 }
 
+
+const TypewriterText = ({ text }: { text: string }) => {
+  const [displayed, setDisplayed] = useState("");
+  useEffect(() => {
+    setDisplayed("");
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        setDisplayed(prev => prev + text.charAt(i));
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 15);
+    return () => clearInterval(timer);
+  }, [text]);
+  return <span>{displayed}</span>;
+}
+
 export default function DashboardPage() {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
@@ -78,6 +97,7 @@ export default function DashboardPage() {
   const [mapReady, setMapReady] = useState(false);
   const [apiData, setApiData] = useState<any>(null);
   const [showFragilityInfo, setShowFragilityInfo] = useState(false);
+  const [isPanelOpen, setIsPanelOpen] = useState(true);
 
   const scenarioState = useMemo(() => mockScenarioData[activeScenario], [activeScenario]);
   const overallScore = apiData?.rankedAreas?.length 
@@ -155,11 +175,12 @@ export default function DashboardPage() {
               "interpolate",
               ["linear"],
               ["coalesce", ["get", "fragility"], 0],
-              0, "rgba(34, 197, 94, 0.40)",       // Green
-              30, "rgba(234, 179, 8, 0.55)",      // Yellow
-              60, "rgba(249, 115, 22, 0.70)",     // Orange
-              100, "rgba(239, 68, 68, 0.85)"      // Red
+              0, "rgba(34, 197, 94, 0.50)",       
+              40, "rgba(234, 179, 8, 0.65)",      
+              70, "rgba(249, 115, 22, 0.80)",     
+              100, "rgba(239, 68, 68, 0.95)"      
             ],
+            "fill-color-transition": { "duration": 1500 },
             "fill-outline-color": "rgba(255, 255, 255, 0.10)"
           }
         });
@@ -177,11 +198,12 @@ export default function DashboardPage() {
               "interpolate",
               ["linear"],
               ["coalesce", ["get", "fragility"], 0],
-              0, "#22c55e",     // Green
-              30, "#eab308",    // Yellow
-              60, "#f97316",    // Orange
-              100, "#ef4444"    // Red
-            ]
+              0, "#22c55e",     
+              40, "#eab308",    
+              70, "#f97316",    
+              100, "#ef4444"    
+            ],
+            "circle-color-transition": { "duration": 1500 }
           }
         });
 
@@ -273,18 +295,13 @@ export default function DashboardPage() {
           <div className="flex items-center gap-3">
             <ShieldAlert className="h-5 w-5 text-blue-400" />
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-slate-300">DontCollapse Dashboard</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-300">DontCollapse</p>
               <p className="text-[11px] text-slate-400">Tampa Bay Resilience Ecosystem Console</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="rounded-full border border-emerald-500/30 bg-emerald-950/30 px-3 py-1.5">
-              <span className="inline-flex items-center gap-2 text-xs font-medium text-emerald-300">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                Open-Meteo: Connected
-              </span>
-            </div>
+            
 
             {isDev && (
               <button
@@ -296,12 +313,7 @@ export default function DashboardPage() {
               </button>
             )}
 
-            <Link
-              href="/"
-              className="rounded border border-slate-700 bg-slate-800 px-2.5 py-1 text-[11px] font-mono text-slate-300 transition-colors hover:bg-slate-700"
-            >
-              Back to Landing
-            </Link>
+            
           </div>
         </div>
       </header>
@@ -345,8 +357,13 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
-          <p className="mb-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Intelligence Panel</p>
+        <div className="rounded-xl bg-slate-900/40 backdrop-blur-md shadow-lg border border-slate-800/50 overflow-hidden transition-all duration-300">
+          <button onClick={() => setIsPanelOpen(!isPanelOpen)} className="w-full p-4 flex items-center justify-between hover:bg-slate-800/30 transition-colors">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Intelligence Panel</p>
+            <span className="text-slate-500 text-xs">{isPanelOpen ? '▼' : '▲'}</span>
+          </button>
+          
+          <div className={`px-4 pb-4 transition-all duration-500 ease-in-out ${isPanelOpen ? 'opacity-100 max-h-[800px]' : 'opacity-0 max-h-0 pb-0 overflow-hidden'}`}>
 
           {isLoadingIntelligence ? (
             <div className="space-y-3">
@@ -370,7 +387,7 @@ export default function DashboardPage() {
 
               <div className="mb-5 border-l-2 border-slate-700 pl-3">
                 <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Analysis</p>
-                <p className="text-[12.5px] leading-relaxed text-slate-300">{apiData ? apiData.narrative : scenarioState.summary}</p>
+                <p className="text-[12.5px] leading-relaxed text-slate-300"><TypewriterText text={apiData ? apiData.narrative : scenarioState.summary} /></p>
               </div>
 
               <div className="mb-5 border-l-2 border-emerald-500/50 pl-3">
@@ -396,8 +413,8 @@ export default function DashboardPage() {
             </>
           )}
         </div>
+        </div>
       </section>
-
       <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
         <p className="mb-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">System Fragility</p>
         <div className="space-y-2 text-sm pb-4">

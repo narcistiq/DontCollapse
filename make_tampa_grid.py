@@ -1,22 +1,24 @@
 import json
 import os
 
-center_lon = -82.46
-center_lat = 27.95
+min_lon = -82.68
+max_lon = -82.35
+min_lat = 27.80
+max_lat = 28.15
 
-# Let's make a 8x5 grid
-lon_step = 0.015
-lat_step = 0.015
+cols = 40
+rows = 40
+
+lon_step = (max_lon - min_lon) / cols
+lat_step = (max_lat - min_lat) / rows
 
 features = []
 zone_counter = 1
 
-for x in range(8):
-    for y in range(5):
-        lon = center_lon + (x - 4) * lon_step
-        lat = center_lat + (y - 2.5) * lat_step
-        
-        # Add random offset for more natural look
+for x in range(cols):
+    for y in range(rows):
+        lon = min_lon + (x * lon_step)
+        lat = min_lat + (y * lat_step)
         
         coords = [
             [
@@ -28,12 +30,12 @@ for x in range(8):
             ]
         ]
         
-        zone_id = f"Z{zone_counter:03d}"
+        zone_id = f"Z{zone_counter:04d}"
         features.append({
             "type": "Feature",
             "properties": {
                 "zoneId": zone_id,
-                "name": f"Tampa District {zone_id}",
+                "name": f"Sector {zone_id}",
                 "kind": "zone"
             },
             "geometry": {
@@ -48,8 +50,8 @@ geojson = {
     "features": features
 }
 
-out_path = "frontend/public/data/tampa_data.json"
+out_path = os.path.join(os.path.dirname(__file__), "frontend", "public", "data", "tampa_data.json")
 with open(out_path, "w") as f:
     json.dump(geojson, f, indent=2)
 
-print(f"Generated {len(features)} zones.")
+print(f"Generated {len(features)} zones for full coverage.")

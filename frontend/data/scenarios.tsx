@@ -35,74 +35,7 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
       }
     ],
     logs: [
-      "[sentinel] Active connection to Open-Meteo established.",
-      "[sentinel] Live traffic layer synced.",
-      "[simulator] Baseline conditions normal. No cascading triggers.",
-      "[dispatcher] Standby mode active."
-    ],
-    rankedAreas: [
-      { name: "Downtown Core", score: 32, reason: "Baseline traffic and standard social variance" },
-      { name: "Ybor City", score: 30, reason: "Normal operations" }
-    ],
-    infrastructureScores: [
-      { id: "roads", label: "Roads", score: 30 },
-      { id: "power", label: "Power Service Areas", score: 15 },
-      { id: "access-routes", label: "Hospital/Shelter Routes", score: 20 }
-    ],
-    actionPayload: { action: "monitor", coordinates: [] }
-  },
-  "category 5 hurricane": {
-    summary: "Catastrophic damage projected. Mass evacuation required immediately. Storm surge expected to exceed 15+ feet across all coastal boundaries.",
-    score: 98,
-    affected: "Entire Tampa Coastal Bay Region",
-    actions: [
-      {
-        id: "cat5-1",
-        title: "Mandatory Evacuation Execution",
-        detail: "Reverse lanes on I-4 and I-75 immediately. Deploy state guard.",
-        urgency: "critical"
-      },
-      {
-        id: "cat5-2",
-        title: "Hospital Hardening",
-        detail: "Transfer critical care patients inland by air immediately.",
-        urgency: "critical"
-      }
-    ],
-    logs: [
-      "[sentinel] WARNING: Cat 5 Hurricane telemetry injected. Sustained winds >157mph.",
-      "[simulator] Catastrophic failure across 90% of Tampa power grids.",
-      "[simulator] Bridges compromised: Gandy, Howard Frankland, Courtney Campbell.",
-      "[dispatcher] OVERRIDE: Declaring State of Emergency."
-    ],
-    rankedAreas: [
-      { name: "MacDill Air Force Base", score: 100, reason: "Direct strike, complete inundation." },
-      { name: "Davis Islands", score: 100, reason: "Unsurvivable storm surge and wind." }
-    ],
-    infrastructureScores: [
-      { id: "power", label: "Power Service Areas", score: 100 },
-      { id: "roads", label: "Roads", score: 95 },
-      { id: "access-routes", label: "Hospital/Shelter Routes", score: 98 },
-      { id: "drainage", label: "Drainage Zones", score: 100 }
-    ],
-    actionPayload: { action: "mandatory_evacuate", coordinates: [] }
-  },
-
-
-  "live conditions": {
-    summary: "Monitoring real-time telemetry from Tampa open-data sources. Currently tracking elevated humidity and minor traffic anomalies.",
-    score: 32,
-    affected: "Tampa Metropolitan Baseline",
-    actions: [
-      {
-        id: "live-1",
-        title: "Monitor localized street ponding",
-        detail: "Current radar indicates minor buildup along South MacDill Ave.",
-        urgency: "stable"
-      }
-    ],
-    logs: [
-      "[sentinel] Active connection to Open-Meteo established.",
+      "[sentinel] Weather monitoring link active.",
       "[sentinel] Live traffic layer synced.",
       "[simulator] Baseline conditions normal. No cascading triggers.",
       "[dispatcher] Standby mode active."
@@ -175,7 +108,7 @@ export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
       }
     ],
     logs: [
-      "[sentinel] Open-Meteo precipitation payload received (8.2 mm/hr)",
+      "[sentinel] Local precipitation node payload received (8.2 mm/hr)",
       "[simulator.parallel] Running road, drainage, and shelter-route scoring",
       "[simulator.parallel] Scenario heavy_rainfall score aggregate: 0.84",
       "[dispatcher.loop] Verified recommendation consistency against route blockages",
