@@ -64,21 +64,22 @@ function applyScenarioScore(geojson: FeatureCollection, rankedAreas: any[]): Fea
 }
 
 
-const TypewriterText = ({ text }: { text: string }) => {
+const TypewriterText = ({ text, delay = 10 }: { text: string, delay?: number }) => {
   const [displayed, setDisplayed] = useState("");
   useEffect(() => {
     setDisplayed("");
     let i = 0;
     const timer = setInterval(() => {
       if (i < text.length) {
-        setDisplayed(prev => prev + text.charAt(i));
-        i++;
+        setDisplayed(text.substring(0, i + 3));
+        i += 3;
       } else {
+        setDisplayed(text);
         clearInterval(timer);
       }
-    }, 15);
+    }, delay);
     return () => clearInterval(timer);
-  }, [text]);
+  }, [text, delay]);
   return <span>{displayed}</span>;
 }
 
@@ -87,6 +88,7 @@ export default function DashboardPage() {
   const mapRef = useRef<MapboxMap | null>(null);
   const baseDataRef = useRef<FeatureCollection | null>(null);
   const activeScoreRef = useRef<number>(mockScenarioData["heavy rainfall"].score);
+  const currentZoneScoresRef = useRef<Map<string, number>>(new Map());
 
   const isDev = process.env.NODE_ENV !== "production";
   const mapToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim() ?? "";
@@ -162,7 +164,7 @@ export default function DashboardPage() {
 
         map.addSource(MAP_SOURCE_ID, {
           type: "geojson",
-          data: applyScenarioScore(geojson, [])
+          data: geojson
         });
 
         map.addLayer({
@@ -174,7 +176,7 @@ export default function DashboardPage() {
             "fill-color": [
               "interpolate",
               ["linear"],
-              ["coalesce", ["get", "fragility"], 0],
+              ["coalesce", ["feature-state", "fragility"], 20],
               0, "rgba(34, 197, 94, 0.50)",       
               40, "rgba(234, 179, 8, 0.65)",      
               70, "rgba(249, 115, 22, 0.80)",     
@@ -197,7 +199,7 @@ export default function DashboardPage() {
             "circle-color": [
               "interpolate",
               ["linear"],
-              ["coalesce", ["get", "fragility"], 0],
+              ["coalesce", ["feature-state", "fragility"], 20],
               0, "#22c55e",     
               40, "#eab308",    
               70, "#f97316",    
@@ -387,12 +389,12 @@ export default function DashboardPage() {
 
               <div className="mb-5 border-l-2 border-slate-700 pl-3">
                 <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Analysis</p>
-                <p className="text-[12.5px] leading-relaxed text-slate-300"><TypewriterText text={apiData ? apiData.narrative : scenarioState.summary} /></p>
+                <div className="min-h-[80px]"><p className="text-[12.5px] leading-relaxed text-slate-300"><TypewriterText text={apiData ? apiData.narrative : scenarioState.summary} /></p></div>
               </div>
 
               <div className="mb-5 border-l-2 border-emerald-500/50 pl-3">
                 <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Agent Logistics</p>
-                <p className="text-[12.5px] leading-relaxed text-slate-300">{apiData ? apiData.logistics : "Awaiting autonomous loop instructions..."}</p>
+                <div className="min-h-[60px]"><p className="text-[12.5px] leading-relaxed text-slate-300"><TypewriterText text={apiData ? apiData.logistics : "Awaiting autonomous loop instructions..."} /></p></div>
               </div>
 
               <div>
@@ -405,7 +407,7 @@ export default function DashboardPage() {
                     <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 opacity-80" />
                     <div>
                       <p className="text-[13px] font-medium text-slate-200 mb-0.5">{action.title}</p>
-                      <p className="text-[11.5px] leading-relaxed text-slate-400">{action.detail}</p>
+                      <div className="min-h-[40px]"><p className="text-[11.5px] leading-relaxed text-slate-400"><TypewriterText text={action.detail} delay={5} /></p></div>
                     </div>
                   </div>
                 ))}
