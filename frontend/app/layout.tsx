@@ -13,14 +13,16 @@ const mono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tampa Bay Resilience Ecosystem",
+  title: "DontCollapse",
   description: "Modern EOC resilience dashboard with scenario simulation and trace logs"
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${mono.variable} bg-slate-950 text-slate-200`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={`${inter.variable} ${mono.variable} bg-slate-950 text-slate-200`}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,0 +1,6 @@
+Zone_ID,Zone_Name,Population,Area_sq_miles,Flood_Exposure,Elevation_Risk,Road_Access_Risk,Shelter_Access_Risk,Social_Vulnerability,Power_Infrastructure_Risk,Fragility_Score,Risk_Category,Fragility_Rank,Explanation,Recommended_Action
+Z005,East Tampa,18000,2.9,95,82.0,93.65853658536584,66.22222222222223,100.0,27.0,85.1,CRITICAL,1,"low elevation and surge vulnerability, coastal flood exposure","reinforce coastal protection, protect critical access corridors"
+Z003,South Tampa,12000,3.2,92,79.0,74.61538461538461,52.41666666666666,0.0,28.5,69.2,HIGH,2,"low elevation and surge vulnerability, coastal flood exposure","reinforce coastal protection, protect critical access corridors"
+Z001,Downtown Tampa,15000,2.1,85,58.0,56.66666666666667,47.66666666666667,34.81012658227848,70.8,63.2,HIGH,3,coastal flood exposure,protect critical access corridors
+Z004,North Tampa,20000,4.5,65,45.0,21.94029850746269,51.0,43.82911392405063,30.0,47.3,MODERATE,4,coastal flood exposure,protect critical access corridors
+Z002,Ybor City,8500,1.8,25,29.0,25.26315789473684,48.41176470588236,72.78481012658227,64.0,35.3,MODERATE,5,moderate infrastructure risk under this scenario,monitor conditions and maintain preparedness
