@@ -4,19 +4,34 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "South Tampa Flood Basin",
-        "fragility": 88,
+        "zoneId": "Z001",
+        "name": "Downtown Tampa",
         "kind": "zone"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-82.543, 27.915],
-            [-82.505, 27.915],
-            [-82.505, 27.883],
-            [-82.543, 27.883],
-            [-82.543, 27.915]
+            [
+              -82.464,
+              27.94
+            ],
+            [
+              -82.45,
+              27.94
+            ],
+            [
+              -82.45,
+              27.955
+            ],
+            [
+              -82.464,
+              27.955
+            ],
+            [
+              -82.464,
+              27.94
+            ]
           ]
         ]
       }
@@ -24,19 +39,34 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "East Tampa Drainage Cluster",
-        "fragility": 64,
+        "zoneId": "Z002",
+        "name": "Ybor City",
         "kind": "zone"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-82.445, 27.982],
-            [-82.406, 27.982],
-            [-82.406, 27.945],
-            [-82.445, 27.945],
-            [-82.445, 27.982]
+            [
+              -82.448,
+              27.955
+            ],
+            [
+              -82.43,
+              27.955
+            ],
+            [
+              -82.43,
+              27.965
+            ],
+            [
+              -82.448,
+              27.965
+            ],
+            [
+              -82.448,
+              27.955
+            ]
           ]
         ]
       }
@@ -44,19 +74,34 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Pinellas Shelter Access Corridor",
-        "fragility": 41,
+        "zoneId": "Z003",
+        "name": "South Tampa",
         "kind": "zone"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-82.77, 27.922],
-            [-82.725, 27.922],
-            [-82.725, 27.885],
-            [-82.77, 27.885],
-            [-82.77, 27.922]
+            [
+              -82.52,
+              27.87
+            ],
+            [
+              -82.47,
+              27.87
+            ],
+            [
+              -82.47,
+              27.925
+            ],
+            [
+              -82.52,
+              27.925
+            ],
+            [
+              -82.52,
+              27.87
+            ]
           ]
         ]
       }
@@ -64,25 +109,71 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "General Hospital",
-        "fragility": 73,
-        "kind": "hospital"
+        "zoneId": "Z004",
+        "name": "North Tampa",
+        "kind": "zone"
       },
       "geometry": {
-        "type": "Point",
-        "coordinates": [-82.458, 27.947]
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.48,
+              28.02
+            ],
+            [
+              -82.42,
+              28.02
+            ],
+            [
+              -82.42,
+              28.08
+            ],
+            [
+              -82.48,
+              28.08
+            ],
+            [
+              -82.48,
+              28.02
+            ]
+          ]
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "Central Shelter",
-        "fragility": 58,
-        "kind": "shelter"
+        "zoneId": "Z005",
+        "name": "East Tampa",
+        "kind": "zone"
       },
       "geometry": {
-        "type": "Point",
-        "coordinates": [-82.507, 27.963]
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.42,
+              27.96
+            ],
+            [
+              -82.38,
+              27.96
+            ],
+            [
+              -82.38,
+              28.0
+            ],
+            [
+              -82.42,
+              28.0
+            ],
+            [
+              -82.42,
+              27.96
+            ]
+          ]
+        ]
       }
     }
   ]

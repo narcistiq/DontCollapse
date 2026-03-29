@@ -28,7 +28,7 @@ class AnalyzeRequest(BaseModel):
     scenario: str
 
 @app.post("/analyze")
-async def analyze(request: AnalyzeRequest):
+def analyze(request: AnalyzeRequest):
     try:
         scenario = request.scenario.lower().replace("-", " ")
         if scenario not in VALID_SCENARIOS:

@@ -19,14 +19,16 @@ def get_all_scored_zones(scenario_key: str):
     weights = SCENARIOS.get(scenario_key, SCENARIOS["baseline"])
     
     zones = []
+    total_weight = sum(weights.values()) or 1.0
+
     for _, row in df.iterrows():
         raw_score = (
-            ((row.get("Elevation_Risk", 0) * weights["Elevation_Risk"]) +
+            (row.get("Elevation_Risk", 0) * weights["Elevation_Risk"]) +
             (row.get("Flood_Exposure", 0) * weights["Flood_Exposure"]) +
             (row.get("Road_Access_Risk", 0) * weights["Road_Access_Risk"]) +
             (row.get("Shelter_Access_Risk", 0) * weights["Shelter_Access_Risk"]) +
-            (row.get("Social_Vulnerability", 0) * weights["Social_Vulnerability"])) * 0.7
-        ) # Scale down slightly to fit 0-100 intuitively
+            (row.get("Social_Vulnerability", 0) * weights["Social_Vulnerability"])
+        ) / total_weight
         
         zones.append({
             "zoneId": str(row["Zone_ID"]),

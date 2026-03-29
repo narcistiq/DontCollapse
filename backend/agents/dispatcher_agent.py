@@ -20,10 +20,11 @@ def run_dispatcher(scenario: str, sentinel_data: dict, simulator_data: dict) -> 
     logistics_status = "A2A Handshake simulated: Not called."
     try:
         if top_3:
-            resp = requests.post("http://localhost:8000/logistics/handshake", json={"zone_id": top_3[0]["zoneId"], "severity": top_3[0]["score"]})
+            resp = requests.post("http://localhost:8000/logistics/handshake", json={"zone_id": top_3[0]["zoneId"], "severity": top_3[0]["score"]}, timeout=5)
             if resp.status_code == 200:
                 logistics_status = f"A2A Success: {resp.json().get('allocation_status')}"
-    except:
+    except Exception as err:
+        logger.warning(f"A2A Handshake failed: {err}")
         pass
 
     prompt = f"""

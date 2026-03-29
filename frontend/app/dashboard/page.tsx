@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 import { SystemTrace } from "../../components/SystemTrace";
+import { AnimatedNumber } from "../../components/AnimatedNumber";
 import { mockScenarioData, scenarioIcons, scenarios } from "../../data/scenarios";
 import type { ActionTicket, FeatureCollection, ScenarioKey } from "../../types/dashboard";
 
@@ -34,7 +35,11 @@ const actionSeverityClass = (urgency: ActionTicket["urgency"]) => {
   return "text-emerald-300 border-emerald-500/50 bg-emerald-950/20";
 };
 
-function applyScenarioScore(geojson: FeatureCollection, score: number): FeatureCollection {
+function applyScenarioScore(geojson: FeatureCollection, rankedAreas: any[]): FeatureCollection {
+  if (!rankedAreas || rankedAreas.length === 0) return geojson;
+  const scoreMap = new Map<string, number>();
+  rankedAreas.forEach(ra => scoreMap.set(ra.zoneId, ra.score));
+
   return {
     type: "FeatureCollection",
     features: geojson.features.map((feature) => {
@@ -42,11 +47,13 @@ function applyScenarioScore(geojson: FeatureCollection, score: number): FeatureC
         return feature;
       }
 
+      const zId = feature.properties?.zoneId as string;
+      const zoneScore = scoreMap.has(zId) ? scoreMap.get(zId) : feature.properties?.fragility || 50;
       return {
         ...feature,
         properties: {
           ...feature.properties,
-          fragility: score
+          fragility: zoneScore ?? 50
         }
       };
     })
@@ -66,6 +73,8 @@ export default function DashboardPage() {
   const [isLoadingIntelligence, setIsLoadingIntelligence] = useState(false);
   const [showTrace, setShowTrace] = useState(true);
   const [mapReady, setMapReady] = useState(false);
+  const [apiData, setApiData] = useState<any>(null);
+  const [showFragilityInfo, setShowFragilityInfo] = useState(false);
 
   const scenarioState = useMemo(() => mockScenarioData[activeScenario], [activeScenario]);
 
@@ -82,6 +91,15 @@ export default function DashboardPage() {
       style: "mapbox://styles/mapbox/dark-v11",
       center: [-82.55, 27.95],
       zoom: 9.2,
+      minZoom: 8.5,
+      maxZoom: 16,
+      maxBounds: [
+        [-83.0, 27.65], // Tighter Southwest coordinates
+        [-82.2, 28.25]  // Tighter Northeast coordinates
+      ],
+      dragRotate: false,
+      pitchWithRotate: false,
+      keyboard: false,
       pitch: 38,
       bearing: -16,
       antialias: true
@@ -89,7 +107,20 @@ export default function DashboardPage() {
 
     map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-right");
 
+    const resizeObserver = new ResizeObserver(() => {
+      map.resize();
+    });
+    if (mapContainerRef.current) {
+      resizeObserver.observe(mapContainerRef.current);
+    }
+
+    // Force a resize calculation to ensure the canvas fills the container
+    map.on("style.load", () => {
+      setTimeout(() => map.resize(), 100);
+    });
+
     map.on("load", async () => {
+      map.resize();
       try {
         const response = await fetch("/data/tampa_data.json");
         if (!response.ok) {
@@ -105,7 +136,7 @@ export default function DashboardPage() {
 
         map.addSource(MAP_SOURCE_ID, {
           type: "geojson",
-          data: applyScenarioScore(geojson, activeScoreRef.current)
+          data: applyScenarioScore(geojson, [])
         });
 
         map.addLayer({
@@ -156,6 +187,7 @@ export default function DashboardPage() {
 
     return () => {
       disposed = true;
+      resizeObserver.disconnect();
       map.remove();
       mapRef.current = null;
       setMapReady(false);
@@ -177,18 +209,32 @@ export default function DashboardPage() {
       return;
     }
 
-    source.setData(applyScenarioScore(baseData, scenarioState.score));
-  }, [scenarioState.score]);
+    source.setData(applyScenarioScore(baseData, apiData?.rankedAreas || []));
+  }, [apiData, mapReady]);
 
   useEffect(() => {
     setIsLoadingIntelligence(true);
+    let disposed = false;
 
-    const loadingTimer = window.setTimeout(() => {
-      setIsLoadingIntelligence(false);
-    }, 1600);
+    fetch("http://localhost:8000/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ scenario: activeScenario })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!disposed) {
+          setApiData(data);
+          setIsLoadingIntelligence(false);
+        }
+      })
+      .catch((err) => {
+        console.error("API Error", err);
+        if (!disposed) setIsLoadingIntelligence(false);
+      });
 
     return () => {
-      window.clearTimeout(loadingTimer);
+      disposed = true;
     };
   }, [activeScenario]);
 
@@ -198,7 +244,7 @@ export default function DashboardPage() {
         className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_45%),radial-gradient(circle_at_80%_40%,rgba(16,185,129,0.12),transparent_40%),linear-gradient(135deg,rgba(15,23,42,0.95),rgba(2,6,23,0.98))]"
         aria-hidden="true"
       />
-      <div ref={mapContainerRef} className="absolute inset-0" aria-label="Mapbox canvas" />
+      <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" style={{ width: '100vw', height: '100vh' }} aria-label="Mapbox canvas" />
 
       {!mapToken && (
         <div className="absolute right-6 top-20 z-40 rounded border border-amber-500/40 bg-amber-950/70 px-3 py-2 text-xs text-amber-300 backdrop-blur-sm">
@@ -258,15 +304,22 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 gap-2">
             {scenarios.map((scenario) => {
               const isActive = scenario === activeScenario;
+              const descriptions: Record<string, string> = {
+                "heavy rainfall": "Intense focused precipitation over short duration.",
+                "storm surge": "Ocean water pushed inland by hurricane forces.",
+                "sea-level-rise increase": "Long-term baseline elevation of tidal boundaries.",
+                "repeated flooding days": "Cumulative saturation from multi-day event streams."
+              };
 
               return (
                 <button
                   key={scenario}
                   type="button"
+                  title={descriptions[scenario]}
                   aria-pressed={isActive}
                   onClick={() => setActiveScenario(scenario)}
                   className={[
-                    "flex items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition-all duration-200",
+                    "flex items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition-all duration-200 cursor-help",
                     isActive
                       ? "border-blue-500 bg-blue-900/40 text-blue-400 shadow-glow"
                       : "border-slate-700 bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200"
@@ -299,16 +352,21 @@ export default function DashboardPage() {
               <div className="mb-4 rounded-lg border border-slate-800 bg-slate-950/60 p-3">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-wide text-slate-400">Area Focus</span>
-                  <span className={`rounded border px-2 py-0.5 text-xs font-semibold ${severityClass(scenarioState.score)}`}>
-                    Score {scenarioState.score}
+                  <span className={`rounded border px-2 py-0.5 text-xs font-semibold flex items-center gap-1 ${severityClass(scenarioState.score)}`}>
+                    Score <AnimatedNumber value={scenarioState.score} />
                   </span>
                 </div>
-                <p className="text-sm text-slate-200">{scenarioState.affected}</p>
+                <p className="text-sm text-slate-200">{apiData ? apiData.rankedAreas.slice(0,3).map((z: any) => z.zoneName).join(', ') : scenarioState.affected}</p>
               </div>
 
               <div className="mb-4 border-l-4 border-blue-500 pl-4">
                 <p className="mb-1 text-[11px] uppercase tracking-wide text-slate-400">AI Narrative</p>
-                <p className="text-sm text-slate-200">{scenarioState.summary}</p>
+                <p className="text-sm text-slate-200">{apiData ? apiData.narrative : scenarioState.summary}</p>
+              </div>
+
+              <div className="mb-4 border-l-4 border-emerald-500 pl-4">
+                <p className="mb-1 text-[11px] uppercase tracking-wide text-slate-400">A2A Logistics</p>
+                <p className="text-sm text-slate-200">{apiData ? apiData.logistics : "Awaiting agent instructions..."}</p>
               </div>
 
               <div>
@@ -333,7 +391,7 @@ export default function DashboardPage() {
 
       <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl border border-slate-800 bg-slate-900/80 p-4 backdrop-blur-sm">
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-300">Infrastructure Fragility</p>
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2 text-sm pb-4">
           {scenarioState.infrastructureScores.map((infra) => (
             <StatusLine
               key={infra.id}
@@ -347,12 +405,30 @@ export default function DashboardPage() {
                 )
               }
               label={infra.label}
-              value={`Score ${infra.score}`}
+              score={infra.score}
               tone={infra.score >= 80 ? "critical" : infra.score >= 50 ? "warning" : "stable"}
             />
           ))}
         </div>
+        
+        <button 
+          onClick={() => setShowFragilityInfo(!showFragilityInfo)} 
+          className="absolute bottom-2 right-3 text-[10px] font-mono text-white/50 hover:text-white transition-colors cursor-pointer"
+        >
+          {showFragilityInfo ? "[hide info]" : "[?] info"}
+        </button>
       </aside>
+
+      {showFragilityInfo && (
+        <div className="absolute right-[330px] top-20 z-40 w-64 rounded-xl border border-blue-500/30 bg-slate-900/95 p-4 text-xs text-slate-300 shadow-2xl backdrop-blur-md space-y-2">
+          <p className="font-semibold text-slate-200 mb-1 border-b border-slate-700/50 pb-1">Understanding Fragility</p>
+          <p><strong className="text-white">Roads:</strong> Predicted % of thoroughfares fully inundated.</p>
+          <p><strong className="text-white">Intersections:</strong> Blockage risk at critical junctions.</p>
+          <p><strong className="text-white">Drainage:</strong> Likelihood of storm systems exceeding max capacity.</p>
+          <p><strong className="text-white">Power:</strong> Substation and grid equipment vulnerability.</p>
+          <p><strong className="text-white">Shelter Routes:</strong> Degree of disruption to emergency hubs.</p>
+        </div>
+      )}
 
       {showTrace && <SystemTrace key={activeScenario} logs={scenarioState.logs} isLoading={isLoadingIntelligence} />}
     </main>
@@ -362,12 +438,12 @@ export default function DashboardPage() {
 function StatusLine({
   icon,
   label,
-  value,
+  score,
   tone
 }: {
   icon: ReactNode;
   label: string;
-  value: string;
+  score: number;
   tone: "critical" | "warning" | "stable";
 }) {
   const toneStyle =
@@ -383,7 +459,9 @@ function StatusLine({
         {icon}
         <span>{label}</span>
       </span>
-      <span className={`text-xs font-mono ${toneStyle}`}>{value}</span>
+      <span className={`text-xs font-mono flex items-center gap-1 ${toneStyle}`}>
+        Score <AnimatedNumber value={score} />
+      </span>
     </div>
   );
 }
