@@ -164,7 +164,8 @@ export default function DashboardPage() {
 
         map.addSource(MAP_SOURCE_ID, {
           type: "geojson",
-          data: geojson
+          data: geojson,
+          promoteId: "zoneId"
         });
 
         map.addLayer({
@@ -231,17 +232,58 @@ export default function DashboardPage() {
 
     const map = mapRef.current;
     const baseData = baseDataRef.current;
+    if (!map || !baseData || !mapReady) return;
 
-    if (!map || !baseData) {
-      return;
-    }
+    const rankedAreas = apiData?.rankedAreas || [];
+    const targetScoreMap = new Map<string, number>();
+    rankedAreas.forEach((ra: any) => targetScoreMap.set(ra.zoneId || ra.name, ra.score));
 
-    const source = map.getSource(MAP_SOURCE_ID) as GeoJSONSource | undefined;
-    if (!source) {
-      return;
-    }
+    const startTime = performance.now();
+    const duration = 1500; // 1.5 seconds transition
+    
+    // Snapshot the start scores for this transition
+    const startScoreMap = new Map<string, number>();
+    baseData.features.forEach((feature) => {
+      const zId = (feature.properties?.zoneId || feature.properties?.name) as string;
+      startScoreMap.set(zId, currentZoneScoresRef.current.get(zId) ?? 20);
+    });
 
-    source.setData(applyScenarioScore(baseData, apiData?.rankedAreas || []));
+    let animationFrameId: number;
+
+    const animate = (time: number) => {
+      let progress = (time - startTime) / duration;
+      if (progress > 1) progress = 1;
+      
+      // Easing function (ease out)
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+      baseData.features.forEach((feature) => {
+        const zId = (feature.properties?.zoneId || feature.properties?.name) as string;
+        const target = targetScoreMap.has(zId) ? targetScoreMap.get(zId)! : 20;
+        const start = startScoreMap.get(zId)!;
+        
+        const currentScore = start + (target - start) * easeProgress;
+        currentZoneScoresRef.current.set(zId, currentScore);
+
+        const featureZoneId = feature.properties?.zoneId as string;
+        if (featureZoneId) {
+          map.setFeatureState(
+            { source: MAP_SOURCE_ID, id: featureZoneId },
+            { fragility: currentScore }
+          );
+        }
+      });
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, [apiData, mapReady]);
 
   useEffect(() => {
