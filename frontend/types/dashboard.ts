@@ -1,4 +1,4 @@
-export type ScenarioKey = "heavy rainfall" | "storm surge" | "sea-level-rise increase" | "repeated flooding days";
+export type ScenarioKey = "live conditions" | "heavy rainfall" | "storm surge" | "category 5 hurricane" | "sea-level-rise increase" | "repeated flooding days";
 
 export type ActionTicket = {
   id: string;

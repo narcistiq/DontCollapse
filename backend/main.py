@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-VALID_SCENARIOS = ["heavy rainfall", "storm surge", "sea-level-rise increase", "repeated flooding days", "severe heatwave", "baseline"]
+VALID_SCENARIOS = ["live conditions", "category 5 hurricane", "heavy rainfall", "storm surge", "sea-level-rise increase", "repeated flooding days", "severe heatwave", "baseline"]
 
 class AnalyzeRequest(BaseModel):
     scenario: str

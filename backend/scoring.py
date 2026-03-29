@@ -11,6 +11,8 @@ SCENARIOS = {
     "sea-level-rise increase": {"Elevation_Risk": 2.0, "Flood_Exposure": 1.5, "Road_Access_Risk": 1.0, "Shelter_Access_Risk": 0.5, "Social_Vulnerability": 1.0},
     "repeated flooding days": {"Elevation_Risk": 1.0, "Flood_Exposure": 1.5, "Road_Access_Risk": 1.5, "Shelter_Access_Risk": 1.0, "Social_Vulnerability": 1.0},
     "severe heatwave": {"Elevation_Risk": 0.1, "Flood_Exposure": 0.1, "Road_Access_Risk": 1.0, "Shelter_Access_Risk": 2.0, "Social_Vulnerability": 2.5},
+    "live conditions": {"Elevation_Risk": 1.0, "Flood_Exposure": 1.2, "Road_Access_Risk": 1.2, "Shelter_Access_Risk": 1.0, "Social_Vulnerability": 1.5},
+    "category 5 hurricane": {"Elevation_Risk": 2.5, "Flood_Exposure": 3.0, "Road_Access_Risk": 2.5, "Shelter_Access_Risk": 3.0, "Social_Vulnerability": 2.0},
     "baseline": {"Elevation_Risk": 1.0, "Flood_Exposure": 1.0, "Road_Access_Risk": 1.0, "Shelter_Access_Risk": 1.0, "Social_Vulnerability": 1.0}
 }
 

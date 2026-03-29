@@ -1,22 +1,160 @@
-import { Droplets, Radar, Waves, Wind } from "lucide-react";
+import { Droplets, Radar, Waves, Wind, Activity, Tornado } from "lucide-react";
 import type { ReactNode } from "react";
 import { ScenarioKey, ScenarioState } from "../types/dashboard";
 
 export const scenarios: ScenarioKey[] = [
+  "live conditions",
   "heavy rainfall",
   "storm surge",
+  "category 5 hurricane",
   "sea-level-rise increase",
   "repeated flooding days"
 ];
 
 export const scenarioIcons: Record<ScenarioKey, ReactNode> = {
+  "live conditions": <Activity className="h-4 w-4" color="#10b981" />,
   "heavy rainfall": <Droplets className="h-4 w-4" />,
   "storm surge": <Waves className="h-4 w-4" />,
+  "category 5 hurricane": <Tornado className="h-4 w-4" color="#f43f5e" />,
   "sea-level-rise increase": <Wind className="h-4 w-4" />,
   "repeated flooding days": <Radar className="h-4 w-4" />
 };
 
 export const mockScenarioData: Record<ScenarioKey, ScenarioState> = {
+
+  "live conditions": {
+    summary: "Monitoring real-time telemetry from Tampa open-data sources. Currently tracking elevated humidity and minor traffic anomalies.",
+    score: 32,
+    affected: "Tampa Metropolitan Baseline",
+    actions: [
+      {
+        id: "live-1",
+        title: "Monitor localized street ponding",
+        detail: "Current radar indicates minor buildup along South MacDill Ave.",
+        urgency: "stable"
+      }
+    ],
+    logs: [
+      "[sentinel] Active connection to Open-Meteo established.",
+      "[sentinel] Live traffic layer synced.",
+      "[simulator] Baseline conditions normal. No cascading triggers.",
+      "[dispatcher] Standby mode active."
+    ],
+    rankedAreas: [
+      { name: "Downtown Core", score: 32, reason: "Baseline traffic and standard social variance" },
+      { name: "Ybor City", score: 30, reason: "Normal operations" }
+    ],
+    infrastructureScores: [
+      { id: "roads", label: "Roads", score: 30 },
+      { id: "power", label: "Power Service Areas", score: 15 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 20 }
+    ],
+    actionPayload: { action: "monitor", coordinates: [] }
+  },
+  "category 5 hurricane": {
+    summary: "Catastrophic damage projected. Mass evacuation required immediately. Storm surge expected to exceed 15+ feet across all coastal boundaries.",
+    score: 98,
+    affected: "Entire Tampa Coastal Bay Region",
+    actions: [
+      {
+        id: "cat5-1",
+        title: "Mandatory Evacuation Execution",
+        detail: "Reverse lanes on I-4 and I-75 immediately. Deploy state guard.",
+        urgency: "critical"
+      },
+      {
+        id: "cat5-2",
+        title: "Hospital Hardening",
+        detail: "Transfer critical care patients inland by air immediately.",
+        urgency: "critical"
+      }
+    ],
+    logs: [
+      "[sentinel] WARNING: Cat 5 Hurricane telemetry injected. Sustained winds >157mph.",
+      "[simulator] Catastrophic failure across 90% of Tampa power grids.",
+      "[simulator] Bridges compromised: Gandy, Howard Frankland, Courtney Campbell.",
+      "[dispatcher] OVERRIDE: Declaring State of Emergency."
+    ],
+    rankedAreas: [
+      { name: "MacDill Air Force Base", score: 100, reason: "Direct strike, complete inundation." },
+      { name: "Davis Islands", score: 100, reason: "Unsurvivable storm surge and wind." }
+    ],
+    infrastructureScores: [
+      { id: "power", label: "Power Service Areas", score: 100 },
+      { id: "roads", label: "Roads", score: 95 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 98 },
+      { id: "drainage", label: "Drainage Zones", score: 100 }
+    ],
+    actionPayload: { action: "mandatory_evacuate", coordinates: [] }
+  },
+
+
+  "live conditions": {
+    summary: "Monitoring real-time telemetry from Tampa open-data sources. Currently tracking elevated humidity and minor traffic anomalies.",
+    score: 32,
+    affected: "Tampa Metropolitan Baseline",
+    actions: [
+      {
+        id: "live-1",
+        title: "Monitor localized street ponding",
+        detail: "Current radar indicates minor buildup along South MacDill Ave.",
+        urgency: "stable"
+      }
+    ],
+    logs: [
+      "[sentinel] Active connection to Open-Meteo established.",
+      "[sentinel] Live traffic layer synced.",
+      "[simulator] Baseline conditions normal. No cascading triggers.",
+      "[dispatcher] Standby mode active."
+    ],
+    rankedAreas: [
+      { name: "Downtown Core", score: 32, reason: "Baseline traffic and standard social variance" },
+      { name: "Ybor City", score: 30, reason: "Normal operations" }
+    ],
+    infrastructureScores: [
+      { id: "roads", label: "Roads", score: 30 },
+      { id: "power", label: "Power Service Areas", score: 15 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 20 }
+    ],
+    actionPayload: { action: "monitor", coordinates: [] }
+  },
+  "category 5 hurricane": {
+    summary: "Catastrophic damage projected. Mass evacuation required immediately. Storm surge expected to exceed 15+ feet across all coastal boundaries.",
+    score: 98,
+    affected: "Entire Tampa Coastal Bay Region",
+    actions: [
+      {
+        id: "cat5-1",
+        title: "Mandatory Evacuation Execution",
+        detail: "Reverse lanes on I-4 and I-75 immediately. Deploy state guard.",
+        urgency: "critical"
+      },
+      {
+        id: "cat5-2",
+        title: "Hospital Hardening",
+        detail: "Transfer critical care patients inland by air immediately.",
+        urgency: "critical"
+      }
+    ],
+    logs: [
+      "[sentinel] WARNING: Cat 5 Hurricane telemetry injected. Sustained winds >157mph.",
+      "[simulator] Catastrophic failure across 90% of Tampa power grids.",
+      "[simulator] Bridges compromised: Gandy, Howard Frankland, Courtney Campbell.",
+      "[dispatcher] OVERRIDE: Declaring State of Emergency."
+    ],
+    rankedAreas: [
+      { name: "MacDill Air Force Base", score: 100, reason: "Direct strike, complete inundation." },
+      { name: "Davis Islands", score: 100, reason: "Unsurvivable storm surge and wind." }
+    ],
+    infrastructureScores: [
+      { id: "power", label: "Power Service Areas", score: 100 },
+      { id: "roads", label: "Roads", score: 95 },
+      { id: "access-routes", label: "Hospital/Shelter Routes", score: 98 },
+      { id: "drainage", label: "Drainage Zones", score: 100 }
+    ],
+    actionPayload: { action: "mandatory_evacuate", coordinates: [] }
+  },
+
   "heavy rainfall": {
     summary:
       "This area is high risk because road elevation is low, flood exposure is high, and it has poor alternate access.",

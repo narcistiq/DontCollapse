@@ -5,14 +5,16 @@ import os
 def run():
     print("Pulling all major Tampa zones bounds...")
     query = """
-    [out:json][timeout:30];
+    [out:json][timeout:90];
     area["name"="Tampa"]->.searchArea;
     (
-      way["landuse"~"residential|commercial|retail|industrial"](area.searchArea);
+      way["landuse"](area.searchArea);
+      way["building"](area.searchArea);
+      way["leisure"](area.searchArea);
     );
     out geom;
     """
-    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, timeout=35)
+    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, timeout=100)
     data = response.json()
     
     features = []
@@ -27,14 +29,14 @@ def run():
                 max_lat = max(pt[1] for pt in coords[0])
                 area = (max_lon - min_lon) * (max_lat - min_lat)
                 
-                # LOWERED AREA REQUIREMENT TO GET UP TO 150 BLOCKS!
-                if area > 0.000005: 
+                # EVEN TIGHTER BOUNDS TO GET 1000+ BLOCKS
+                if area > 0.000001: 
                     tags = element.get("tags", {})
-                    name = tags.get("name", tags.get("landuse", "Tampa Zone").title())
+                    name = tags.get("name", tags.get("landuse", tags.get("building", tags.get("leisure", "Tampa Zone"))).title())
                     features.append({"name": name, "area": area, "coords": coords})
     
     features.sort(key=lambda x: x["area"], reverse=True)
-    top_features = features[:150]
+    top_features = features[:1500]
     
     geojson_features = []
     for i, f in enumerate(top_features):

@@ -16,16 +16,16 @@ const ZONE_LAYER_ID = "zone-fill";
 const FACILITY_LAYER_ID = "facility-point";
 
 const severityClass = (score: number) => {
-  if (score >= 80) {
-    return "text-rose-400 bg-rose-950/50 border-rose-500/50";
+  if (score >= 60) {
+    return "text-red-400 bg-red-950/50 border-red-500/50";
   }
-  if (score >= 55) {
+  if (score >= 40) {
     return "text-orange-400 bg-orange-950/50 border-orange-500/50";
   }
-  if (score >= 30) {
-    return "text-amber-400 bg-amber-950/50 border-amber-500/50";
+  if (score >= 20) {
+    return "text-yellow-400 bg-yellow-950/50 border-yellow-500/50";
   }
-  return "text-emerald-400 bg-emerald-950/50 border-emerald-500/50";
+  return "text-green-400 bg-green-950/50 border-green-500/50";
 };
 
 const actionSeverityClass = (urgency: ActionTicket["urgency"]) => {
@@ -72,7 +72,7 @@ export default function DashboardPage() {
   const isDev = process.env.NODE_ENV !== "production";
   const mapToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim() ?? "";
 
-  const [activeScenario, setActiveScenario] = useState<ScenarioKey>("heavy rainfall");
+  const [activeScenario, setActiveScenario] = useState<ScenarioKey>("live conditions");
   const [isLoadingIntelligence, setIsLoadingIntelligence] = useState(false);
   const [showTrace, setShowTrace] = useState(true);
   const [mapReady, setMapReady] = useState(false);
@@ -155,13 +155,12 @@ export default function DashboardPage() {
               "interpolate",
               ["linear"],
               ["coalesce", ["get", "fragility"], 0],
-              0, "rgba(52, 211, 153, 0.45)",      // Green
-              30, "rgba(250, 204, 21, 0.55)",     // Yellow
-              55, "rgba(249, 115, 22, 0.65)",     // Orange
-              80, "rgba(244, 63, 94, 0.75)",      // Red
-              100, "rgba(159, 18, 57, 0.85)"      // Dark Red
+              0, "rgba(34, 197, 94, 0.40)",       // Green
+              30, "rgba(234, 179, 8, 0.55)",      // Yellow
+              60, "rgba(249, 115, 22, 0.70)",     // Orange
+              100, "rgba(239, 68, 68, 0.85)"      // Red
             ],
-            "fill-outline-color": "rgba(255, 255, 255, 0.15)"
+            "fill-outline-color": "rgba(255, 255, 255, 0.10)"
           }
         });
 
@@ -178,11 +177,10 @@ export default function DashboardPage() {
               "interpolate",
               ["linear"],
               ["coalesce", ["get", "fragility"], 0],
-              0, "#34d399",     // Green
-              30, "#facc15",    // Yellow
-              55, "#f97316",    // Orange
-              80, "#f43f5e",    // Red
-              100, "#9f1239"    // Dark red
+              0, "#22c55e",     // Green
+              30, "#eab308",    // Yellow
+              60, "#f97316",    // Orange
+              100, "#ef4444"    // Red
             ]
           }
         });
@@ -309,14 +307,16 @@ export default function DashboardPage() {
       </header>
 
       <section className="absolute left-4 top-20 z-30 max-h-[calc(100vh-6rem)] w-[380px] space-y-4 overflow-y-auto pb-4 pr-1">
-        <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 backdrop-blur-sm">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-300">Flood Scenarios</p>
-          <div className="grid grid-cols-1 gap-2">
+        <div className="rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
+          <p className="mb-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">Scenarios</p>
+          <div className="grid grid-cols-1 gap-1.5">
             {scenarios.map((scenario) => {
               const isActive = scenario === activeScenario;
               const descriptions: Record<string, string> = {
+                "live conditions": "Baseline current environmental state.",
                 "heavy rainfall": "Intense focused precipitation over short duration.",
                 "storm surge": "Ocean water pushed inland by hurricane forces.",
+                "category 5 hurricane": "Catastrophic landfall with total infrastructure failure.",
                 "sea-level-rise increase": "Long-term baseline elevation of tidal boundaries.",
                 "repeated flooding days": "Cumulative saturation from multi-day event streams."
               };
@@ -329,25 +329,24 @@ export default function DashboardPage() {
                   aria-pressed={isActive}
                   onClick={() => setActiveScenario(scenario)}
                   className={[
-                    "flex items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition-all duration-200 cursor-help",
+                    "flex items-center justify-between rounded-md px-3 py-2 text-left text-[13px] font-medium transition-all duration-200 cursor-pointer",
                     isActive
-                      ? "border-blue-500 bg-blue-900/40 text-blue-400 shadow-glow"
-                      : "border-slate-700 bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200"
+                      ? "bg-slate-800 text-white shadow-sm ring-1 ring-slate-700"
+                      : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
                   ].join(" ")}
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2.5">
                     {scenarioIcons[scenario]}
                     <span className="capitalize">{scenario}</span>
                   </span>
-                  <span className="text-[11px] font-mono uppercase tracking-wide">ready</span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 backdrop-blur-sm">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-300">Intelligence Panel</p>
+        <div className="rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Intelligence Panel</p>
 
           {isLoadingIntelligence ? (
             <div className="space-y-3">
@@ -359,37 +358,37 @@ export default function DashboardPage() {
             </div>
           ) : (
             <>
-              <div className="mb-4 rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-wide text-slate-400">Area Focus</span>
-                  <span className={`rounded border px-2 py-0.5 text-xs font-semibold flex items-center gap-1 ${severityClass(overallScore)}`}>
-                    Score <AnimatedNumber value={overallScore} />
+              <div className="mb-4">
+                <div className="mb-1 flex items-center justify-between">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Primary Focus</span>
+                  <span className={`rounded px-1.5 py-0.5 text-[10px] uppercase tracking-wider font-bold flex items-center gap-1 ${severityClass(overallScore)}`}>
+                    Index: <AnimatedNumber value={overallScore} />
                   </span>
                 </div>
-                <p className="text-sm text-slate-200">{apiData ? apiData.rankedAreas.slice(0,3).map((z: any) => z.zoneName).join(', ') : scenarioState.affected}</p>
+                <p className="text-[13px] text-slate-300 leading-relaxed">{apiData ? apiData.rankedAreas.slice(0,3).map((z: any) => z.zoneName).join(' • ') : scenarioState.affected}</p>
               </div>
 
-              <div className="mb-4 border-l-4 border-blue-500 pl-4">
-                <p className="mb-1 text-[11px] uppercase tracking-wide text-slate-400">AI Narrative</p>
-                <p className="text-sm text-slate-200">{apiData ? apiData.narrative : scenarioState.summary}</p>
+              <div className="mb-5 border-l-2 border-slate-700 pl-3">
+                <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Analysis</p>
+                <p className="text-[12.5px] leading-relaxed text-slate-300">{apiData ? apiData.narrative : scenarioState.summary}</p>
               </div>
 
-              <div className="mb-4 border-l-4 border-emerald-500 pl-4">
-                <p className="mb-1 text-[11px] uppercase tracking-wide text-slate-400">A2A Logistics</p>
-                <p className="text-sm text-slate-200">{apiData ? apiData.logistics : "Awaiting agent instructions..."}</p>
+              <div className="mb-5 border-l-2 border-emerald-500/50 pl-3">
+                <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Agent Logistics</p>
+                <p className="text-[12.5px] leading-relaxed text-slate-300">{apiData ? apiData.logistics : "Awaiting autonomous loop instructions..."}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[11px] uppercase tracking-wide text-slate-400">Recommended Actions</p>
+                <p className="mb-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">Priority Responses</p>
                 {scenarioState.actions.map((action) => (
                   <div
                     key={action.id}
-                    className={`mb-2 flex items-start gap-3 rounded border p-3 ${actionSeverityClass(action.urgency)}`}
+                    className={`mb-2 flex items-start gap-3 rounded-lg border p-3 ${actionSeverityClass(action.urgency)}`}
                   >
-                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 opacity-80" />
                     <div>
-                      <p className="text-sm font-medium text-slate-200">{action.title}</p>
-                      <p className="text-xs text-slate-400">{action.detail}</p>
+                      <p className="text-[13px] font-medium text-slate-200 mb-0.5">{action.title}</p>
+                      <p className="text-[11.5px] leading-relaxed text-slate-400">{action.detail}</p>
                     </div>
                   </div>
                 ))}
@@ -399,8 +398,8 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl border border-slate-800 bg-slate-900/80 p-4 backdrop-blur-sm">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-300">Infrastructure Fragility</p>
+      <aside className="absolute right-4 top-20 z-30 w-[310px] rounded-xl bg-slate-900/40 p-4 backdrop-blur-md shadow-lg border border-slate-800/50">
+        <p className="mb-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">System Fragility</p>
         <div className="space-y-2 text-sm pb-4">
           {scenarioState.infrastructureScores.map((infra) => (
             <StatusLine

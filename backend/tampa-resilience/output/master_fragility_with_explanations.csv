@@ -1,151 +1,1501 @@
 Zone_ID,Zone_Name,Elevation_Risk,Flood_Exposure,Road_Access_Risk,Shelter_Access_Risk,Social_Vulnerability,Composite_Fragility_Score
-Z001,Residential Zone 1,96,96,10,10,90,50
-Z002,Industrial Zone 2,9,9,96,96,100,50
-Z003,Residential Zone 3,47,47,51,51,99,50
-Z004,Residential Zone 4,98,98,7,7,96,50
-Z005,Retail Zone 5,6,6,100,100,96,50
-Z006,Retail Zone 6,42,42,48,48,90,50
-Z007,Residential Zone 7,99,99,9,9,97,50
-Z008,Commercial Zone 8,1,1,100,100,91,50
-Z009,Residential Zone 9,57,57,41,41,90,50
-Z010,Industrial Zone 10,97,97,10,10,100,50
-Z011,Residential Zone 11,7,7,96,96,99,50
-Z012,Residential Zone 12,40,40,59,59,99,50
-Z013,Residential Zone 13,100,100,0,0,100,50
-Z014,Residential Zone 14,2,2,98,98,100,50
-Z015,Industrial Zone 15,57,57,53,53,95,50
-Z016,Residential Zone 16,97,97,5,5,99,50
-Z017,Residential Zone 17,5,5,97,97,94,50
-Z018,Industrial Zone 18,48,48,60,60,93,50
-Z019,Residential Zone 19,96,96,7,7,90,50
-Z020,Residential Zone 20,5,5,100,100,98,50
-Z021,Industrial Zone 21,52,52,60,60,90,50
-Z022,Standart Concrete Products,99,99,5,5,91,50
-Z023,Industrial Zone 23,3,3,99,99,96,50
-Z024,Port of Tampa Container Terminal,59,59,46,46,99,50
-Z025,Residential Zone 25,100,100,6,6,93,50
-Z026,Residential Zone 26,10,10,95,95,96,50
-Z027,Amberly Place,45,45,56,56,95,50
-Z028,Residential Zone 28,98,98,8,8,97,50
-Z029,Residential Zone 29,7,7,97,97,100,50
-Z030,Residential Zone 30,41,41,49,49,97,50
-Z031,Industrial Zone 31,100,100,9,9,100,50
-Z032,Commercial Zone 32,0,0,99,99,93,50
-Z033,Residential Zone 33,49,49,52,52,90,50
-Z034,Residential Zone 34,100,100,8,8,92,50
-Z035,Residential Zone 35,7,7,99,99,96,50
-Z036,Residential Zone 36,41,41,60,60,94,50
-Z037,Residential Zone 37,95,95,3,3,93,50
-Z038,Residential Zone 38,7,7,98,98,93,50
-Z039,Residential Zone 39,56,56,49,49,99,50
-Z040,Residential Zone 40,100,100,8,8,93,50
-Z041,Residential Zone 41,5,5,97,97,90,50
-Z042,Industrial Zone 42,41,41,60,60,91,50
-Z043,Residential Zone 43,99,99,10,10,99,50
-Z044,Residential Zone 44,4,4,95,95,98,50
-Z045,Sundrift,49,49,57,57,95,50
-Z046,Industrial Zone 46,99,99,8,8,99,50
-Z047,Residential Zone 47,4,4,98,98,94,50
-Z048,Residential Zone 48,54,54,57,57,100,50
-Z049,Residential Zone 49,96,96,10,10,98,50
-Z050,Industrial Zone 50,3,3,100,100,99,50
-Z051,Industrial Zone 51,51,51,53,53,99,50
-Z052,Residential Zone 52,98,98,4,4,97,50
-Z053,Residential Zone 53,7,7,99,99,91,50
-Z054,Residential Zone 54,54,54,60,60,94,50
-Z055,Residential Zone 55,99,99,4,4,92,50
-Z056,Residential Zone 56,5,5,100,100,90,50
-Z057,Commercial Zone 57,59,59,43,43,91,50
-Z058,Residential Zone 58,97,97,3,3,90,50
-Z059,Industrial Zone 59,8,8,96,96,97,50
-Z060,Residential Zone 60,44,44,47,47,98,50
-Z061,Commercial Zone 61,100,100,7,7,95,50
-Z062,Residential Zone 62,0,0,96,96,99,50
-Z063,Briarbrook,45,45,52,52,97,50
-Z064,Residential Zone 64,97,97,5,5,92,50
-Z065,Residential Zone 65,0,0,99,99,90,50
-Z066,Residential Zone 66,57,57,52,52,98,50
-Z067,Industrial Zone 67,99,99,4,4,94,50
-Z068,Tampa Shipyard,2,2,96,96,98,50
-Z069,Residential Zone 69,43,43,50,50,94,50
-Z070,Residential Zone 70,99,99,0,0,93,50
-Z071,Residential Zone 71,8,8,97,97,100,50
-Z072,Industrial Zone 72,52,52,47,47,93,50
-Z073,Residential Zone 73,97,97,3,3,97,50
-Z074,Residential Zone 74,4,4,96,96,93,50
-Z075,Residential Zone 75,56,56,49,49,96,50
-Z076,Industrial Zone 76,100,100,2,2,97,50
-Z077,Residential Zone 77,2,2,96,96,98,50
-Z078,Residential Zone 78,54,54,59,59,93,50
-Z079,Residential Zone 79,99,99,3,3,98,50
-Z080,Post Rocky Point,10,10,98,98,97,50
-Z081,Residential Zone 81,57,57,42,42,91,50
-Z082,Industrial Zone 82,95,95,2,2,90,50
-Z083,Commercial Zone 83,4,4,97,97,95,50
-Z084,Residential Zone 84,54,54,52,52,98,50
-Z085,Commercial Zone 85,98,98,4,4,92,50
-Z086,Retail Zone 86,2,2,96,96,91,50
-Z087,Commercial Zone 87,44,44,53,53,97,50
-Z088,Residential Zone 88,95,95,9,9,100,50
-Z089,Residential Zone 89,5,5,100,100,96,50
-Z090,Westshore Plaza Mall,51,51,44,44,93,50
-Z091,Residential Zone 91,99,99,10,10,99,50
-Z092,Old Spanish,5,5,97,97,94,50
-Z093,Mossy Pine,42,42,47,47,97,50
-Z094,Residential Zone 94,99,99,6,6,92,50
-Z095,Residential Zone 95,7,7,97,97,91,50
-Z096,Residential Zone 96,44,44,41,41,97,50
-Z097,Industrial Zone 97,95,95,1,1,91,50
-Z098,Industrial Zone 98,3,3,95,95,92,50
-Z099,Residential Zone 99,59,59,60,60,95,50
-Z100,Residential Zone 100,100,100,10,10,90,50
-Z101,Residential Zone 101,9,9,99,99,98,50
-Z102,Industrial Zone 102,56,56,48,48,100,50
-Z103,Argos Cement,98,98,1,1,99,50
-Z104,Residential Zone 104,7,7,99,99,100,50
-Z105,Residential Zone 105,53,53,50,50,98,50
-Z106,Commercial Zone 106,97,97,5,5,93,50
-Z107,Buckeye - Tampa South Terminal,2,2,99,99,98,50
-Z108,Residential Zone 108,56,56,43,43,96,50
-Z109,Residential Zone 109,98,98,5,5,94,50
-Z110,Residential Zone 110,4,4,95,95,98,50
-Z111,Residential Zone 111,45,45,60,60,90,50
-Z112,Industrial Zone 112,99,99,2,2,95,50
-Z113,Retail Zone 113,6,6,96,96,94,50
-Z114,Retail Zone 114,49,49,53,53,96,50
-Z115,Residential Zone 115,95,95,4,4,91,50
-Z116,Industrial Zone 116,3,3,100,100,99,50
-Z117,Industrial Zone 117,57,57,47,47,96,50
-Z118,Residential Zone 118,95,95,5,5,97,50
-Z119,Residential Zone 119,6,6,98,98,91,50
-Z120,Industrial Zone 120,49,49,48,48,95,50
-Z121,Commercial Zone 121,99,99,2,2,95,50
-Z122,Residential Zone 122,3,3,100,100,93,50
-Z123,Industrial Zone 123,50,50,60,60,95,50
-Z124,Residential Zone 124,97,97,5,5,90,50
-Z125,Residential Zone 125,9,9,100,100,92,50
-Z126,Residential Zone 126,51,51,60,60,95,50
-Z127,Residential Zone 127,100,100,9,9,96,50
-Z128,Industrial Zone 128,7,7,97,97,93,50
-Z129,Residential Zone 129,44,44,55,55,96,50
-Z130,Residential Zone 130,97,97,4,4,98,50
-Z131,Industrial Zone 131,7,7,99,99,90,50
-Z132,Commercial Zone 132,43,43,58,58,94,50
-Z133,Residential Zone 133,96,96,7,7,96,50
-Z134,Residential Zone 134,2,2,99,99,98,50
-Z135,Commercial Zone 135,52,52,51,51,93,50
-Z136,Residential Zone 136,95,95,2,2,92,50
-Z137,Residential Zone 137,6,6,98,98,94,50
-Z138,Residential Zone 138,43,43,44,44,94,50
-Z139,Commercial Zone 139,100,100,6,6,96,50
-Z140,Commercial Zone 140,3,3,100,100,95,50
-Z141,Commercial Zone 141,48,48,59,59,95,50
-Z142,Residential Zone 142,96,96,3,3,92,50
-Z143,Residential Zone 143,7,7,100,100,93,50
-Z144,Residential Zone 144,52,52,60,60,99,50
-Z145,Residential Zone 145,95,95,4,4,100,50
-Z146,The Marquis of Tampa,4,4,95,95,98,50
-Z147,Retail Zone 147,44,44,41,41,99,50
-Z148,National Gypsum,99,99,0,0,98,50
-Z149,Residential Zone 149,6,6,96,96,97,50
-Z150,Industrial Zone 150,42,42,54,54,96,50
+Z001,MacDill Air Force Base,99,99,8,8,91,50
+Z002,Residential Zone 2,5,5,96,96,91,50
+Z003,Cypress Creek,41,41,57,57,91,50
+Z004,Grass,96,96,4,4,97,50
+Z005,Forest,2,2,96,96,90,50
+Z006,Industrial Zone 6,42,42,56,56,99,50
+Z007,Oakridge,99,99,3,3,96,50
+Z008,Residential Zone 8,3,3,97,97,94,50
+Z009,Residential Zone 9,50,50,51,51,98,50
+Z010,Tampa Palms Country Club,98,98,10,10,96,50
+Z011,Uceta Yard,3,3,97,97,98,50
+Z012,Railway,42,42,59,59,92,50
+Z013,Retail Zone 13,95,95,8,8,99,50
+Z014,Heritage Isles,1,1,99,99,94,50
+Z015,Forest,50,50,43,43,90,50
+Z016,Retail Zone 16,100,100,6,6,94,50
+Z017,Residential Zone 17,0,0,97,97,97,50
+Z018,Commercial Zone 18,59,59,55,55,92,50
+Z019,Forest,100,100,8,8,93,50
+Z020,Residential Zone 20,10,10,98,98,96,50
+Z021,Park,48,48,48,48,95,50
+Z022,Industrial Zone 22,97,97,9,9,91,50
+Z023,Residential Zone 23,10,10,96,96,95,50
+Z024,Residential Zone 24,56,56,48,48,90,50
+Z025,South Course,99,99,5,5,92,50
+Z026,Residential Zone 26,5,5,97,97,91,50
+Z027,Grass,48,48,51,51,98,50
+Z028,Nature_Reserve,96,96,5,5,97,50
+Z029,Grass,8,8,96,96,95,50
+Z030,Residential Zone 30,47,47,49,49,90,50
+Z031,Industrial Zone 31,98,98,0,0,96,50
+Z032,Residential Zone 32,9,9,97,97,92,50
+Z033,Residential Zone 33,43,43,58,58,93,50
+Z034,North Course,96,96,2,2,99,50
+Z035,Golf_Course,2,2,98,98,97,50
+Z036,Industrial Zone 36,48,48,56,56,93,50
+Z037,Residential Zone 37,99,99,3,3,90,50
+Z038,Residential Zone 38,10,10,97,97,95,50
+Z039,Industrial Zone 39,46,46,47,47,100,50
+Z040,Grass,96,96,1,1,96,50
+Z041,Standart Concrete Products,3,3,99,99,100,50
+Z042,Industrial Zone 42,56,56,46,46,93,50
+Z043,Port of Tampa Container Terminal,98,98,0,0,98,50
+Z044,Residential Zone 44,10,10,95,95,92,50
+Z045,Golf_Course,60,60,54,54,95,50
+Z046,Residential Zone 46,96,96,2,2,100,50
+Z047,Amberly Place,10,10,95,95,97,50
+Z048,Residential Zone 48,48,48,58,58,92,50
+Z049,Residential Zone 49,95,95,6,6,98,50
+Z050,Rocky Point Golf Course,8,8,96,96,95,50
+Z051,USF The Claw Golf Course,55,55,40,40,97,50
+Z052,Residential Zone 52,95,95,6,6,100,50
+Z053,Industrial Zone 53,2,2,95,95,94,50
+Z054,Commercial Zone 54,52,52,54,54,97,50
+Z055,Picnic Island Park,99,99,4,4,97,50
+Z056,Residential Zone 56,1,1,100,100,100,50
+Z057,Residential Zone 57,58,58,50,50,98,50
+Z058,Al Lopez Park,100,100,8,8,94,50
+Z059,Residential Zone 59,10,10,99,99,94,50
+Z060,Residential Zone 60,47,47,60,60,99,50
+Z061,Residential Zone 61,100,100,10,10,99,50
+Z062,Harbour,4,4,96,96,100,50
+Z063,Residential Zone 63,54,54,58,58,98,50
+Z064,Residential Zone 64,96,96,9,9,98,50
+Z065,Residential Zone 65,0,0,95,95,95,50
+Z066,Grass,47,47,46,46,95,50
+Z067,Residential Zone 67,96,96,0,0,92,50
+Z068,Industrial Zone 68,2,2,95,95,98,50
+Z069,Residential Zone 69,51,51,59,59,94,50
+Z070,Myrtle Hill Cemetery,96,96,6,6,95,50
+Z071,Recreation_Ground,1,1,98,98,96,50
+Z072,Residential Zone 72,49,49,58,58,97,50
+Z073,Sundrift,96,96,1,1,97,50
+Z074,Industrial Zone 74,2,2,99,99,99,50
+Z075,Residential Zone 75,46,46,44,44,94,50
+Z076,Residential Zone 76,99,99,3,3,95,50
+Z077,Residential Zone 77,9,9,96,96,99,50
+Z078,Industrial Zone 78,55,55,46,46,97,50
+Z079,Grass,99,99,7,7,97,50
+Z080,Rowlett Park,7,7,98,98,91,50
+Z081,Industrial Zone 81,41,41,47,47,94,50
+Z082,Grass,98,98,2,2,97,50
+Z083,Residential Zone 83,10,10,97,97,100,50
+Z084,Residential Zone 84,49,49,41,41,98,50
+Z085,Meadow,97,97,8,8,94,50
+Z086,Recreation_Ground,3,3,97,97,91,50
+Z087,Residential Zone 87,52,52,41,41,92,50
+Z088,Residential Zone 88,95,95,6,6,99,50
+Z089,Residential Zone 89,8,8,96,96,98,50
+Z090,Commercial Zone 90,40,40,59,59,95,50
+Z091,Residential Zone 91,99,99,5,5,94,50
+Z092,Industrial Zone 92,5,5,95,95,98,50
+Z093,Residential Zone 93,52,52,50,50,92,50
+Z094,Commercial Zone 94,98,98,10,10,98,50
+Z095,Residential Zone 95,2,2,98,98,96,50
+Z096,Briarbrook,48,48,44,44,98,50
+Z097,Residential Zone 97,97,97,9,9,91,50
+Z098,Common,0,0,98,98,97,50
+Z099,Residential Zone 99,46,46,58,58,91,50
+Z100,Residential Zone 100,96,96,5,5,90,50
+Z101,Industrial Zone 101,4,4,98,98,98,50
+Z102,Tampa Shipyard,51,51,49,49,97,50
+Z103,Residential Zone 103,96,96,9,9,95,50
+Z104,Grass,6,6,100,100,95,50
+Z105,Residential Zone 105,55,55,51,51,90,50
+Z106,Residential Zone 106,99,99,0,0,97,50
+Z107,Industrial Zone 107,6,6,99,99,90,50
+Z108,Residential Zone 108,58,58,55,55,100,50
+Z109,Residential Zone 109,99,99,4,4,92,50
+Z110,Residential Zone 110,10,10,100,100,90,50
+Z111,Garden of Memories Cemetery,51,51,40,40,94,50
+Z112,Industrial Zone 112,100,100,0,0,99,50
+Z113,Residential Zone 113,5,5,98,98,99,50
+Z114,Residential Zone 114,58,58,42,42,91,50
+Z115,Residential Zone 115,96,96,9,9,100,50
+Z116,Post Rocky Point,5,5,95,95,98,50
+Z117,Farmland,48,48,50,50,97,50
+Z118,Nature_Reserve,97,97,6,6,92,50
+Z119,Residential Zone 119,8,8,97,97,92,50
+Z120,Gadsden Park,40,40,55,55,97,50
+Z121,Industrial Zone 121,100,100,10,10,97,50
+Z122,Grass,9,9,95,95,97,50
+Z123,Commercial Zone 123,52,52,44,44,97,50
+Z124,Residential Zone 124,97,97,2,2,94,50
+Z125,Copeland Park,1,1,98,98,98,50
+Z126,Commercial Zone 126,57,57,51,51,93,50
+Z127,Retail Zone 127,96,96,5,5,92,50
+Z128,Cypress Point Park,9,9,96,96,96,50
+Z129,Brownfield,55,55,60,60,92,50
+Z130,Commercial Zone 130,97,97,3,3,94,50
+Z131,Residential Zone 131,3,3,96,96,94,50
+Z132,Residential Zone 132,60,60,51,51,96,50
+Z133,Westshore Plaza Mall,100,100,6,6,92,50
+Z134,City of Tampa Park,6,6,97,97,92,50
+Z135,Residential Zone 135,47,47,56,56,96,50
+Z136,Old Spanish,99,99,9,9,92,50
+Z137,Mossy Pine,9,9,97,97,97,50
+Z138,Residential Zone 138,49,49,59,59,95,50
+Z139,Residential Zone 139,98,98,5,5,97,50
+Z140,Grass,4,4,96,96,91,50
+Z141,Residential Zone 141,57,57,49,49,95,50
+Z142,Industrial Zone 142,98,98,3,3,92,50
+Z143,Industrial Zone 143,2,2,96,96,94,50
+Z144,Farmland,49,49,41,41,99,50
+Z145,Recreation_Ground,96,96,3,3,90,50
+Z146,Residential Zone 146,8,8,98,98,100,50
+Z147,Residential Zone 147,41,41,53,53,90,50
+Z148,Residential Zone 148,100,100,1,1,98,50
+Z149,Industrial Zone 149,6,6,98,98,90,50
+Z150,Argos Cement,51,51,49,49,96,50
+Z151,Residential Zone 151,99,99,4,4,96,50
+Z152,Garden of Memories Cemetery,9,9,97,97,92,50
+Z153,Residential Zone 153,49,49,60,60,92,50
+Z154,Commercial Zone 154,96,96,6,6,93,50
+Z155,Buckeye - Tampa South Terminal,9,9,95,95,94,50
+Z156,Residential Zone 156,42,42,58,58,92,50
+Z157,Residential Zone 157,99,99,3,3,91,50
+Z158,MacDill 48,3,3,97,97,91,50
+Z159,Residential Zone 159,54,54,48,48,98,50
+Z160,Residential Zone 160,98,98,7,7,99,50
+Z161,Industrial Zone 161,9,9,96,96,90,50
+Z162,Retail Zone 162,46,46,42,42,92,50
+Z163,Park,99,99,6,6,94,50
+Z164,Retail Zone 164,10,10,97,97,92,50
+Z165,Recreation_Ground,53,53,45,45,96,50
+Z166,Residential Zone 166,99,99,3,3,91,50
+Z167,Industrial Zone 167,7,7,97,97,99,50
+Z168,Industrial Zone 168,51,51,46,46,98,50
+Z169,Residential Zone 169,95,95,1,1,100,50
+Z170,Residential Zone 170,3,3,96,96,91,50
+Z171,Industrial Zone 171,47,47,49,49,92,50
+Z172,Commercial Zone 172,97,97,7,7,99,50
+Z173,Grass,9,9,99,99,93,50
+Z174,Grass,43,43,47,47,91,50
+Z175,Residential Zone 175,98,98,8,8,92,50
+Z176,Industrial Zone 176,2,2,97,97,96,50
+Z177,Residential Zone 177,50,50,53,53,93,50
+Z178,Residential Zone 178,99,99,10,10,95,50
+Z179,Grass,0,0,99,99,99,50
+Z180,Residential Zone 180,42,42,55,55,96,50
+Z181,Residential Zone 181,95,95,10,10,96,50
+Z182,Recreation_Ground,3,3,97,97,98,50
+Z183,Industrial Zone 183,42,42,45,45,94,50
+Z184,Residential Zone 184,96,96,3,3,99,50
+Z185,Residential Zone 185,8,8,98,98,97,50
+Z186,Industrial Zone 186,43,43,44,44,98,50
+Z187,Commercial Zone 187,96,96,7,7,98,50
+Z188,Residential Zone 188,9,9,97,97,92,50
+Z189,Residential Zone 189,51,51,55,55,96,50
+Z190,Commercial Zone 190,98,98,6,6,93,50
+Z191,Residential Zone 191,7,7,95,95,90,50
+Z192,Residential Zone 192,57,57,47,47,95,50
+Z193,Grass,100,100,5,5,96,50
+Z194,Residential Zone 194,0,0,98,98,97,50
+Z195,Commercial Zone 195,52,52,41,41,97,50
+Z196,Commercial Zone 196,95,95,10,10,97,50
+Z197,Commercial Zone 197,10,10,100,100,92,50
+Z198,South Tampa YMCA,52,52,57,57,93,50
+Z199,Residential Zone 199,98,98,7,7,96,50
+Z200,Residential Zone 200,2,2,95,95,95,50
+Z201,Residential Zone 201,59,59,56,56,91,50
+Z202,Harbour,95,95,4,4,95,50
+Z203,Residential Zone 203,9,9,96,96,93,50
+Z204,The Marquis of Tampa,40,40,40,40,91,50
+Z205,Retail Zone 205,97,97,8,8,93,50
+Z206,Grass,5,5,96,96,90,50
+Z207,National Gypsum,44,44,54,54,97,50
+Z208,Residential Zone 208,97,97,10,10,97,50
+Z209,Industrial Zone 209,6,6,99,99,94,50
+Z210,Farmland,41,41,60,60,95,50
+Z211,Residential Zone 211,97,97,0,0,92,50
+Z212,Takomah Trail Park,3,3,100,100,95,50
+Z213,Residential Zone 213,40,40,55,55,94,50
+Z214,Residential Zone 214,100,100,6,6,96,50
+Z215,Residential Zone 215,10,10,100,100,100,50
+Z216,Residential Zone 216,53,53,45,45,93,50
+Z217,Residential Zone 217,97,97,1,1,97,50
+Z218,Commercial Zone 218,4,4,97,97,94,50
+Z219,Commercial Zone 219,40,40,54,54,91,50
+Z220,Industrial Zone 220,95,95,5,5,98,50
+Z221,Residential Zone 221,1,1,97,97,100,50
+Z222,Residential Zone 222,47,47,50,50,94,50
+Z223,Commercial Zone 223,98,98,2,2,99,50
+Z224,Lowry Park,8,8,99,99,100,50
+Z225,Residential Zone 225,53,53,44,44,94,50
+Z226,Residential Zone 226,95,95,2,2,94,50
+Z227,Industrial Zone 227,1,1,99,99,100,50
+Z228,Industrial Zone 228,44,44,55,55,93,50
+Z229,Residential Zone 229,100,100,10,10,90,50
+Z230,Residential Zone 230,0,0,97,97,93,50
+Z231,Residential Zone 231,45,45,52,52,94,50
+Z232,"Gas Worx (C1-C4, E1-E7)",99,99,0,0,98,50
+Z233,Residential Zone 233,6,6,95,95,100,50
+Z234,Commercial Zone 234,51,51,60,60,98,50
+Z235,Industrial Zone 235,98,98,6,6,91,50
+Z236,Residential Zone 236,0,0,96,96,94,50
+Z237,Residential Zone 237,50,50,59,59,97,50
+Z238,Residential Zone 238,100,100,7,7,98,50
+Z239,Bobby Hicks Park,2,2,96,96,100,50
+Z240,USF Botanical Garden,49,49,47,47,93,50
+Z241,Commercial Zone 241,98,98,10,10,97,50
+Z242,Sports_Centre,0,0,95,95,91,50
+Z243,ADESA Tampa,57,57,44,44,94,50
+Z244,Chevron - Tampa Terminal,98,98,5,5,94,50
+Z245,Residential Zone 245,7,7,98,98,96,50
+Z246,Farmland,40,40,47,47,90,50
+Z247,Residential Zone 247,98,98,6,6,93,50
+Z248,Residential Zone 248,6,6,98,98,93,50
+Z249,Marjorie Park,56,56,46,46,98,50
+Z250,Retail Zone 250,96,96,10,10,94,50
+Z251,Residential Zone 251,7,7,99,99,98,50
+Z252,Industrial Zone 252,49,49,57,57,94,50
+Z253,Industrial Zone 253,96,96,6,6,95,50
+Z254,Industrial Zone 254,7,7,99,99,93,50
+Z255,Residential Zone 255,49,49,46,46,98,50
+Z256,Woodlawn Cemetery,99,99,1,1,99,50
+Z257,Retail Zone 257,3,3,95,95,96,50
+Z258,Commercial Zone 258,57,57,49,49,91,50
+Z259,Industrial Zone 259,95,95,4,4,91,50
+Z260,Commercial Zone 260,1,1,95,95,95,50
+Z261,Industrial Zone 261,46,46,60,60,96,50
+Z262,Lane Construction,98,98,10,10,90,50
+Z263,Sycamore Forest,3,3,96,96,91,50
+Z264,Adventure Island,57,57,51,51,96,50
+Z265,Residential Zone 265,98,98,10,10,99,50
+Z266,Residential Zone 266,9,9,100,100,98,50
+Z267,Citgo Tampa Terminal,50,50,40,40,99,50
+Z268,Port Logistics Refrigerated Services,100,100,9,9,97,50
+Z269,Industrial Zone 269,10,10,98,98,95,50
+Z270,Residential Zone 270,54,54,57,57,99,50
+Z271,Residential Zone 271,100,100,7,7,100,50
+Z272,Residential Zone 272,8,8,99,99,99,50
+Z273,Commercial Zone 273,54,54,42,42,100,50
+Z274,Residential Zone 274,98,98,9,9,92,50
+Z275,Residential Zone 275,2,2,96,96,95,50
+Z276,Residential Zone 276,50,50,45,45,92,50
+Z277,Industrial Zone 277,98,98,9,9,91,50
+Z278,Residential Zone 278,4,4,95,95,100,50
+Z279,Retail Zone 279,58,58,52,52,92,50
+Z280,Residential Zone 280,99,99,3,3,96,50
+Z281,Mosaic Company,8,8,95,95,93,50
+Z282,Residential Zone 282,59,59,48,48,95,50
+Z283,Residential Zone 283,99,99,0,0,98,50
+Z284,Residential Zone 284,9,9,96,96,100,50
+Z285,Industrial Zone 285,57,57,43,43,94,50
+Z286,Residential Zone 286,96,96,8,8,100,50
+Z287,Residential Zone 287,4,4,99,99,94,50
+Z288,Residential Zone 288,51,51,41,41,96,50
+Z289,Residential Zone 289,95,95,0,0,94,50
+Z290,Residential Zone 290,10,10,96,96,100,50
+Z291,Riverside Garden Park,41,41,59,59,96,50
+Z292,Residential Zone 292,98,98,1,1,97,50
+Z293,Residential Zone 293,7,7,100,100,91,50
+Z294,Industrial Zone 294,58,58,49,49,99,50
+Z295,Commercial Zone 295,98,98,1,1,97,50
+Z296,Industrial Zone 296,9,9,98,98,98,50
+Z297,Residential Zone 297,56,56,46,46,95,50
+Z298,US Marine Corps Reserve Center,100,100,6,6,92,50
+Z299,Industrial Zone 299,2,2,99,99,93,50
+Z300,Residential Zone 300,52,52,57,57,95,50
+Z301,Retail Zone 301,95,95,1,1,99,50
+Z302,Residential Zone 302,1,1,96,96,98,50
+Z303,MacFarlane Park,59,59,59,59,99,50
+Z304,Commercial Zone 304,97,97,0,0,96,50
+Z305,Commercial Zone 305,9,9,99,99,96,50
+Z306,Residential Zone 306,54,54,43,43,98,50
+Z307,Golf_Course,97,97,6,6,98,50
+Z308,Lodge at Lakecrest apartments,5,5,98,98,93,50
+Z309,The Walk,45,45,43,43,93,50
+Z310,AdventHealth Training Center,100,100,9,9,99,50
+Z311,Orange Grove Park,2,2,100,100,100,50
+Z312,Residential Zone 312,49,49,58,58,90,50
+Z313,Residential Zone 313,99,99,6,6,91,50
+Z314,Residential Zone 314,1,1,96,96,92,50
+Z315,Industrial Zone 315,45,45,46,46,98,50
+Z316,Residential Zone 316,95,95,1,1,100,50
+Z317,Residential Zone 317,2,2,100,100,92,50
+Z318,Residential Zone 318,41,41,41,41,91,50
+Z319,Residential Zone 319,95,95,1,1,91,50
+Z320,Residential Zone 320,6,6,96,96,95,50
+Z321,Commercial Zone 321,46,46,55,55,93,50
+Z322,Residential Zone 322,99,99,3,3,94,50
+Z323,Industrial Zone 323,8,8,99,99,95,50
+Z324,Commercial Zone 324,53,53,55,55,90,50
+Z325,Residential Zone 325,100,100,5,5,97,50
+Z326,Commercial Zone 326,9,9,99,99,93,50
+Z327,Commercial Zone 327,49,49,56,56,92,50
+Z328,A.J. Palonis Jr. Park,95,95,7,7,95,50
+Z329,Park,1,1,96,96,92,50
+Z330,Residential Zone 330,60,60,54,54,99,50
+Z331,Park,98,98,3,3,97,50
+Z332,22nd Street Park,5,5,97,97,96,50
+Z333,Commercial Zone 333,48,48,53,53,91,50
+Z334,DeSoto Park,98,98,10,10,92,50
+Z335,Commercial Zone 335,10,10,98,98,93,50
+Z336,Commercial Zone 336,57,57,40,40,100,50
+Z337,Residential Zone 337,96,96,4,4,99,50
+Z338,Forest,7,7,98,98,91,50
+Z339,Farmland,43,43,44,44,94,50
+Z340,Julian B. Lane Riverfront Park,100,100,6,6,100,50
+Z341,Commercial Zone 341,0,0,96,96,91,50
+Z342,Harbour,60,60,50,50,91,50
+Z343,Commercial Zone 343,96,96,4,4,100,50
+Z344,Industrial Zone 344,10,10,95,95,95,50
+Z345,Commercial Zone 345,51,51,60,60,90,50
+Z346,Residential Zone 346,98,98,4,4,96,50
+Z347,Residential Zone 347,0,0,97,97,91,50
+Z348,Residential Zone 348,45,45,53,53,93,50
+Z349,Residential Zone 349,96,96,9,9,94,50
+Z350,Britton Plaza,5,5,95,95,94,50
+Z351,Residential Zone 351,44,44,57,57,100,50
+Z352,Diamondback Nature Preserve,98,98,6,6,92,50
+Z353,Industrial Zone 353,4,4,96,96,97,50
+Z354,Industrial Zone 354,53,53,43,43,91,50
+Z355,Residential Zone 355,100,100,6,6,96,50
+Z356,The Enclave,5,5,97,97,97,50
+Z357,Residential Zone 357,60,60,54,54,91,50
+Z358,Residential Zone 358,96,96,3,3,95,50
+Z359,Recreation_Ground,9,9,96,96,95,50
+Z360,Grass,53,53,57,57,95,50
+Z361,Skyway Park,97,97,8,8,100,50
+Z362,Commercial Zone 362,7,7,97,97,91,50
+Z363,Commercial Zone 363,52,52,46,46,92,50
+Z364,WIBMMS Athletic grounds,97,97,5,5,90,50
+Z365,Residential Zone 365,7,7,98,98,91,50
+Z366,Commercial Zone 366,57,57,60,60,91,50
+Z367,Residential Zone 367,99,99,7,7,95,50
+Z368,Grass,4,4,99,99,99,50
+Z369,Residential Zone 369,46,46,57,57,96,50
+Z370,Common,98,98,10,10,92,50
+Z371,Residential Zone 371,2,2,97,97,95,50
+Z372,Industrial Zone 372,53,53,40,40,91,50
+Z373,Greek Village,99,99,0,0,91,50
+Z374,New York Yankees Scouting and Development Center,6,6,100,100,95,50
+Z375,Davis Islands Yacht Club,55,55,49,49,95,50
+Z376,Residential Zone 376,100,100,4,4,91,50
+Z377,Residential Zone 377,4,4,95,95,92,50
+Z378,Industrial Zone 378,50,50,52,52,99,50
+Z379,Commercial Zone 379,95,95,5,5,95,50
+Z380,Residential Zone 380,10,10,98,98,97,50
+Z381,Residential Zone 381,45,45,60,60,91,50
+Z382,Residential Zone 382,95,95,1,1,91,50
+Z383,Residential Zone 383,8,8,98,98,98,50
+Z384,CAE USA,59,59,40,40,91,50
+Z385,Residential Zone 385,99,99,10,10,96,50
+Z386,Research Park Field Complex,5,5,96,96,95,50
+Z387,Recreation_Ground,52,52,43,43,99,50
+Z388,Commercial Zone 388,100,100,8,8,90,50
+Z389,Residential Zone 389,6,6,100,100,91,50
+Z390,Residential Zone 390,40,40,52,52,96,50
+Z391,Commercial Zone 391,98,98,10,10,97,50
+Z392,Future Moffitt Inpatient Surgical Hospital,1,1,96,96,97,50
+Z393,Residential Zone 393,55,55,43,43,95,50
+Z394,Residential Zone 394,99,99,10,10,96,50
+Z395,Commercial Zone 395,9,9,97,97,94,50
+Z396,Titan America,56,56,44,44,90,50
+Z397,Residential Zone 397,95,95,5,5,97,50
+Z398,Commercial Zone 398,0,0,100,100,94,50
+Z399,Grass,49,49,45,45,91,50
+Z400,Residential Zone 400,96,96,4,4,95,50
+Z401,Industrial Zone 401,9,9,97,97,97,50
+Z402,Residential Zone 402,46,46,55,55,95,50
+Z403,Residential Zone 403,99,99,10,10,100,50
+Z404,Tampa Catholic Athletic Complex,5,5,100,100,93,50
+Z405,Residential Zone 405,42,42,41,41,90,50
+Z406,Residential Zone 406,96,96,0,0,98,50
+Z407,Industrial Zone 407,4,4,98,98,98,50
+Z408,Residential Zone 408,47,47,45,45,92,50
+Z409,Retail Zone 409,98,98,10,10,100,50
+Z410,Residential Zone 410,2,2,95,95,92,50
+Z411,Rivercrest Park,41,41,58,58,97,50
+Z412,Retail Zone 412,95,95,0,0,99,50
+Z413,Transflo,10,10,100,100,93,50
+Z414,Residential Zone 414,51,51,43,43,96,50
+Z415,Farmland,99,99,3,3,93,50
+Z416,Recreation_Ground,6,6,99,99,95,50
+Z417,Residential Zone 417,57,57,60,60,93,50
+Z418,Commercial Zone 418,96,96,10,10,91,50
+Z419,Residential Zone 419,2,2,97,97,91,50
+Z420,Residential Zone 420,44,44,50,50,100,50
+Z421,Commercial Zone 421,95,95,6,6,100,50
+Z422,Residential Zone 422,9,9,98,98,96,50
+Z423,The Walk,49,49,42,42,96,50
+Z424,Ballast Point Park,95,95,7,7,93,50
+Z425,Residential Zone 425,8,8,98,98,97,50
+Z426,Tampa Shrimp Docks,48,48,59,59,93,50
+Z427,Residential Zone 427,96,96,5,5,93,50
+Z428,Residential Zone 428,0,0,97,97,98,50
+Z429,Industrial Zone 429,59,59,44,44,93,50
+Z430,Residential Zone 430,97,97,2,2,94,50
+Z431,Residential Zone 431,3,3,96,96,93,50
+Z432,Residential Zone 432,40,40,40,40,99,50
+Z433,Residential Zone 433,99,99,4,4,93,50
+Z434,Grass,10,10,95,95,100,50
+Z435,Residential Zone 435,44,44,53,53,92,50
+Z436,Commercial Zone 436,99,99,3,3,90,50
+Z437,Lewis Lake,4,4,97,97,99,50
+Z438,Branchton Park,55,55,51,51,100,50
+Z439,Residential Zone 439,99,99,7,7,90,50
+Z440,Industrial Zone 440,0,0,96,96,100,50
+Z441,Commercial Zone 441,58,58,55,55,94,50
+Z442,Residential Zone 442,98,98,4,4,94,50
+Z443,Transmontaigne - Tampa Terminal,2,2,97,97,96,50
+Z444,Industrial Zone 444,54,54,53,53,94,50
+Z445,Residential Zone 445,98,98,6,6,95,50
+Z446,Residential Zone 446,8,8,99,99,95,50
+Z447,Independence Park at Harbor Bay,43,43,48,48,97,50
+Z448,Common,98,98,2,2,93,50
+Z449,Commercial Zone 449,9,9,95,95,93,50
+Z450,Residential Zone 450,60,60,55,55,99,50
+Z451,Residential Zone 451,100,100,1,1,94,50
+Z452,Residential Zone 452,10,10,99,99,98,50
+Z453,Commercial Zone 453,57,57,50,50,95,50
+Z454,Residential Zone 454,98,98,6,6,100,50
+Z455,Greco Softball Complex,3,3,95,95,95,50
+Z456,Residential Zone 456,59,59,42,42,98,50
+Z457,Residential Zone 457,99,99,2,2,100,50
+Z458,Columbus Court,8,8,98,98,95,50
+Z459,Residential Zone 459,53,53,57,57,99,50
+Z460,Residential Zone 460,99,99,2,2,95,50
+Z461,McKay Bay Nature Park,5,5,98,98,95,50
+Z462,Commercial Zone 462,53,53,49,49,98,50
+Z463,Residential Zone 463,100,100,2,2,98,50
+Z464,Industrial Zone 464,4,4,100,100,100,50
+Z465,The Oasis at Highwoods Preserve,50,50,60,60,100,50
+Z466,Residential Zone 466,96,96,7,7,90,50
+Z467,Residential Zone 467,2,2,95,95,93,50
+Z468,Residential Zone 468,59,59,46,46,95,50
+Z469,Commercial Zone 469,96,96,0,0,92,50
+Z470,Commercial Zone 470,9,9,97,97,98,50
+Z471,Midtown Tampa,43,43,54,54,96,50
+Z472,Commercial Zone 472,97,97,0,0,93,50
+Z473,Retail Zone 473,3,3,95,95,99,50
+Z474,Commercial Zone 474,49,49,52,52,92,50
+Z475,Industrial Zone 475,99,99,3,3,97,50
+Z476,Westshore Crossing,4,4,95,95,93,50
+Z477,Buckeye - Tampa North Terminal,53,53,44,44,90,50
+Z478,Residential Zone 478,97,97,8,8,97,50
+Z479,Residential Zone 479,7,7,99,99,92,50
+Z480,Residential Zone 480,60,60,49,49,100,50
+Z481,Commercial Zone 481,95,95,1,1,95,50
+Z482,Residential Zone 482,9,9,100,100,92,50
+Z483,Residential Zone 483,58,58,58,58,90,50
+Z484,Farmland,100,100,10,10,96,50
+Z485,Residential Zone 485,8,8,98,98,90,50
+Z486,Residential Zone 486,40,40,55,55,97,50
+Z487,Motiva Enterprises - Tampa Terminal,96,96,7,7,90,50
+Z488,Commercial Zone 488,6,6,100,100,91,50
+Z489,Commercial Zone 489,41,41,42,42,95,50
+Z490,Residential Zone 490,99,99,1,1,92,50
+Z491,Residential Zone 491,7,7,97,97,98,50
+Z492,Residential Zone 492,54,54,44,44,92,50
+Z493,Grass,100,100,6,6,96,50
+Z494,Residential Zone 494,8,8,95,95,96,50
+Z495,Nature_Reserve,41,41,60,60,99,50
+Z496,Recreation_Ground,98,98,1,1,91,50
+Z497,Residential Zone 497,5,5,98,98,100,50
+Z498,Commercial Zone 498,59,59,52,52,98,50
+Z499,Religious,99,99,3,3,90,50
+Z500,Residential Zone 500,0,0,95,95,91,50
+Z501,Retail Zone 501,55,55,41,41,94,50
+Z502,Farmland,100,100,10,10,99,50
+Z503,Commercial Zone 503,10,10,99,99,97,50
+Z504,Industrial Zone 504,40,40,58,58,95,50
+Z505,Residential Zone 505,96,96,8,8,99,50
+Z506,Commercial Zone 506,5,5,96,96,94,50
+Z507,Residential Zone 507,43,43,44,44,96,50
+Z508,Retail Zone 508,96,96,0,0,90,50
+Z509,Commercial Zone 509,1,1,96,96,96,50
+Z510,Residential Zone 510,41,41,50,50,91,50
+Z511,Residential Zone 511,99,99,0,0,92,50
+Z512,Residential Zone 512,10,10,100,100,100,50
+Z513,Brownfield,42,42,55,55,90,50
+Z514,Economy Parking Garage,97,97,7,7,94,50
+Z515,Residential Zone 515,2,2,97,97,93,50
+Z516,Residential Zone 516,59,59,47,47,100,50
+Z517,Commercial Zone 517,99,99,9,9,100,50
+Z518,Residential Zone 518,3,3,99,99,99,50
+Z519,Residential Zone 519,54,54,41,41,94,50
+Z520,Residential Zone 520,96,96,1,1,90,50
+Z521,Commercial Zone 521,9,9,97,97,90,50
+Z522,Commercial Zone 522,46,46,56,56,100,50
+Z523,Residential Zone 523,98,98,0,0,93,50
+Z524,Commercial Zone 524,4,4,98,98,90,50
+Z525,Residential Zone 525,44,44,52,52,92,50
+Z526,Industrial Zone 526,95,95,1,1,91,50
+Z527,Raymond James Stadium,0,0,95,95,98,50
+Z528,Residential Zone 528,51,51,43,43,94,50
+Z529,Residential Zone 529,96,96,7,7,91,50
+Z530,Residential Zone 530,6,6,98,98,94,50
+Z531,Residential Zone 531,41,41,59,59,97,50
+Z532,Commercial Zone 532,99,99,8,8,94,50
+Z533,Residential Zone 533,2,2,96,96,90,50
+Z534,Hospital,43,43,56,56,90,50
+Z535,Residential Zone 535,99,99,6,6,96,50
+Z536,Residential Zone 536,1,1,99,99,96,50
+Z537,Residential Zone 537,58,58,59,59,93,50
+Z538,Residential Zone 538,99,99,10,10,91,50
+Z539,Commercial Zone 539,2,2,95,95,94,50
+Z540,Commercial Zone 540,50,50,51,51,92,50
+Z541,Residential Zone 541,99,99,4,4,93,50
+Z542,Memorial Park Cemetery,3,3,96,96,95,50
+Z543,Residential Zone 543,42,42,60,60,95,50
+Z544,Residential Zone 544,99,99,1,1,96,50
+Z545,Residential Zone 545,6,6,97,97,92,50
+Z546,Commercial Zone 546,40,40,52,52,91,50
+Z547,Residential Zone 547,98,98,7,7,90,50
+Z548,River Tower Park,7,7,98,98,93,50
+Z549,Residential Zone 549,55,55,43,43,94,50
+Z550,Residential Zone 550,97,97,9,9,93,50
+Z551,Residential Zone 551,9,9,97,97,92,50
+Z552,Retail Zone 552,54,54,57,57,100,50
+Z553,Residential Zone 553,99,99,6,6,93,50
+Z554,Industrial Zone 554,3,3,99,99,98,50
+Z555,Robles Park,56,56,55,55,91,50
+Z556,Commercial Zone 556,95,95,7,7,98,50
+Z557,Residential Zone 557,1,1,97,97,94,50
+Z558,Residential Zone 558,48,48,55,55,92,50
+Z559,Residential Zone 559,99,99,3,3,91,50
+Z560,Meadow,3,3,96,96,92,50
+Z561,Residential Zone 561,49,49,51,51,95,50
+Z562,Residential Zone 562,96,96,5,5,95,50
+Z563,Residential Zone 563,9,9,100,100,92,50
+Z564,Residential Zone 564,54,54,57,57,100,50
+Z565,Residential Zone 565,95,95,3,3,90,50
+Z566,Residential Zone 566,4,4,95,95,96,50
+Z567,Residential Zone 567,58,58,48,48,97,50
+Z568,Retail Zone 568,99,99,9,9,94,50
+Z569,Commercial Zone 569,1,1,99,99,96,50
+Z570,Commercial Zone 570,47,47,47,47,95,50
+Z571,Commercial Zone 571,99,99,0,0,95,50
+Z572,Industrial Zone 572,0,0,98,98,91,50
+Z573,Residential Zone 573,42,42,56,56,96,50
+Z574,Residential Zone 574,97,97,10,10,92,50
+Z575,Cotanchobee Fort Brooke Park,5,5,100,100,95,50
+Z576,Residential Zone 576,49,49,50,50,99,50
+Z577,Commercial Zone 577,100,100,5,5,92,50
+Z578,Residential Zone 578,8,8,100,100,98,50
+Z579,Residential Zone 579,50,50,45,45,90,50
+Z580,Residential Zone 580,97,97,0,0,92,50
+Z581,Yes,5,5,96,96,100,50
+Z582,Yes,54,54,56,56,97,50
+Z583,Industrial Zone 583,96,96,3,3,96,50
+Z584,Residential Zone 584,5,5,99,99,100,50
+Z585,Residential Zone 585,55,55,60,60,91,50
+Z586,Commercial Zone 586,95,95,9,9,95,50
+Z587,Residential Zone 587,2,2,98,98,98,50
+Z588,Residential Zone 588,46,46,57,57,90,50
+Z589,Residential Zone 589,98,98,0,0,94,50
+Z590,Residential Zone 590,6,6,96,96,92,50
+Z591,Residential Zone 591,45,45,58,58,91,50
+Z592,Residential Zone 592,98,98,4,4,98,50
+Z593,Recreation_Ground,7,7,100,100,91,50
+Z594,Residential Zone 594,58,58,56,56,90,50
+Z595,Commercial Zone 595,96,96,2,2,95,50
+Z596,Residential Zone 596,9,9,99,99,90,50
+Z597,Commercial Zone 597,57,57,42,42,94,50
+Z598,Industrial Zone 598,97,97,1,1,96,50
+Z599,Commercial Zone 599,0,0,96,96,97,50
+Z600,Residential Zone 600,54,54,51,51,96,50
+Z601,Residential Zone 601,99,99,10,10,93,50
+Z602,Residential Zone 602,8,8,95,95,95,50
+Z603,Commercial Zone 603,50,50,41,41,93,50
+Z604,Industrial Zone 604,97,97,3,3,90,50
+Z605,Commercial Zone 605,5,5,98,98,90,50
+Z606,Commercial Zone 606,47,47,52,52,95,50
+Z607,Hyde Park Village,97,97,5,5,97,50
+Z608,Henry & Ola Park,3,3,95,95,95,50
+Z609,Commercial Zone 609,46,46,54,54,94,50
+Z610,Industrial Zone 610,97,97,8,8,94,50
+Z611,Recreation_Ground,4,4,100,100,91,50
+Z612,Residential Zone 612,42,42,51,51,91,50
+Z613,Commercial Zone 613,100,100,3,3,96,50
+Z614,Residential Zone 614,9,9,95,95,99,50
+Z615,Marquee Square,48,48,56,56,94,50
+Z616,Residential Zone 616,96,96,9,9,99,50
+Z617,Commercial Zone 617,1,1,98,98,99,50
+Z618,Common,44,44,58,58,99,50
+Z619,Commercial Zone 619,98,98,9,9,97,50
+Z620,Residential Zone 620,7,7,95,95,98,50
+Z621,Post Bay at Rocky Point,60,60,60,60,91,50
+Z622,Residential Zone 622,98,98,2,2,99,50
+Z623,Commercial Zone 623,5,5,100,100,97,50
+Z624,Signature,59,59,41,41,95,50
+Z625,Residential Zone 625,98,98,7,7,92,50
+Z626,Residential Zone 626,10,10,100,100,99,50
+Z627,Meadow,53,53,56,56,97,50
+Z628,Residential Zone 628,97,97,7,7,100,50
+Z629,Residential Zone 629,7,7,95,95,99,50
+Z630,Residential Zone 630,49,49,52,52,99,50
+Z631,Ignacio Haya Linear Park,96,96,2,2,94,50
+Z632,Residential Zone 632,0,0,96,96,99,50
+Z633,Commercial Zone 633,60,60,53,53,97,50
+Z634,Residential Zone 634,96,96,10,10,100,50
+Z635,Yes,3,3,100,100,97,50
+Z636,Residential Zone 636,52,52,56,56,96,50
+Z637,Residential Zone 637,95,95,8,8,93,50
+Z638,Residential Zone 638,5,5,95,95,92,50
+Z639,Grass,60,60,46,46,98,50
+Z640,Residential Zone 640,96,96,0,0,97,50
+Z641,Residential Zone 641,0,0,100,100,90,50
+Z642,Marjorie Park Marina,55,55,43,43,91,50
+Z643,GTE Federal Credit Union,95,95,7,7,95,50
+Z644,Residential Zone 644,10,10,100,100,94,50
+Z645,Residential Zone 645,49,49,44,44,98,50
+Z646,Residential Zone 646,99,99,6,6,100,50
+Z647,Grand Key Condominiums,8,8,96,96,98,50
+Z648,Residential Zone 648,42,42,52,52,100,50
+Z649,Commercial Zone 649,97,97,2,2,95,50
+Z650,Residential Zone 650,3,3,97,97,92,50
+Z651,Brownfield,45,45,40,40,98,50
+Z652,Residential Zone 652,95,95,5,5,99,50
+Z653,Residential Zone 653,4,4,99,99,96,50
+Z654,Residential Zone 654,56,56,47,47,96,50
+Z655,Residential Zone 655,96,96,0,0,94,50
+Z656,International Plaza and Bay Street,3,3,98,98,98,50
+Z657,Greenfield,42,42,42,42,90,50
+Z658,Residential Zone 658,99,99,4,4,99,50
+Z659,Residential Zone 659,0,0,99,99,98,50
+Z660,Residential Zone 660,42,42,40,40,96,50
+Z661,Residential Zone 661,95,95,7,7,90,50
+Z662,Commercial Zone 662,6,6,99,99,90,50
+Z663,Park,56,56,52,52,97,50
+Z664,Industrial Zone 664,96,96,7,7,97,50
+Z665,Residential Zone 665,7,7,100,100,95,50
+Z666,Residential Zone 666,55,55,45,45,90,50
+Z667,Mobley Park Apartments,100,100,2,2,95,50
+Z668,Common,2,2,100,100,90,50
+Z669,Commercial Zone 669,46,46,55,55,90,50
+Z670,Residential Zone 670,95,95,5,5,98,50
+Z671,Industrial Zone 671,4,4,95,95,100,50
+Z672,Commercial Zone 672,60,60,44,44,91,50
+Z673,Residential Zone 673,99,99,3,3,93,50
+Z674,Curtis Hixon Waterfront Park,8,8,96,96,91,50
+Z675,Grass,51,51,47,47,92,50
+Z676,Residential Zone 676,96,96,5,5,95,50
+Z677,Residential Zone 677,4,4,95,95,99,50
+Z678,Residential Zone 678,42,42,57,57,95,50
+Z679,Commercial Zone 679,98,98,1,1,96,50
+Z680,Industrial Zone 680,1,1,100,100,99,50
+Z681,The Province Apartments,45,45,56,56,97,50
+Z682,Retail Zone 682,95,95,4,4,91,50
+Z683,Grass,9,9,97,97,90,50
+Z684,Tampa Convention Center,47,47,52,52,100,50
+Z685,Channelside Parking Garage,95,95,6,6,98,50
+Z686,Commercial Zone 686,2,2,98,98,90,50
+Z687,Residential Zone 687,45,45,55,55,100,50
+Z688,Residential Zone 688,97,97,3,3,96,50
+Z689,McKay Bay Facility,10,10,95,95,97,50
+Z690,Residential Zone 690,45,45,43,43,90,50
+Z691,Yes,96,96,5,5,99,50
+Z692,Residential Zone 692,10,10,95,95,91,50
+Z693,Commercial Zone 693,42,42,40,40,90,50
+Z694,Industrial Zone 694,99,99,1,1,100,50
+Z695,Residential Zone 695,6,6,100,100,100,50
+Z696,Residential Zone 696,43,43,47,47,94,50
+Z697,Simmons Park,98,98,6,6,98,50
+Z698,Residential Zone 698,5,5,100,100,100,50
+Z699,Upper Water Street Project,52,52,49,49,92,50
+Z700,Residential Zone 700,99,99,6,6,98,50
+Z701,Residential Zone 701,4,4,100,100,92,50
+Z702,Industrial Zone 702,42,42,53,53,96,50
+Z703,Residential Zone 703,100,100,2,2,98,50
+Z704,Residential Zone 704,3,3,100,100,100,50
+Z705,Residential Zone 705,49,49,43,43,93,50
+Z706,Commercial Zone 706,97,97,1,1,98,50
+Z707,Commercial Zone 707,10,10,97,97,95,50
+Z708,Residential Zone 708,40,40,46,46,94,50
+Z709,Residential Zone 709,100,100,3,3,93,50
+Z710,Residential Zone 710,9,9,97,97,90,50
+Z711,Residential Zone 711,52,52,40,40,93,50
+Z712,Yes,100,100,4,4,96,50
+Z713,Residential Zone 713,3,3,95,95,98,50
+Z714,Residential Zone 714,40,40,50,50,93,50
+Z715,Commercial Zone 715,99,99,9,9,92,50
+Z716,Gandy Commons,3,3,98,98,97,50
+Z717,Residential Zone 717,56,56,45,45,96,50
+Z718,Base Exchange,100,100,7,7,97,50
+Z719,Residential Zone 719,7,7,95,95,94,50
+Z720,Retail Zone 720,60,60,45,45,91,50
+Z721,Residential Zone 721,95,95,8,8,93,50
+Z722,Residential Zone 722,10,10,95,95,92,50
+Z723,Residential Zone 723,49,49,51,51,100,50
+Z724,Retail Zone 724,97,97,0,0,99,50
+Z725,Commercial Zone 725,9,9,95,95,91,50
+Z726,Residential Zone 726,57,57,50,50,97,50
+Z727,Residential Zone 727,96,96,4,4,91,50
+Z728,Forest Hills Dog Walk Loop,6,6,97,97,92,50
+Z729,Commercial Zone 729,46,46,49,49,90,50
+Z730,Residential Zone 730,99,99,4,4,96,50
+Z731,Residential Zone 731,9,9,99,99,90,50
+Z732,Construction,52,52,48,48,95,50
+Z733,Recreation_Ground,100,100,2,2,98,50
+Z734,Residential Zone 734,3,3,97,97,99,50
+Z735,Residential Zone 735,50,50,55,55,91,50
+Z736,Commercial Zone 736,98,98,1,1,91,50
+Z737,Commercial Zone 737,7,7,98,98,93,50
+Z738,18th Avenue Park,60,60,47,47,98,50
+Z739,Residential Zone 739,99,99,5,5,91,50
+Z740,Residential Zone 740,0,0,99,99,94,50
+Z741,Residential Zone 741,46,46,52,52,95,50
+Z742,Residential Zone 742,98,98,0,0,91,50
+Z743,Residential Zone 743,9,9,99,99,99,50
+Z744,Commercial Zone 744,40,40,60,60,96,50
+Z745,Residential Zone 745,95,95,9,9,97,50
+Z746,Residential Zone 746,7,7,100,100,100,50
+Z747,Residential Zone 747,50,50,40,40,97,50
+Z748,Residential Zone 748,95,95,1,1,97,50
+Z749,Allister Place,6,6,98,98,96,50
+Z750,Commercial Zone 750,58,58,46,46,91,50
+Z751,Industrial Zone 751,96,96,7,7,97,50
+Z752,Recreation_Ground,4,4,95,95,96,50
+Z753,Residential Zone 753,42,42,60,60,95,50
+Z754,Residential Zone 754,100,100,7,7,96,50
+Z755,M South,10,10,99,99,100,50
+Z756,Residential Zone 756,56,56,47,47,97,50
+Z757,Residential Zone 757,100,100,4,4,90,50
+Z758,Residential Zone 758,6,6,100,100,96,50
+Z759,Sulphur Springs Park,42,42,54,54,97,50
+Z760,Commercial Zone 760,99,99,8,8,99,50
+Z761,Residential Zone 761,1,1,99,99,96,50
+Z762,Grass,46,46,50,50,99,50
+Z763,Recreation_Ground,98,98,4,4,97,50
+Z764,Yes,7,7,96,96,93,50
+Z765,Residential Zone 765,45,45,46,46,95,50
+Z766,Grass,98,98,2,2,91,50
+Z767,Residential Zone 767,9,9,95,95,96,50
+Z768,Residential Zone 768,46,46,54,54,95,50
+Z769,Industrial Zone 769,100,100,0,0,92,50
+Z770,Residential Zone 770,2,2,96,96,98,50
+Z771,Residential Zone 771,48,48,43,43,91,50
+Z772,Epps Park,99,99,4,4,90,50
+Z773,Industrial Zone 773,7,7,100,100,92,50
+Z774,Epiphany of Our Lord Church,46,46,59,59,90,50
+Z775,Residential Zone 775,98,98,9,9,94,50
+Z776,Residential Zone 776,1,1,96,96,100,50
+Z777,Commercial Zone 777,41,41,55,55,93,50
+Z778,Rose Hill Cemetery,98,98,9,9,92,50
+Z779,Residential Zone 779,4,4,95,95,100,50
+Z780,Residential Zone 780,59,59,59,59,92,50
+Z781,Residential Zone 781,100,100,9,9,94,50
+Z782,Yes,4,4,98,98,100,50
+Z783,Residential Zone 783,58,58,53,53,93,50
+Z784,Arbour Ponds,96,96,3,3,100,50
+Z785,Residential Zone 785,5,5,97,97,97,50
+Z786,Industrial Zone 786,46,46,45,45,93,50
+Z787,Industrial Zone 787,100,100,2,2,99,50
+Z788,Residential Zone 788,1,1,100,100,99,50
+Z789,Residential Zone 789,52,52,60,60,90,50
+Z790,Commercial Zone 790,100,100,4,4,95,50
+Z791,Residential Zone 791,6,6,99,99,97,50
+Z792,Commercial Zone 792,40,40,46,46,92,50
+Z793,Residential Zone 793,98,98,10,10,90,50
+Z794,The Tejas Pradip Patel Tennis Center,0,0,100,100,96,50
+Z795,Residential Zone 795,43,43,56,56,95,50
+Z796,Recreation_Ground,100,100,6,6,95,50
+Z797,Residential Zone 797,3,3,96,96,91,50
+Z798,"Dr. Martin Luther King, Jr. Recreation Complex",56,56,58,58,95,50
+Z799,Ragan Park,98,98,9,9,96,50
+Z800,Residential Zone 800,7,7,99,99,100,50
+Z801,Residential Zone 801,46,46,60,60,99,50
+Z802,Residential Zone 802,95,95,1,1,99,50
+Z803,Residential Zone 803,4,4,96,96,94,50
+Z804,Residential Zone 804,44,44,46,46,94,50
+Z805,Industrial Zone 805,98,98,1,1,94,50
+Z806,Residential Zone 806,4,4,99,99,96,50
+Z807,Residential Zone 807,57,57,47,47,90,50
+Z808,Retail Zone 808,99,99,7,7,95,50
+Z809,Commercial Zone 809,3,3,96,96,100,50
+Z810,Commercial Zone 810,43,43,41,41,94,50
+Z811,Residential Zone 811,100,100,5,5,90,50
+Z812,Commercial Zone 812,9,9,98,98,94,50
+Z813,Retail Zone 813,55,55,54,54,96,50
+Z814,Industrial Zone 814,99,99,0,0,93,50
+Z815,Residential Zone 815,0,0,95,95,98,50
+Z816,Residential Zone 816,52,52,51,51,94,50
+Z817,Residential Zone 817,95,95,4,4,90,50
+Z818,Retail Zone 818,6,6,99,99,94,50
+Z819,Industrial Zone 819,46,46,47,47,98,50
+Z820,Residential Zone 820,100,100,6,6,99,50
+Z821,Gas Workx W1 and W2,8,8,96,96,92,50
+Z822,Industrial Zone 822,44,44,56,56,100,50
+Z823,Residential Zone 823,96,96,0,0,95,50
+Z824,Recreation_Ground,0,0,99,99,94,50
+Z825,Commercial Zone 825,47,47,50,50,100,50
+Z826,Tampa,96,96,6,6,100,50
+Z827,Commercial Zone 827,2,2,97,97,92,50
+Z828,Yes,50,50,40,40,100,50
+Z829,Residential Zone 829,97,97,6,6,98,50
+Z830,Residential Zone 830,2,2,95,95,97,50
+Z831,Residential Zone 831,41,41,47,47,98,50
+Z832,Commercial Zone 832,100,100,5,5,99,50
+Z833,Residential Zone 833,8,8,98,98,94,50
+Z834,Residential Zone 834,59,59,55,55,92,50
+Z835,Residential Zone 835,99,99,2,2,93,50
+Z836,Commercial Zone 836,9,9,98,98,90,50
+Z837,Residential Zone 837,60,60,47,47,98,50
+Z838,Commercial Zone 838,98,98,2,2,99,50
+Z839,Recreation_Ground,4,4,95,95,93,50
+Z840,Independence Park,43,43,54,54,91,50
+Z841,Residential Zone 841,95,95,6,6,90,50
+Z842,Residential Zone 842,3,3,97,97,96,50
+Z843,Commercial Zone 843,46,46,60,60,93,50
+Z844,Grass,96,96,4,4,99,50
+Z845,Retail Zone 845,3,3,97,97,93,50
+Z846,Residential Zone 846,58,58,53,53,99,50
+Z847,Residential Zone 847,97,97,6,6,100,50
+Z848,Commercial Zone 848,1,1,96,96,93,50
+Z849,Residential Zone 849,57,57,49,49,92,50
+Z850,Residential Zone 850,97,97,6,6,91,50
+Z851,Commercial Zone 851,8,8,100,100,91,50
+Z852,Commercial Zone 852,52,52,42,42,93,50
+Z853,Residential Zone 853,98,98,9,9,97,50
+Z854,Residential Zone 854,9,9,99,99,92,50
+Z855,Residential Zone 855,47,47,50,50,97,50
+Z856,Residential Zone 856,99,99,7,7,97,50
+Z857,Industrial Zone 857,5,5,100,100,96,50
+Z858,Residential Zone 858,50,50,44,44,92,50
+Z859,Industrial Zone 859,98,98,6,6,96,50
+Z860,Industrial Zone 860,0,0,95,95,91,50
+Z861,Residential Zone 861,50,50,53,53,92,50
+Z862,Davis Islands Playground,99,99,5,5,95,50
+Z863,Residential Zone 863,6,6,95,95,93,50
+Z864,Residential Zone 864,47,47,58,58,99,50
+Z865,Highland Park Playground,98,98,8,8,97,50
+Z866,Commercial Zone 866,7,7,97,97,95,50
+Z867,Residential Zone 867,55,55,56,56,92,50
+Z868,Driving Range,99,99,10,10,90,50
+Z869,Residential Zone 869,8,8,100,100,99,50
+Z870,Residential Zone 870,42,42,46,46,94,50
+Z871,Commercial Zone 871,95,95,3,3,98,50
+Z872,Residential Zone 872,5,5,97,97,90,50
+Z873,Residential Zone 873,50,50,60,60,95,50
+Z874,Residential Zone 874,97,97,6,6,96,50
+Z875,Island Club At Rocky Point,3,3,100,100,96,50
+Z876,Residential Zone 876,60,60,49,49,99,50
+Z877,Residential Zone 877,99,99,7,7,98,50
+Z878,Farmland,4,4,95,95,95,50
+Z879,Commercial Zone 879,46,46,53,53,95,50
+Z880,Residential Zone 880,98,98,8,8,99,50
+Z881,Residential Zone 881,1,1,99,99,94,50
+Z882,Residential Zone 882,43,43,58,58,91,50
+Z883,Commercial Zone 883,96,96,1,1,96,50
+Z884,Residential Zone 884,0,0,98,98,97,50
+Z885,Residential Zone 885,55,55,40,40,90,50
+Z886,Commercial Zone 886,95,95,0,0,92,50
+Z887,Residential Zone 887,9,9,99,99,97,50
+Z888,Kforce,52,52,57,57,95,50
+Z889,Residential Zone 889,98,98,7,7,91,50
+Z890,Orchard,8,8,96,96,97,50
+Z891,Commercial Zone 891,49,49,49,49,95,50
+Z892,Residential Zone 892,100,100,5,5,93,50
+Z893,Residential Zone 893,2,2,96,96,98,50
+Z894,Residential Zone 894,46,46,48,48,94,50
+Z895,Residential Zone 895,100,100,0,0,96,50
+Z896,Residential Zone 896,8,8,96,96,97,50
+Z897,Commercial Zone 897,53,53,49,49,90,50
+Z898,Residential Zone 898,100,100,5,5,91,50
+Z899,Commercial Zone 899,0,0,96,96,96,50
+Z900,Industrial Zone 900,48,48,40,40,100,50
+Z901,Industrial Zone 901,96,96,2,2,92,50
+Z902,Retail Zone 902,10,10,100,100,92,50
+Z903,Residential Zone 903,54,54,44,44,90,50
+Z904,Grass,99,99,7,7,91,50
+Z905,Residential Zone 905,8,8,99,99,100,50
+Z906,Residential Zone 906,47,47,41,41,96,50
+Z907,Residential Zone 907,95,95,10,10,100,50
+Z908,Commercial Zone 908,6,6,97,97,93,50
+Z909,Yes,48,48,56,56,91,50
+Z910,Commercial Zone 910,96,96,4,4,97,50
+Z911,Residential Zone 911,3,3,97,97,100,50
+Z912,Residential Zone 912,58,58,44,44,95,50
+Z913,Residential Zone 913,99,99,9,9,99,50
+Z914,Commercial Zone 914,6,6,96,96,97,50
+Z915,Commercial Zone 915,50,50,40,40,97,50
+Z916,Hyde Park,100,100,0,0,96,50
+Z917,Commercial Zone 917,3,3,99,99,93,50
+Z918,Residential Zone 918,47,47,60,60,97,50
+Z919,Residential Zone 919,100,100,1,1,96,50
+Z920,Residential Zone 920,7,7,98,98,98,50
+Z921,Residential Zone 921,40,40,60,60,95,50
+Z922,Grass,96,96,9,9,96,50
+Z923,Residential Zone 923,1,1,98,98,100,50
+Z924,Grass,49,49,43,43,91,50
+Z925,Commercial Zone 925,99,99,1,1,96,50
+Z926,Residential Zone 926,4,4,99,99,94,50
+Z927,Residential Zone 927,57,57,40,40,97,50
+Z928,Commercial Zone 928,98,98,5,5,94,50
+Z929,Commercial Zone 929,7,7,95,95,90,50
+Z930,Residential Zone 930,41,41,42,42,100,50
+Z931,Commercial Zone 931,99,99,0,0,92,50
+Z932,"Gas Worx W3, W4, W5",4,4,95,95,100,50
+Z933,Residential Zone 933,44,44,41,41,95,50
+Z934,Mall,95,95,8,8,91,50
+Z935,Residential Zone 935,3,3,95,95,90,50
+Z936,Grass,41,41,46,46,99,50
+Z937,Residential Zone 937,99,99,4,4,93,50
+Z938,Residential Zone 938,9,9,100,100,95,50
+Z939,Residential Zone 939,46,46,53,53,99,50
+Z940,New Tampa Commons,100,100,3,3,98,50
+Z941,Commercial Zone 941,5,5,98,98,97,50
+Z942,Commercial Zone 942,60,60,58,58,93,50
+Z943,Residential Zone 943,97,97,2,2,100,50
+Z944,Commercial Zone 944,3,3,97,97,99,50
+Z945,Residential Zone 945,48,48,55,55,92,50
+Z946,Residential Zone 946,95,95,1,1,98,50
+Z947,Residential Zone 947,10,10,97,97,93,50
+Z948,Yes,54,54,49,49,94,50
+Z949,Retail Zone 949,95,95,5,5,100,50
+Z950,Residential Zone 950,4,4,99,99,91,50
+Z951,Residential Zone 951,41,41,50,50,97,50
+Z952,Commercial Zone 952,98,98,8,8,94,50
+Z953,Residential Zone 953,4,4,98,98,99,50
+Z954,Commercial Zone 954,40,40,54,54,97,50
+Z955,Parking,95,95,6,6,94,50
+Z956,Commercial Zone 956,4,4,97,97,90,50
+Z957,Residential Zone 957,42,42,54,54,94,50
+Z958,Residential Zone 958,96,96,5,5,97,50
+Z959,Grass,7,7,98,98,95,50
+Z960,Commercial Zone 960,55,55,49,49,96,50
+Z961,Commercial Zone 961,96,96,10,10,92,50
+Z962,Recreation_Ground,7,7,97,97,100,50
+Z963,Residential Zone 963,53,53,42,42,98,50
+Z964,Commercial Zone 964,97,97,1,1,92,50
+Z965,Residential Zone 965,1,1,95,95,90,50
+Z966,Commercial Zone 966,42,42,52,52,92,50
+Z967,Commercial Zone 967,95,95,10,10,97,50
+Z968,Residential Zone 968,0,0,95,95,95,50
+Z969,Residential Zone 969,44,44,49,49,100,50
+Z970,Residential Zone 970,100,100,4,4,100,50
+Z971,Commercial Zone 971,7,7,98,98,96,50
+Z972,Residential Zone 972,44,44,60,60,98,50
+Z973,Commercial Zone 973,97,97,8,8,98,50
+Z974,Residential Zone 974,8,8,96,96,91,50
+Z975,Commercial Zone 975,40,40,46,46,99,50
+Z976,Residential Zone 976,99,99,7,7,96,50
+Z977,Park,6,6,99,99,90,50
+Z978,Residential Zone 978,42,42,40,40,94,50
+Z979,Residential Zone 979,100,100,1,1,100,50
+Z980,Residential Zone 980,1,1,100,100,97,50
+Z981,Residential Zone 981,46,46,48,48,97,50
+Z982,Residential Zone 982,96,96,4,4,93,50
+Z983,Yes,0,0,96,96,94,50
+Z984,Residential Zone 984,43,43,58,58,96,50
+Z985,Commercial Zone 985,98,98,6,6,91,50
+Z986,Residential Zone 986,9,9,100,100,98,50
+Z987,Residential Zone 987,54,54,57,57,93,50
+Z988,Residential Zone 988,96,96,4,4,90,50
+Z989,Residential Zone 989,2,2,98,98,99,50
+Z990,Residential Zone 990,54,54,52,52,94,50
+Z991,Residential Zone 991,97,97,3,3,93,50
+Z992,Residential Zone 992,2,2,96,96,91,50
+Z993,David E. West Park,49,49,50,50,97,50
+Z994,Commercial Zone 994,100,100,2,2,96,50
+Z995,Residential Zone 995,5,5,95,95,96,50
+Z996,Industrial Zone 996,54,54,42,42,100,50
+Z997,Residential Zone 997,99,99,8,8,91,50
+Z998,Residential Zone 998,7,7,99,99,100,50
+Z999,Commercial Zone 999,49,49,41,41,98,50
+Z1000,Residential Zone 1000,98,98,1,1,96,50
+Z1001,Residential Zone 1001,10,10,99,99,95,50
+Z1002,Residential Zone 1002,59,59,58,58,98,50
+Z1003,Residential Zone 1003,98,98,2,2,97,50
+Z1004,Residential Zone 1004,4,4,99,99,91,50
+Z1005,Recreation_Ground,60,60,56,56,93,50
+Z1006,Residential Zone 1006,97,97,6,6,100,50
+Z1007,Residential Zone 1007,3,3,95,95,96,50
+Z1008,Commercial Zone 1008,60,60,53,53,90,50
+Z1009,Industrial Zone 1009,98,98,7,7,90,50
+Z1010,Commercial Zone 1010,3,3,100,100,91,50
+Z1011,Residential Zone 1011,44,44,51,51,91,50
+Z1012,Plant Park,96,96,3,3,100,50
+Z1013,Residential Zone 1013,3,3,95,95,91,50
+Z1014,Industrial Zone 1014,60,60,60,60,96,50
+Z1015,Residential Zone 1015,100,100,4,4,100,50
+Z1016,Farmland,5,5,95,95,98,50
+Z1017,Recreation_Ground,44,44,52,52,97,50
+Z1018,Residential Zone 1018,96,96,10,10,100,50
+Z1019,Residential Zone 1019,5,5,99,99,98,50
+Z1020,Residential Zone 1020,55,55,43,43,99,50
+Z1021,Residential Zone 1021,99,99,9,9,98,50
+Z1022,Residential Zone 1022,3,3,100,100,95,50
+Z1023,Airport Branch Main Post Office,44,44,45,45,93,50
+Z1024,Residential Zone 1024,100,100,6,6,97,50
+Z1025,Commercial Zone 1025,9,9,95,95,95,50
+Z1026,Commercial Zone 1026,47,47,41,41,98,50
+Z1027,Residential Zone 1027,99,99,6,6,90,50
+Z1028,Commercial Zone 1028,0,0,95,95,92,50
+Z1029,Commercial Zone 1029,43,43,42,42,90,50
+Z1030,Airside F,96,96,0,0,95,50
+Z1031,Residential Zone 1031,0,0,95,95,99,50
+Z1032,Residential Zone 1032,49,49,54,54,95,50
+Z1033,Centro Espanol Cemetery,100,100,3,3,98,50
+Z1034,Residential Zone 1034,9,9,100,100,100,50
+Z1035,Residential Zone 1035,57,57,45,45,95,50
+Z1036,Residential Zone 1036,97,97,1,1,90,50
+Z1037,Residential Zone 1037,2,2,99,99,98,50
+Z1038,Commercial Zone 1038,59,59,59,59,100,50
+Z1039,Commercial Zone 1039,99,99,9,9,93,50
+Z1040,Retail Zone 1040,3,3,99,99,93,50
+Z1041,Commercial Zone 1041,41,41,45,45,100,50
+Z1042,Industrial Zone 1042,95,95,3,3,100,50
+Z1043,Commercial Zone 1043,9,9,96,96,97,50
+Z1044,Commercial Zone 1044,57,57,50,50,92,50
+Z1045,Residential Zone 1045,95,95,8,8,94,50
+Z1046,Residential Zone 1046,6,6,97,97,94,50
+Z1047,Residential Zone 1047,45,45,45,45,94,50
+Z1048,Residential Zone 1048,96,96,1,1,93,50
+Z1049,Residential Zone 1049,7,7,100,100,94,50
+Z1050,Grass,46,46,53,53,96,50
+Z1051,Recreation_Ground,95,95,7,7,95,50
+Z1052,Park,6,6,96,96,94,50
+Z1053,Residential Zone 1053,57,57,57,57,99,50
+Z1054,Bahama Breeze,98,98,0,0,100,50
+Z1055,Industrial Zone 1055,1,1,98,98,99,50
+Z1056,Residential Zone 1056,53,53,51,51,94,50
+Z1057,Residential Zone 1057,99,99,9,9,95,50
+Z1058,Commercial Zone 1058,8,8,98,98,95,50
+Z1059,Residential Zone 1059,59,59,44,44,94,50
+Z1060,Industrial Zone 1060,100,100,4,4,93,50
+Z1061,Residential Zone 1061,0,0,98,98,90,50
+Z1062,Residential Zone 1062,46,46,47,47,98,50
+Z1063,Industrial Zone 1063,97,97,3,3,99,50
+Z1064,Residential Zone 1064,1,1,96,96,95,50
+Z1065,Industrial Zone 1065,47,47,42,42,92,50
+Z1066,Chase Suite Hotel Tampa,96,96,9,9,96,50
+Z1067,Commercial Zone 1067,3,3,96,96,93,50
+Z1068,Grass,56,56,59,59,98,50
+Z1069,Commercial Zone 1069,99,99,10,10,93,50
+Z1070,Residential Zone 1070,7,7,99,99,93,50
+Z1071,Residential Zone 1071,59,59,48,48,96,50
+Z1072,Residential Zone 1072,100,100,9,9,98,50
+Z1073,Sunridge condominiums,7,7,99,99,99,50
+Z1074,Commercial Zone 1074,40,40,45,45,97,50
+Z1075,Residential Zone 1075,95,95,6,6,96,50
+Z1076,Residential Zone 1076,4,4,99,99,90,50
+Z1077,Residential Zone 1077,45,45,43,43,98,50
+Z1078,MacDugal Park,96,96,8,8,98,50
+Z1079,Residential Zone 1079,10,10,95,95,90,50
+Z1080,Residential Zone 1080,49,49,55,55,91,50
+Z1081,Residential Zone 1081,98,98,5,5,94,50
+Z1082,Residential Zone 1082,5,5,96,96,91,50
+Z1083,Residential Zone 1083,58,58,50,50,97,50
+Z1084,Residential Zone 1084,100,100,5,5,90,50
+Z1085,Residential Zone 1085,4,4,100,100,94,50
+Z1086,Residential Zone 1086,47,47,49,49,96,50
+Z1087,Commercial Zone 1087,97,97,2,2,99,50
+Z1088,Commercial Zone 1088,0,0,99,99,92,50
+Z1089,TECO Energy,60,60,44,44,96,50
+Z1090,Commercial Zone 1090,99,99,8,8,90,50
+Z1091,Residential Zone 1091,8,8,96,96,98,50
+Z1092,Residential Zone 1092,43,43,49,49,93,50
+Z1093,Commercial Zone 1093,98,98,1,1,92,50
+Z1094,Industrial Zone 1094,1,1,97,97,90,50
+Z1095,Residential Zone 1095,56,56,56,56,97,50
+Z1096,Residential Zone 1096,95,95,10,10,98,50
+Z1097,Retail Zone 1097,4,4,95,95,99,50
+Z1098,Meadow,44,44,58,58,97,50
+Z1099,Jefferson High School,100,100,0,0,97,50
+Z1100,Seazen Rocky Point,9,9,95,95,92,50
+Z1101,Plymouth Playground,59,59,51,51,94,50
+Z1102,Residential Zone 1102,100,100,9,9,91,50
+Z1103,Industrial Zone 1103,9,9,98,98,99,50
+Z1104,Residential Zone 1104,55,55,50,50,98,50
+Z1105,Residential Zone 1105,97,97,2,2,94,50
+Z1106,Calvin Taylor Park,7,7,100,100,91,50
+Z1107,Residential Zone 1107,59,59,54,54,98,50
+Z1108,Residential Zone 1108,99,99,3,3,97,50
+Z1109,Residential Zone 1109,3,3,99,99,97,50
+Z1110,Grass,54,54,55,55,100,50
+Z1111,Commercial Zone 1111,97,97,3,3,99,50
+Z1112,Park,9,9,100,100,91,50
+Z1113,Commercial Zone 1113,55,55,60,60,93,50
+Z1114,Residential Zone 1114,98,98,1,1,99,50
+Z1115,Recreation_Ground,10,10,98,98,99,50
+Z1116,Big Bear Crossing,44,44,58,58,94,50
+Z1117,Commercial Zone 1117,96,96,8,8,93,50
+Z1118,Retail Zone 1118,3,3,96,96,90,50
+Z1119,Residential Zone 1119,45,45,47,47,95,50
+Z1120,Commercial Zone 1120,96,96,7,7,95,50
+Z1121,Residential Zone 1121,10,10,98,98,93,50
+Z1122,Industrial Zone 1122,56,56,54,54,95,50
+Z1123,Railway,100,100,4,4,90,50
+Z1124,Cemetery,3,3,100,100,94,50
+Z1125,Residential Zone 1125,48,48,42,42,97,50
+Z1126,Residential Zone 1126,98,98,7,7,90,50
+Z1127,Residential Zone 1127,2,2,100,100,93,50
+Z1128,Residential Zone 1128,52,52,41,41,95,50
+Z1129,Residential Zone 1129,100,100,8,8,100,50
+Z1130,Residential Zone 1130,5,5,100,100,99,50
+Z1131,Residential Zone 1131,53,53,44,44,100,50
+Z1132,Commercial Zone 1132,98,98,7,7,97,50
+Z1133,Residential Zone 1133,3,3,97,97,90,50
+Z1134,Residential Zone 1134,45,45,55,55,95,50
+Z1135,Industrial Zone 1135,95,95,9,9,97,50
+Z1136,Residential Zone 1136,1,1,97,97,100,50
+Z1137,Commercial Zone 1137,47,47,58,58,96,50
+Z1138,Commercial Zone 1138,95,95,4,4,96,50
+Z1139,Residential Zone 1139,7,7,95,95,92,50
+Z1140,Commercial Zone 1140,51,51,59,59,99,50
+Z1141,Residential Zone 1141,100,100,3,3,98,50
+Z1142,Commercial Zone 1142,9,9,100,100,98,50
+Z1143,Farmland,58,58,56,56,91,50
+Z1144,Residential Zone 1144,100,100,6,6,96,50
+Z1145,Park,3,3,98,98,90,50
+Z1146,Residential Zone 1146,44,44,53,53,96,50
+Z1147,Residential Zone 1147,100,100,7,7,99,50
+Z1148,Residential Zone 1148,6,6,97,97,97,50
+Z1149,Retail Zone 1149,44,44,58,58,93,50
+Z1150,Residential Zone 1150,99,99,0,0,92,50
+Z1151,Forest Hills Park,1,1,99,99,92,50
+Z1152,Rocky Point Centre,57,57,47,47,93,50
+Z1153,Commercial Zone 1153,95,95,1,1,91,50
+Z1154,Commercial Zone 1154,3,3,95,95,95,50
+Z1155,Commercial Zone 1155,43,43,56,56,92,50
+Z1156,Residential Zone 1156,95,95,0,0,90,50
+Z1157,Southwest Port Tampa Park,2,2,95,95,90,50
+Z1158,Commercial Zone 1158,59,59,54,54,93,50
+Z1159,Commercial Zone 1159,98,98,2,2,95,50
+Z1160,Commercial Zone 1160,10,10,100,100,96,50
+Z1161,Residential Zone 1161,50,50,50,50,93,50
+Z1162,Residential Zone 1162,98,98,8,8,100,50
+Z1163,Residential Zone 1163,10,10,100,100,94,50
+Z1164,Residential Zone 1164,46,46,53,53,100,50
+Z1165,Residential Zone 1165,98,98,9,9,92,50
+Z1166,Commercial Zone 1166,3,3,99,99,94,50
+Z1167,Brownfield,44,44,55,55,99,50
+Z1168,Commercial Zone 1168,96,96,6,6,90,50
+Z1169,Residential Zone 1169,8,8,97,97,98,50
+Z1170,Commercial Zone 1170,46,46,60,60,97,50
+Z1171,Residential Zone 1171,100,100,0,0,97,50
+Z1172,Commercial Zone 1172,1,1,96,96,90,50
+Z1173,Residential Zone 1173,49,49,44,44,90,50
+Z1174,Commercial Zone 1174,95,95,6,6,98,50
+Z1175,Residential Zone 1175,2,2,98,98,96,50
+Z1176,Residential Zone 1176,40,40,43,43,90,50
+Z1177,Commercial Zone 1177,97,97,9,9,97,50
+Z1178,Residential Zone 1178,0,0,96,96,92,50
+Z1179,Commercial Zone 1179,55,55,45,45,97,50
+Z1180,Commercial Zone 1180,100,100,1,1,93,50
+Z1181,Residential Zone 1181,2,2,98,98,96,50
+Z1182,Commercial Zone 1182,45,45,41,41,92,50
+Z1183,Retail Zone 1183,98,98,0,0,96,50
+Z1184,Industrial Zone 1184,7,7,95,95,97,50
+Z1185,Residential Zone 1185,50,50,43,43,96,50
+Z1186,Residential Zone 1186,98,98,5,5,93,50
+Z1187,Residential Zone 1187,7,7,99,99,93,50
+Z1188,Residential Zone 1188,48,48,58,58,100,50
+Z1189,Residential Zone 1189,96,96,10,10,97,50
+Z1190,Commercial Zone 1190,3,3,98,98,100,50
+Z1191,Cuscaden Park,55,55,45,45,99,50
+Z1192,Commercial Zone 1192,96,96,6,6,92,50
+Z1193,Commercial Zone 1193,2,2,96,96,96,50
+Z1194,Residential Zone 1194,41,41,51,51,92,50
+Z1195,West Tampa Little League,99,99,0,0,96,50
+Z1196,Residential Zone 1196,1,1,95,95,92,50
+Z1197,Residential Zone 1197,58,58,44,44,94,50
+Z1198,Retail Zone 1198,98,98,3,3,96,50
+Z1199,Residential Zone 1199,4,4,96,96,96,50
+Z1200,Commercial Zone 1200,42,42,42,42,97,50
+Z1201,Residential Zone 1201,98,98,9,9,92,50
+Z1202,Industrial Zone 1202,7,7,98,98,98,50
+Z1203,Industrial Zone 1203,48,48,46,46,90,50
+Z1204,Commercial Zone 1204,95,95,8,8,96,50
+Z1205,Residential Zone 1205,0,0,96,96,97,50
+Z1206,Residential Zone 1206,55,55,50,50,90,50
+Z1207,Commercial Zone 1207,100,100,9,9,91,50
+Z1208,Residential Zone 1208,5,5,95,95,96,50
+Z1209,Residential Zone 1209,48,48,54,54,96,50
+Z1210,Residential Zone 1210,100,100,1,1,98,50
+Z1211,Residential Zone 1211,10,10,96,96,92,50
+Z1212,Residential Zone 1212,56,56,43,43,99,50
+Z1213,Residential Zone 1213,97,97,4,4,100,50
+Z1214,Residential Zone 1214,5,5,98,98,94,50
+Z1215,Residential Zone 1215,57,57,56,56,91,50
+Z1216,Nashville,96,96,10,10,92,50
+Z1217,Commercial Zone 1217,3,3,98,98,91,50
+Z1218,Residential Zone 1218,58,58,52,52,100,50
+Z1219,Yes,100,100,1,1,90,50
+Z1220,TGH Parking Garage,8,8,98,98,96,50
+Z1221,Residential Zone 1221,59,59,56,56,97,50
+Z1222,Residential Zone 1222,96,96,4,4,90,50
+Z1223,Commercial Zone 1223,3,3,95,95,90,50
+Z1224,Residential Zone 1224,40,40,55,55,98,50
+Z1225,Residential Zone 1225,96,96,10,10,95,50
+Z1226,Residential Zone 1226,9,9,98,98,92,50
+Z1227,Brownfield,51,51,45,45,96,50
+Z1228,Yes,96,96,4,4,90,50
+Z1229,Woodland Terrace Park,4,4,99,99,100,50
+Z1230,Railway,49,49,49,49,94,50
+Z1231,Commercial Zone 1231,95,95,7,7,100,50
+Z1232,Grass,3,3,100,100,95,50
+Z1233,Commercial Zone 1233,48,48,44,44,99,50
+Z1234,Residential Zone 1234,97,97,9,9,98,50
+Z1235,Residential Zone 1235,7,7,99,99,92,50
+Z1236,Residential Zone 1236,42,42,49,49,98,50
+Z1237,Commercial Zone 1237,96,96,2,2,96,50
+Z1238,Residential Zone 1238,8,8,97,97,90,50
+Z1239,Commercial Zone 1239,46,46,42,42,95,50
+Z1240,Recreation_Ground,98,98,7,7,100,50
+Z1241,Residential Zone 1241,5,5,97,97,90,50
+Z1242,Commercial Zone 1242,43,43,49,49,98,50
+Z1243,Industrial Zone 1243,98,98,0,0,92,50
+Z1244,Residential Zone 1244,8,8,98,98,100,50
+Z1245,Island Center,56,56,51,51,92,50
+Z1246,Commercial Zone 1246,99,99,6,6,94,50
+Z1247,Residential Zone 1247,10,10,100,100,92,50
+Z1248,Commercial Zone 1248,50,50,52,52,96,50
+Z1249,Yes,96,96,0,0,93,50
+Z1250,Residential Zone 1250,0,0,100,100,91,50
+Z1251,Residential Zone 1251,49,49,58,58,97,50
+Z1252,MLK Plaza,99,99,0,0,97,50
+Z1253,Retail Zone 1253,9,9,98,98,95,50
+Z1254,School,47,47,45,45,93,50
+Z1255,Residential Zone 1255,100,100,6,6,94,50
+Z1256,Residential Zone 1256,6,6,97,97,92,50
+Z1257,Residential Zone 1257,55,55,53,53,99,50
+Z1258,Commercial Zone 1258,97,97,2,2,99,50
+Z1259,Residential Zone 1259,4,4,98,98,94,50
+Z1260,Residential Zone 1260,46,46,59,59,100,50
+Z1261,Commercial Zone 1261,96,96,5,5,99,50
+Z1262,Residential Zone 1262,5,5,97,97,91,50
+Z1263,Residential Zone 1263,41,41,49,49,90,50
+Z1264,Industrial Zone 1264,95,95,8,8,93,50
+Z1265,Residential Zone 1265,3,3,97,97,96,50
+Z1266,Residential Zone 1266,58,58,49,49,97,50
+Z1267,Residential Zone 1267,96,96,3,3,97,50
+Z1268,Commercial Zone 1268,7,7,95,95,93,50
+Z1269,Commercial Zone 1269,45,45,44,44,94,50
+Z1270,Residential Zone 1270,99,99,2,2,97,50
+Z1271,Residential Zone 1271,5,5,97,97,92,50
+Z1272,Yes,59,59,47,47,92,50
+Z1273,George M. Steinbrenner Field,97,97,7,7,96,50
+Z1274,Residential Zone 1274,5,5,100,100,90,50
+Z1275,Residential Zone 1275,41,41,57,57,96,50
+Z1276,Commercial Zone 1276,97,97,4,4,90,50
+Z1277,Commercial Zone 1277,8,8,98,98,98,50
+Z1278,Residential Zone 1278,58,58,54,54,98,50
+Z1279,Residential Zone 1279,96,96,5,5,91,50
+Z1280,Residential Zone 1280,8,8,99,99,90,50
+Z1281,Residential Zone 1281,59,59,54,54,94,50
+Z1282,Residential Zone 1282,95,95,10,10,100,50
+Z1283,Residential Zone 1283,3,3,98,98,98,50
+Z1284,Commercial Zone 1284,50,50,51,51,97,50
+Z1285,Residential Zone 1285,99,99,0,0,93,50
+Z1286,Residential Zone 1286,3,3,98,98,92,50
+Z1287,Residential Zone 1287,56,56,52,52,90,50
+Z1288,Residential Zone 1288,100,100,3,3,95,50
+Z1289,Commercial Zone 1289,1,1,100,100,98,50
+Z1290,Commercial Zone 1290,55,55,40,40,94,50
+Z1291,Commercial Zone 1291,95,95,3,3,93,50
+Z1292,Residential Zone 1292,0,0,96,96,93,50
+Z1293,Residential Zone 1293,41,41,53,53,91,50
+Z1294,Residential Zone 1294,99,99,4,4,91,50
+Z1295,Roof,6,6,98,98,90,50
+Z1296,Yes,44,44,50,50,91,50
+Z1297,Yes,98,98,9,9,96,50
+Z1298,Residential Zone 1298,8,8,97,97,100,50
+Z1299,Industrial Zone 1299,55,55,43,43,100,50
+Z1300,Residential Zone 1300,97,97,8,8,94,50
+Z1301,Residential Zone 1301,4,4,99,99,97,50
+Z1302,Yes,43,43,46,46,98,50
+Z1303,Residential Zone 1303,96,96,1,1,97,50
+Z1304,Residential Zone 1304,3,3,99,99,96,50
+Z1305,Commercial Zone 1305,47,47,54,54,100,50
+Z1306,Residential Zone 1306,100,100,8,8,90,50
+Z1307,Brownfield,1,1,96,96,95,50
+Z1308,Commercial Zone 1308,41,41,52,52,92,50
+Z1309,Residential Zone 1309,97,97,10,10,90,50
+Z1310,Residential Zone 1310,2,2,97,97,92,50
+Z1311,Residential Zone 1311,55,55,53,53,95,50
+Z1312,Residential Zone 1312,99,99,8,8,100,50
+Z1313,Residential Zone 1313,2,2,100,100,95,50
+Z1314,Residential Zone 1314,49,49,50,50,95,50
+Z1315,Commercial Zone 1315,96,96,5,5,98,50
+Z1316,Residential Zone 1316,7,7,95,95,94,50
+Z1317,Residential Zone 1317,60,60,44,44,98,50
+Z1318,Retail Zone 1318,99,99,8,8,99,50
+Z1319,Retail Zone 1319,0,0,100,100,93,50
+Z1320,Residential Zone 1320,49,49,48,48,94,50
+Z1321,Residential Zone 1321,95,95,8,8,100,50
+Z1322,Commercial Zone 1322,5,5,98,98,96,50
+Z1323,Residential Zone 1323,59,59,50,50,96,50
+Z1324,Residential Zone 1324,100,100,6,6,99,50
+Z1325,Commercial Zone 1325,2,2,98,98,96,50
+Z1326,Residential Zone 1326,56,56,40,40,99,50
+Z1327,Residential Zone 1327,99,99,3,3,91,50
+Z1328,Residential Zone 1328,1,1,100,100,100,50
+Z1329,Residential Zone 1329,54,54,46,46,94,50
+Z1330,Residential Zone 1330,97,97,5,5,95,50
+Z1331,Residential Zone 1331,4,4,98,98,97,50
+Z1332,Industrial Zone 1332,59,59,43,43,95,50
+Z1333,Commercial Zone 1333,99,99,6,6,94,50
+Z1334,Residential Zone 1334,8,8,100,100,93,50
+Z1335,Commercial Zone 1335,49,49,49,49,97,50
+Z1336,Residential Zone 1336,95,95,6,6,92,50
+Z1337,Residential Zone 1337,3,3,95,95,92,50
+Z1338,Industrial Zone 1338,42,42,57,57,93,50
+Z1339,Residential Zone 1339,97,97,1,1,90,50
+Z1340,Residential Zone 1340,2,2,98,98,92,50
+Z1341,Residential Zone 1341,59,59,60,60,90,50
+Z1342,Commercial Zone 1342,97,97,4,4,93,50
+Z1343,Residential Zone 1343,9,9,99,99,94,50
+Z1344,Residential Zone 1344,43,43,51,51,94,50
+Z1345,Residential Zone 1345,96,96,2,2,98,50
+Z1346,Residential Zone 1346,4,4,99,99,93,50
+Z1347,Residential Zone 1347,56,56,60,60,91,50
+Z1348,Commercial Zone 1348,100,100,6,6,100,50
+Z1349,Industrial Zone 1349,9,9,99,99,90,50
+Z1350,Park,41,41,56,56,92,50
+Z1351,Residential Zone 1351,95,95,10,10,98,50
+Z1352,Residential Zone 1352,6,6,100,100,96,50
+Z1353,Residential Zone 1353,43,43,40,40,91,50
+Z1354,Residential Zone 1354,97,97,0,0,97,50
+Z1355,Residential Zone 1355,6,6,98,98,93,50
+Z1356,Commercial Zone 1356,52,52,44,44,100,50
+Z1357,Residential Zone 1357,98,98,2,2,93,50
+Z1358,Residential Zone 1358,8,8,96,96,92,50
+Z1359,Residential Zone 1359,57,57,49,49,98,50
+Z1360,Grass,96,96,1,1,94,50
+Z1361,Residential Zone 1361,9,9,100,100,96,50
+Z1362,Residential Zone 1362,42,42,56,56,90,50
+Z1363,Residential Zone 1363,96,96,1,1,97,50
+Z1364,Residential Zone 1364,3,3,100,100,97,50
+Z1365,Commercial Zone 1365,45,45,60,60,91,50
+Z1366,Residential Zone 1366,99,99,10,10,93,50
+Z1367,Residential Zone 1367,2,2,95,95,92,50
+Z1368,Commercial Zone 1368,59,59,48,48,92,50
+Z1369,Commercial Zone 1369,97,97,3,3,90,50
+Z1370,Commercial Zone 1370,5,5,97,97,100,50
+Z1371,Residential Zone 1371,44,44,44,44,98,50
+Z1372,Residential Zone 1372,99,99,9,9,93,50
+Z1373,Residential Zone 1373,2,2,100,100,91,50
+Z1374,Residential Zone 1374,49,49,57,57,97,50
+Z1375,Commercial Zone 1375,96,96,8,8,94,50
+Z1376,Retail Zone 1376,0,0,100,100,91,50
+Z1377,Residential Zone 1377,55,55,55,55,92,50
+Z1378,Commercial Zone 1378,96,96,8,8,90,50
+Z1379,Residential Zone 1379,3,3,95,95,97,50
+Z1380,Terrace Palms,58,58,43,43,92,50
+Z1381,Commercial Zone 1381,95,95,2,2,95,50
+Z1382,Residential Zone 1382,4,4,96,96,97,50
+Z1383,Commercial Zone 1383,53,53,54,54,90,50
+Z1384,Retail Zone 1384,100,100,1,1,97,50
+Z1385,Residential Zone 1385,10,10,96,96,93,50
+Z1386,Residential Zone 1386,45,45,48,48,90,50
+Z1387,Commercial Zone 1387,98,98,4,4,90,50
+Z1388,Residential Zone 1388,2,2,98,98,97,50
+Z1389,Residential Zone 1389,59,59,51,51,94,50
+Z1390,Yes,100,100,3,3,99,50
+Z1391,Residential Zone 1391,7,7,97,97,98,50
+Z1392,Residential Zone 1392,48,48,60,60,97,50
+Z1393,Harbour Place City Homes,95,95,3,3,94,50
+Z1394,Residential Zone 1394,10,10,97,97,98,50
+Z1395,Residential Zone 1395,56,56,42,42,91,50
+Z1396,Residential Zone 1396,96,96,4,4,91,50
+Z1397,Residential Zone 1397,6,6,96,96,92,50
+Z1398,Residential Zone 1398,55,55,47,47,94,50
+Z1399,Residential Zone 1399,100,100,9,9,100,50
+Z1400,Commercial Zone 1400,8,8,96,96,90,50
+Z1401,Residential Zone 1401,59,59,48,48,90,50
+Z1402,Cortland at Westshore,100,100,6,6,98,50
+Z1403,Residential Zone 1403,2,2,98,98,90,50
+Z1404,Residential Zone 1404,51,51,58,58,97,50
+Z1405,Residential Zone 1405,100,100,0,0,95,50
+Z1406,Commercial Zone 1406,0,0,95,95,97,50
+Z1407,Davis Islands Dog Beach,55,55,59,59,96,50
+Z1408,Commercial Zone 1408,98,98,8,8,94,50
+Z1409,Commercial Zone 1409,8,8,96,96,94,50
+Z1410,Residential Zone 1410,47,47,60,60,96,50
+Z1411,Residential Zone 1411,96,96,6,6,90,50
+Z1412,Residential Zone 1412,7,7,98,98,90,50
+Z1413,Residential Zone 1413,58,58,49,49,96,50
+Z1414,Residential Zone 1414,100,100,6,6,91,50
+Z1415,Residential Zone 1415,0,0,96,96,90,50
+Z1416,Residential Zone 1416,45,45,46,46,94,50
+Z1417,Residential Zone 1417,97,97,3,3,97,50
+Z1418,Commercial Zone 1418,2,2,96,96,98,50
+Z1419,Residential Zone 1419,59,59,55,55,93,50
+Z1420,Commercial Zone 1420,100,100,8,8,91,50
+Z1421,Residential Zone 1421,9,9,95,95,94,50
+Z1422,Grass,46,46,60,60,93,50
+Z1423,Skyview Park,100,100,3,3,96,50
+Z1424,Residential Zone 1424,4,4,98,98,100,50
+Z1425,Commercial Zone 1425,53,53,58,58,90,50
+Z1426,Residential Zone 1426,100,100,6,6,96,50
+Z1427,Residential Zone 1427,3,3,98,98,97,50
+Z1428,Commercial Zone 1428,57,57,51,51,98,50
+Z1429,Commercial Zone 1429,95,95,6,6,98,50
+Z1430,Residential Zone 1430,1,1,97,97,94,50
+Z1431,Industrial Zone 1431,53,53,48,48,98,50
+Z1432,Commercial Zone 1432,95,95,6,6,100,50
+Z1433,Residential Zone 1433,2,2,100,100,93,50
+Z1434,Residential Zone 1434,51,51,45,45,99,50
+Z1435,Residential Zone 1435,99,99,1,1,95,50
+Z1436,Commercial Zone 1436,2,2,96,96,99,50
+Z1437,Residential Zone 1437,50,50,55,55,94,50
+Z1438,Residential Zone 1438,97,97,10,10,99,50
+Z1439,Residential Zone 1439,9,9,99,99,90,50
+Z1440,Residential Zone 1440,60,60,46,46,90,50
+Z1441,Residential Zone 1441,95,95,6,6,100,50
+Z1442,Residential Zone 1442,6,6,98,98,100,50
+Z1443,Farmland,48,48,46,46,97,50
+Z1444,Recreation_Ground,95,95,5,5,91,50
+Z1445,Residential Zone 1445,8,8,99,99,100,50
+Z1446,Residential Zone 1446,48,48,41,41,91,50
+Z1447,Residential Zone 1447,97,97,1,1,92,50
+Z1448,The Westin Tampa Waterside,5,5,97,97,100,50
+Z1449,Walmart Supercenter,60,60,60,60,90,50
+Z1450,Commercial Zone 1450,99,99,2,2,93,50
+Z1451,Residential Zone 1451,3,3,95,95,90,50
+Z1452,Commercial Zone 1452,60,60,48,48,99,50
+Z1453,Commercial Zone 1453,95,95,8,8,90,50
+Z1454,Residential Zone 1454,2,2,95,95,98,50
+Z1455,Commercial Zone 1455,41,41,53,53,96,50
+Z1456,Yes,99,99,5,5,94,50
+Z1457,Residential Zone 1457,7,7,97,97,97,50
+Z1458,Residential Zone 1458,55,55,59,59,92,50
+Z1459,Residential Zone 1459,99,99,9,9,100,50
+Z1460,Commercial Zone 1460,8,8,99,99,91,50
+Z1461,The Millennium Westshore,49,49,42,42,94,50
+Z1462,Residential Zone 1462,100,100,9,9,95,50
+Z1463,Commercial Zone 1463,4,4,100,100,96,50
+Z1464,Commercial Zone 1464,48,48,47,47,97,50
+Z1465,Residential Zone 1465,96,96,1,1,94,50
+Z1466,Vila Brothers Park,10,10,98,98,97,50
+Z1467,Residential Zone 1467,42,42,51,51,91,50
+Z1468,Residential Zone 1468,99,99,5,5,95,50
+Z1469,Residential Zone 1469,7,7,95,95,97,50
+Z1470,Residential Zone 1470,45,45,60,60,100,50
+Z1471,Residential Zone 1471,100,100,2,2,91,50
+Z1472,Residential Zone 1472,2,2,99,99,91,50
+Z1473,Residential Zone 1473,52,52,44,44,96,50
+Z1474,Residential Zone 1474,99,99,7,7,97,50
+Z1475,Commercial Zone 1475,10,10,95,95,90,50
+Z1476,Commercial Zone 1476,40,40,50,50,94,50
+Z1477,Yes,98,98,6,6,92,50
+Z1478,Residential Zone 1478,10,10,96,96,99,50
+Z1479,Commercial Zone 1479,44,44,47,47,90,50
+Z1480,Commercial Zone 1480,98,98,3,3,90,50
+Z1481,Lowe's,0,0,98,98,99,50
+Z1482,Commercial Zone 1482,52,52,55,55,93,50
+Z1483,Residential Zone 1483,96,96,7,7,99,50
+Z1484,Residential Zone 1484,2,2,98,98,96,50
+Z1485,Commercial Zone 1485,45,45,49,49,94,50
+Z1486,School,100,100,10,10,96,50
+Z1487,Residential Zone 1487,7,7,100,100,91,50
+Z1488,Residential Zone 1488,59,59,48,48,97,50
+Z1489,Residential Zone 1489,97,97,4,4,97,50
+Z1490,Warehouse,5,5,96,96,92,50
+Z1491,Residential Zone 1491,41,41,40,40,99,50
+Z1492,Residential Zone 1492,96,96,10,10,96,50
+Z1493,Commercial Zone 1493,10,10,97,97,98,50
+Z1494,Residential Zone 1494,45,45,44,44,94,50
+Z1495,Residential Zone 1495,99,99,4,4,94,50
+Z1496,Varela Westshore,9,9,98,98,95,50
+Z1497,Farmland,47,47,55,55,98,50
+Z1498,Residential Zone 1498,97,97,5,5,95,50
+Z1499,Residential Zone 1499,2,2,98,98,90,50
+Z1500,Residential Zone 1500,42,42,54,54,91,50
